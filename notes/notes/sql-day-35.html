@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>SQL Day 35 | Beyond BTech</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f7f8fc;
+            color: #111827;
+            line-height: 1.7;
+        }
+
+        header {
+            background: #171923;
+            padding: 22px;
+            color: white;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 850px;
+            margin: auto;
+        }
+
+        .logo {
+            font-size: 23px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #635bff;
+        }
+
+        .back {
+            display: inline-block;
+            margin-top: 30px;
+            color: #635bff;
+            font-weight: bold;
+        }
+
+        .article {
+            background: white;
+            margin: 25px 0 50px;
+            padding: 45px;
+            border-radius: 18px;
+            border: 1px solid #e5e7eb;
+        }
+
+        .day {
+            color: #635bff;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        h1 {
+            font-size: 42px;
+            line-height: 1.2;
+            margin: 12px 0;
+        }
+
+        h2 {
+            margin-top: 35px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            color: #4b5563;
+            margin-bottom: 15px;
+        }
+
+        .code {
+            background: #171923;
+            color: #e5e7eb;
+            padding: 20px;
+            border-radius: 12px;
+            overflow-x: auto;
+            margin: 20px 0;
+            font-family: Consolas, monospace;
+        }
+
+        .tip {
+            background: #f0efff;
+            border-left: 4px solid #635bff;
+            padding: 18px;
+            margin: 25px 0;
+            border-radius: 8px;
+        }
+
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 45px;
+            gap: 10px;
+        }
+
+        .navigation a {
+            background: #171923;
+            color: white;
+            padding: 11px 16px;
+            border-radius: 8px;
+        }
+
+        @media (max-width: 600px) {
+
+            .article {
+                padding: 25px;
+            }
+
+            h1 {
+                font-size: 32px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+<header>
+
+    <div class="container">
+
+        <div class="logo">
+            Beyond<span>BTech</span>
+        </div>
+
+    </div>
+
+</header>
+
+
+<main class="container">
+
+    <a href="../notes.html" class="back">
+        ← Back to Notes
+    </a>
+
+
+    <article class="article">
+
+        <div class="day">
+            SQL · DAY 35
+        </div>
+
+        <h1>
+            CTE — Common Table Expression
+        </h1>
+
+        <p>
+            A simple explanation of CTEs and why they are
+            useful when writing complex SQL queries.
+        </p>
+
+
+        <h2>
+            What is a CTE?
+        </h2>
+
+        <p>
+            CTE stands for Common Table Expression.
+            It allows us to temporarily store the result
+            of a query and use that result in another query.
+        </p>
+
+
+        <h2>
+            Basic Syntax
+        </h2>
+
+        <div class="code">
+
+WITH CTE_Name AS
+(
+    SELECT column1, column2
+    FROM Employee
+)
+
+SELECT *
+FROM CTE_Name;
+
+        </div>
+
+
+        <h2>
+            Example
+        </h2>
+
+        <p>
+            Suppose we want to find employees whose salary
+            is greater than the average salary.
+        </p>
+
+
+        <div class="code">
+
+WITH AvgSalary AS
+(
+    SELECT AVG(emp_sal) AS avg_sal
+    FROM Employee
+)
+
+SELECT e.emp_name,
+       e.emp_sal
+FROM Employee e
+CROSS JOIN AvgSalary a
+WHERE e.emp_sal > a.avg_sal;
+
+        </div>
+
+
+        <h2>
+            Why use a CTE?
+        </h2>
+
+        <p>
+            CTEs make complex queries easier to read,
+            understand and maintain.
+        </p>
+
+
+        <div class="tip">
+
+            💡 <strong>Interview Tip:</strong>
+
+            CTEs are commonly used when a query needs
+            multiple logical steps or when the result
+            needs to be referenced more clearly.
+
+        </div>
+
+
+        <h2>
+            Remember
+        </h2>
+
+        <p>
+            Think of a CTE as a temporary named result
+            that exists only while the query is running.
+        </p>
+
+
+        <div class="navigation">
+
+            <a href="#">
+                ← Previous
+            </a>
+
+            <a href="#">
+                Next →
+            </a>
+
+        </div>
+
+    </article>
+
+</main>
+
+</body>
+
+</html>
