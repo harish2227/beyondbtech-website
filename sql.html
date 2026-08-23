@@ -46,6 +46,45 @@
             color: #635bff;
         }
 
+        .nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.nav a {
+    color: white;
+    text-decoration: none;
+}
+
+nav {
+    display: flex;
+    gap: 25px;
+}
+
+nav a {
+    font-size: 14px;
+}
+
+nav a:hover {
+    color: #635bff;
+}
+
+@media (max-width: 750px) {
+
+    .nav {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    nav {
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+
+}
+        
         .back {
             display: inline-block;
             margin-top: 30px;
@@ -182,11 +221,28 @@
 
 <header>
 
-    <div class="container">
+    <div class="container nav">
 
-        <div class="logo">
+        <a href="index.html" class="logo">
             Beyond<span>BTech</span>
-        </div>
+        </a>
+
+        <nav>
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="notes.html">
+                Knowledge Hub
+            </a>
+
+            <a href="https://instagram.com/beyondbtech07"
+               target="_blank">
+                Instagram
+            </a>
+
+        </nav>
 
     </div>
 
