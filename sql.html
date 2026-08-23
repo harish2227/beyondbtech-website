@@ -165,6 +165,43 @@ nav a:hover {
     background: white;
     border: 1px solid #e5e7eb;
     border-radius: 15px;
+    padding: 24px;
+    text-decoration: none;
+    color: #171923;
+    transition: 0.2s;
+}
+
+.note-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.07);
+}
+
+.note-day {
+    color: #635bff;
+    font-size: 13px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.note-card h3 {
+    font-size: 21px;
+    margin-bottom: 7px;
+}
+
+.note-card p {
+    color: #667085;
+    font-size: 14px;
+}
+        .notes-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.note-card {
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 15px;
     padding: 23px;
     text-decoration: none;
     color: #171923;
@@ -279,25 +316,30 @@ nav a:hover {
     >
 
 
-   <section class="section">
+  <section class="section">
 
     <h2>
-        📚 My SQL Learning Journey
+        📚 My SQL Journey
     </h2>
 
     <div class="notes-list">
 
-        <!-- YOUR FIRST REAL NOTE WILL BE ADDED HERE -->
-
         <div class="empty">
 
             <h3>
-                Your first SQL note will appear here ✍️
+                Your SQL journey starts here ✍️
             </h3>
 
             <p>
-                Day number + topic name will be shown
-                for every note you publish.
+                Your real notes will appear here as:
+            </p>
+
+            <p>
+                <strong>Day + Topic</strong>
+            </p>
+
+            <p>
+                Example: Day 35 — CTE
             </p>
 
         </div>
