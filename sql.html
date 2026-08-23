@@ -116,7 +116,50 @@
             text-align: center;
             color: #667085;
         }
+        .notes-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
 
+.note-card {
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 15px;
+    padding: 23px;
+    text-decoration: none;
+    color: #171923;
+    transition: 0.2s;
+}
+
+.note-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.07);
+}
+
+.note-day {
+    color: #635bff;
+    font-size: 13px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.note-card h3 {
+    font-size: 21px;
+    margin-bottom: 6px;
+}
+
+.note-card p {
+    color: #667085;
+    font-size: 14px;
+}
+
+.note-meta {
+    margin-top: 13px;
+    font-size: 12px;
+    color: #667085;
+}
+        
         @media (max-width: 750px) {
 
             .hero h1 {
@@ -180,26 +223,32 @@
     >
 
 
-    <section class="section">
+   <section class="section">
 
-        <h2>
-            📅 Daily SQL
-        </h2>
+    <h2>
+        📚 My SQL Learning Journey
+    </h2>
+
+    <div class="notes-list">
+
+        <!-- YOUR FIRST REAL NOTE WILL BE ADDED HERE -->
 
         <div class="empty">
 
             <h3>
-                No daily notes published yet.
+                Your first SQL note will appear here ✍️
             </h3>
 
             <p>
-                Your real SQL notes will appear here
-                as you publish them.
+                Day number + topic name will be shown
+                for every note you publish.
             </p>
 
         </div>
 
-    </section>
+    </div>
+
+</section>
 
 
     <section class="section">
