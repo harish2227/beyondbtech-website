@@ -21,24 +21,24 @@
         body {
             font-family: Arial, sans-serif;
             background: #f7f8fc;
-            color: #111827;
+            color: #171923;
             line-height: 1.7;
         }
 
         header {
             background: #171923;
-            padding: 22px;
             color: white;
+            padding: 22px 0;
         }
 
         .container {
             width: 90%;
-            max-width: 850px;
+            max-width: 900px;
             margin: auto;
         }
 
         .logo {
-            font-size: 23px;
+            font-size: 24px;
             font-weight: bold;
         }
 
@@ -48,34 +48,44 @@
 
         .back {
             display: inline-block;
-            margin-top: 30px;
+            margin: 30px 0 15px;
             color: #635bff;
             font-weight: bold;
+            text-decoration: none;
         }
 
         .article {
             background: white;
-            margin: 25px 0 50px;
-            padding: 45px;
-            border-radius: 18px;
             border: 1px solid #e5e7eb;
+            border-radius: 18px;
+            padding: 45px;
+            margin-bottom: 50px;
         }
 
-        .day {
+        .category {
             color: #635bff;
+            font-size: 13px;
             font-weight: bold;
-            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         h1 {
-            font-size: 42px;
+            font-size: 44px;
             line-height: 1.2;
-            margin: 12px 0;
+            margin: 10px 0;
+        }
+
+        .intro {
+            color: #667085;
+            font-size: 17px;
+            margin-bottom: 35px;
         }
 
         h2 {
-            margin-top: 35px;
-            margin-bottom: 10px;
+            margin-top: 38px;
+            margin-bottom: 12px;
+            font-size: 25px;
         }
 
         p {
@@ -83,39 +93,92 @@
             margin-bottom: 15px;
         }
 
+        /* YOUR NOTES */
+
+        .my-notes {
+            background: #fafafa;
+            border-left: 4px solid #635bff;
+            padding: 22px;
+            border-radius: 10px;
+            min-height: 120px;
+        }
+
+        /* IMAGES */
+
+        .image-box {
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .image-box img {
+            max-width: 100%;
+            border-radius: 14px;
+            border: 1px solid #e5e7eb;
+        }
+
+        .image-caption {
+            color: #667085;
+            font-size: 13px;
+            margin-top: 8px;
+        }
+
+        /* CODE */
+
         .code {
             background: #171923;
             color: #e5e7eb;
             padding: 20px;
             border-radius: 12px;
             overflow-x: auto;
-            margin: 20px 0;
             font-family: Consolas, monospace;
+            white-space: pre-wrap;
         }
 
-        .tip {
-            background: #f0efff;
-            border-left: 4px solid #635bff;
-            padding: 18px;
-            margin: 25px 0;
-            border-radius: 8px;
+        /* IMPORTANT */
+
+        .important {
+            background: #fff8e7;
+            border-left: 4px solid #f59e0b;
+            padding: 20px;
+            border-radius: 10px;
         }
+
+        /* MY UNDERSTANDING */
+
+        .understanding {
+            background: #eef7ff;
+            border-left: 4px solid #3b82f6;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        /* INTERVIEW */
+
+        .interview {
+            background: #eefbf3;
+            border-left: 4px solid #22c55e;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        /* NAVIGATION */
 
         .navigation {
             display: flex;
             justify-content: space-between;
+            gap: 15px;
             margin-top: 45px;
-            gap: 10px;
         }
 
         .navigation a {
             background: #171923;
             color: white;
-            padding: 11px 16px;
-            border-radius: 8px;
+            text-decoration: none;
+            padding: 12px 18px;
+            border-radius: 9px;
         }
 
-        @media (max-width: 600px) {
+        @media(max-width:600px) {
 
             .article {
                 padding: 25px;
@@ -123,6 +186,14 @@
 
             h1 {
                 font-size: 32px;
+            }
+
+            .navigation {
+                flex-direction: column;
+            }
+
+            .navigation a {
+                text-align: center;
             }
 
         }
@@ -133,6 +204,7 @@
 
 
 <body>
+
 
 <header>
 
@@ -149,113 +221,183 @@
 
 <main class="container">
 
+
     <a href="../notes.html" class="back">
-        ← Back to Notes
+        ← Back to All Notes
     </a>
 
 
     <article class="article">
 
-        <div class="day">
+
+        <!-- ========================= -->
+        <!-- TITLE -->
+        <!-- ========================= -->
+
+        <div class="category">
             SQL · DAY 35
         </div>
 
         <h1>
-            CTE — Common Table Expression
+            YOUR TOPIC TITLE
         </h1>
 
-        <p>
-            A simple explanation of CTEs and why they are
-            useful when writing complex SQL queries.
+        <p class="intro">
+            Write a short introduction to today's topic
+            in your own words.
         </p>
 
 
+        <!-- ========================= -->
+        <!-- MY NOTES -->
+        <!-- ========================= -->
+
         <h2>
-            What is a CTE?
+            ✍️ My Notes
         </h2>
 
-        <p>
-            CTE stands for Common Table Expression.
-            It allows us to temporarily store the result
-            of a query and use that result in another query.
-        </p>
+        <div class="my-notes">
 
+            <p>
+                Write your own explanation here.
+            </p>
+
+            <p>
+                Don't copy a definition.
+                Explain what YOU understood.
+            </p>
+
+        </div>
+
+
+        <!-- ========================= -->
+        <!-- HANDWRITTEN NOTES -->
+        <!-- ========================= -->
 
         <h2>
-            Basic Syntax
+            📸 My Handwritten Notes
+        </h2>
+
+        <div class="image-box">
+
+            <!--
+            Later put your image here.
+
+            Example:
+
+            <img src="../images/sql/day-35-note.jpg"
+                 alt="My handwritten SQL Day 35 notes">
+            -->
+
+            <p>
+                Your handwritten note image will appear here.
+            </p>
+
+        </div>
+
+
+        <!-- ========================= -->
+        <!-- VISUAL EXPLANATION -->
+        <!-- ========================= -->
+
+        <h2>
+            👀 Visual Explanation
+        </h2>
+
+        <div class="image-box">
+
+            <!--
+            Put your diagram / visual here.
+
+            Example:
+
+            <img src="../images/sql/day-35-visual.png"
+                 alt="Visual explanation of the SQL concept">
+            -->
+
+            <p>
+                Add a diagram or visual explanation here.
+            </p>
+
+        </div>
+
+
+        <!-- ========================= -->
+        <!-- EXAMPLE -->
+        <!-- ========================= -->
+
+        <h2>
+            💻 Example
         </h2>
 
         <div class="code">
 
-WITH CTE_Name AS
-(
-    SELECT column1, column2
-    FROM Employee
-)
+Write your SQL/code example here.
 
 SELECT *
-FROM CTE_Name;
+FROM Employee;
 
         </div>
 
 
+        <!-- ========================= -->
+        <!-- MY UNDERSTANDING -->
+        <!-- ========================= -->
+
         <h2>
-            Example
+            🧠 What I Understood
         </h2>
 
-        <p>
-            Suppose we want to find employees whose salary
-            is greater than the average salary.
-        </p>
+        <div class="understanding">
 
-
-        <div class="code">
-
-WITH AvgSalary AS
-(
-    SELECT AVG(emp_sal) AS avg_sal
-    FROM Employee
-)
-
-SELECT e.emp_name,
-       e.emp_sal
-FROM Employee e
-CROSS JOIN AvgSalary a
-WHERE e.emp_sal > a.avg_sal;
+            <p>
+                Explain the concept as if you were teaching
+                your friend.
+            </p>
 
         </div>
 
 
+        <!-- ========================= -->
+        <!-- IMPORTANT -->
+        <!-- ========================= -->
+
         <h2>
-            Why use a CTE?
+            ⭐ Important Points
         </h2>
 
-        <p>
-            CTEs make complex queries easier to read,
-            understand and maintain.
-        </p>
+        <div class="important">
 
+            <p>• Important point 1</p>
 
-        <div class="tip">
+            <p>• Important point 2</p>
 
-            💡 <strong>Interview Tip:</strong>
-
-            CTEs are commonly used when a query needs
-            multiple logical steps or when the result
-            needs to be referenced more clearly.
+            <p>• Important point 3</p>
 
         </div>
 
 
+        <!-- ========================= -->
+        <!-- INTERVIEW -->
+        <!-- ========================= -->
+
         <h2>
-            Remember
+            🎯 Interview Point
         </h2>
 
-        <p>
-            Think of a CTE as a temporary named result
-            that exists only while the query is running.
-        </p>
+        <div class="interview">
 
+            <p>
+                Write something important you would
+                remember for an interview.
+            </p>
+
+        </div>
+
+
+        <!-- ========================= -->
+        <!-- NAVIGATION -->
+        <!-- ========================= -->
 
         <div class="navigation">
 
@@ -269,9 +411,12 @@ WHERE e.emp_sal > a.avg_sal;
 
         </div>
 
+
     </article>
 
+
 </main>
+
 
 </body>
 
