@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Beyond BTech — daily notes, SQL, Data Analytics, interview prep and important tech topics.">
+<title>Beyond BTech | Learn • Build • Grow</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#f7f8fc;--card:#fff;--text:#111827;--muted:#667085;--line:#e6e8ef;--accent:#635bff;--dark:#171923}
+body{font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+a{text-decoration:none;color:inherit}
+.container{width:min(1120px,92%);margin:auto}
+nav{height:72px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);background:#fff;position:sticky;top:0;z-index:10}
+.logo{font-size:22px;font-weight:850;letter-spacing:-.8px}.logo span{color:var(--accent)}
+.navlinks{display:flex;gap:26px;font-size:14px;font-weight:650}.navlinks a:hover{color:var(--accent)}
+.menu{display:none;border:0;background:none;font-size:25px}
+.hero{padding:78px 0 65px;background:linear-gradient(135deg,#fff 0%,#f1efff 100%)}
+.hero-grid{display:grid;grid-template-columns:1.25fr .75fr;gap:50px;align-items:center}
+.badge{display:inline-flex;padding:7px 12px;border:1px solid #ddd9ff;background:#fff;border-radius:99px;color:var(--accent);font-weight:750;font-size:13px;margin-bottom:20px}
+h1{font-size:clamp(42px,6vw,72px);line-height:1.02;letter-spacing:-3px;max-width:700px}
+.hero p{font-size:18px;color:var(--muted);max-width:650px;margin:22px 0 30px}
+.buttons{display:flex;gap:12px;flex-wrap:wrap}.btn{padding:13px 19px;border-radius:11px;font-weight:750;font-size:14px}.primary{background:var(--dark);color:#fff}.secondary{background:#fff;border:1px solid var(--line)}
+.note-card{background:#171923;color:#fff;border-radius:24px;padding:27px;box-shadow:0 25px 60px #635bff20}.note-card small{color:#aeb4c3}.note-card h3{font-size:25px;margin:12px 0}.tag{display:inline-block;background:#292d3b;color:#d8d4ff;padding:5px 9px;border-radius:7px;font-size:12px;margin:3px}
+section{padding:70px 0}.section-head{display:flex;justify-content:space-between;align-items:end;margin-bottom:28px}.section-head h2{font-size:32px;letter-spacing:-1px}.section-head p{color:var(--muted)}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.card{background:var(--card);border:1px solid var(--line);border-radius:17px;padding:23px;transition:.2s}.card:hover{transform:translateY(-4px);box-shadow:0 12px 30px #1118270d}.icon{font-size:28px}.card h3{margin:13px 0 7px}.card p{color:var(--muted);font-size:14px}.count{font-size:12px;color:var(--accent);font-weight:750;margin-top:16px}
+.notes{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}.note{background:#fff;border:1px solid var(--line);border-radius:16px;padding:20px;display:flex;justify-content:space-between;gap:20px}.note h3{font-size:17px}.note p{color:var(--muted);font-size:13px;margin-top:4px}.day{color:var(--accent);font-size:12px;font-weight:800;white-space:nowrap}
+.cta{background:var(--dark);color:#fff;border-radius:24px;padding:45px;text-align:center}.cta h2{font-size:34px}.cta p{color:#b9bfce;margin:10px auto 22px;max-width:600px}.cta .primary{background:#fff;color:#171923;display:inline-block}
+footer{padding:30px 0;border-top:1px solid var(--line);color:var(--muted);font-size:13px}.footer{display:flex;justify-content:space-between}
+.search{width:100%;padding:14px 16px;border:1px solid var(--line);border-radius:11px;font:inherit;margin-bottom:20px;outline:none}.search:focus{border-color:var(--accent)}
+@media(max-width:760px){.navlinks{display:none}.menu{display:block}.hero{padding:55px 0}.hero-grid{grid-template-columns:1fr}.cards{grid-template-columns:1fr}.notes{grid-template-columns:1fr}h1{letter-spacing:-2px}.footer{flex-direction:column;gap:8px}.section-head{display:block}.section-head p{margin-top:5px}}
+</style>
+</head>
+<body>
+<nav>
+  <div class="container" style="display:flex;align-items:center;justify-content:space-between">
+    <a class="logo" href="#">Beyond<span>BTech</span></a>
+    <div class="navlinks">
+      <a href="#notes">Notes</a><a href="#categories">Categories</a><a href="#important">Important</a><a href="#instagram">Instagram</a>
+    </div>
+    <button class="menu" aria-label="Menu">☰</button>
+  </div>
+</nav>
+
+<header class="hero">
+<div class="container hero-grid">
+  <div>
+    <div class="badge">🚀 Daily learning, made simple</div>
+    <h1>Learn today.<br><span style="color:#635bff">Build tomorrow.</span></h1>
+    <p>Daily notes, practical concepts, SQL, Data Analytics and interview preparation — explained in a simple way.</p>
+    <div class="buttons"><a class="btn primary" href="#notes">Explore Notes →</a><a class="btn secondary" href="#categories">Browse Topics</a></div>
+  </div>
+  <div class="note-card">
+    <small>FEATURED NOTE · SQL</small>
+    <h3>CTE vs Subquery — When should you use each?</h3>
+    <p style="color:#c2c7d2">A simple explanation with examples, mistakes to avoid and interview tips.</p>
+    <div style="margin-top:18px"><span class="tag">SQL</span><span class="tag">Interview</span><span class="tag">Beginner</span></div>
+  </div>
+</div>
+</header>
+
+<section id="categories">
+<div class="container">
+  <div class="section-head"><div><h2>Explore topics</h2><p>Everything organized so you can learn without getting lost.</p></div></div>
+  <div class="cards">
+    <a class="card" href="#notes"><div class="icon">🗃️</div><h3>SQL & Databases</h3><p>Queries, joins, subqueries, CTEs, window functions, views, procedures and triggers.</p><div class="count">START LEARNING →</div></a>
+    <a class="card" href="#notes"><div class="icon">📊</div><h3>Data Analytics</h3><p>Excel, Power BI, statistics, dashboards and the concepts every analyst should know.</p><div class="count">EXPLORE TOPICS →</div></a>
+    <a class="card" href="#important"><div class="icon">🎯</div><h3>Interview Prep</h3><p>Important concepts, practical questions and quick revision notes for technical interviews.</p><div class="count">REVISE NOW →</div></a>
+  </div>
+</div>
+</section>
+
+<section id="notes" style="padding-top:20px">
+<div class="container">
+  <div class="section-head"><div><h2>Latest notes</h2><p>Fresh learning, one day at a time.</p></div></div>
+  <input id="search" class="search" placeholder="Search notes... e.g. JOIN, CTE, Excel">
+  <div class="notes" id="noteList">
+    <article class="note"><div><h3>SQL Joins — Understand them visually</h3><p>INNER, LEFT, RIGHT and FULL joins with practical examples.</p></div><span class="day">DAY 33</span></article>
+    <article class="note"><div><h3>CTE — Why and when to use it</h3><p>Break complex SQL into readable, reusable steps.</p></div><span class="day">DAY 34</span></article>
+    <article class="note"><div><h3>Window Functions — The real idea</h3><p>ROW_NUMBER, RANK, DENSE_RANK, LAG and LEAD explained simply.</p></div><span class="day">SQL</span></article>
+    <article class="note"><div><h3>Data Analytics Roadmap</h3><p>A practical path from Excel → SQL → Power BI → projects.</p></div><span class="day">ROADMAP</span></article>
+  </div>
+</div>
+</section>
+
+<section id="important">
+<div class="container">
+  <div class="cta">
+    <h2>Important topics, without the confusion.</h2>
+    <p>Save this website as your personal revision hub. Every concept can eventually have examples, notes, interview tips and practice.</p>
+    <a class="btn primary" href="#notes">Start Revising</a>
+  </div>
+</div>
+</section>
+
+<section id="instagram" style="padding-top:20px">
+<div class="container" style="text-align:center">
+  <h2>Follow the daily journey</h2>
+  <p style="color:var(--muted);margin:8px 0 20px">New notes and learning content on Instagram.</p>
+  <a class="btn primary" href="https://instagram.com/beyondbtech07" target="_blank">@beyondbtech07 ↗</a>
+</div>
+</section>
+
+<footer><div class="container footer"><span>© 2026 Beyond BTech</span><span>Learn • Build • Grow</span></div></footer>
+
+<script>
+const search = document.getElementById('search');
+const notes = [...document.querySelectorAll('.note')];
+search.addEventListener('input', () => {
+  const q = search.value.toLowerCase().trim();
+  notes.forEach(n => n.style.display = n.innerText.toLowerCase().includes(q) ? 'flex' : 'none');
+});
+</script>
+</body>
+</html>
