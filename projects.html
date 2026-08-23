@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Projects | Beyond BTech</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f7f8fc;
+            color: #171923;
+            line-height: 1.6;
+        }
+
+        /* =========================
+           HEADER
+        ========================= */
+
+        header {
+            background: #171923;
+            color: white;
+            padding: 22px 0;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            text-decoration: none;
+            color: white;
+        }
+
+        .logo span {
+            color: #635bff;
+        }
+
+        nav {
+            display: flex;
+            gap: 25px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        nav a:hover {
+            color: #635bff;
+        }
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .hero {
+            padding: 65px 0 40px;
+        }
+
+        .hero h1 {
+            font-size: 45px;
+            margin-bottom: 12px;
+        }
+
+        .hero p {
+            color: #667085;
+            max-width: 700px;
+            font-size: 17px;
+        }
+
+        /* =========================
+           PROJECT SECTION
+        ========================= */
+
+        .section {
+            margin-bottom: 65px;
+        }
+
+        .section h2 {
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        .empty {
+            background: white;
+            border: 1px dashed #cfd3dc;
+            border-radius: 16px;
+            padding: 45px 25px;
+            text-align: center;
+        }
+
+        .empty h3 {
+            margin-bottom: 8px;
+        }
+
+        .empty p {
+            color: #667085;
+        }
+
+        /* =========================
+           PROJECT CARD
+        ========================= */
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .project-card {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 16px;
+            padding: 25px;
+        }
+
+        .project-card h3 {
+            font-size: 22px;
+            margin-bottom: 8px;
+        }
+
+        .project-card p {
+            color: #667085;
+            font-size: 14px;
+        }
+
+        .tech {
+            margin-top: 18px;
+        }
+
+        .tech span {
+            display: inline-block;
+            background: #f0efff;
+            color: #635bff;
+            padding: 5px 9px;
+            border-radius: 6px;
+            font-size: 12px;
+            margin: 3px;
+        }
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 750px) {
+
+            .nav {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            nav {
+                flex-wrap: wrap;
+                gap: 15px;
+            }
+
+            .hero h1 {
+                font-size: 35px;
+            }
+
+            .project-grid {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<header>
+
+    <div class="container nav">
+
+        <a href="index.html" class="logo">
+            Beyond<span>BTech</span>
+        </a>
+
+        <nav>
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="notes.html">
+                Knowledge Hub
+            </a>
+
+            <a href="https://instagram.com/beyondbtech07"
+               target="_blank">
+                Instagram
+            </a>
+
+        </nav>
+
+    </div>
+
+</header>
+
+
+<main class="container">
+
+
+    <!-- HERO -->
+
+    <section class="hero">
+
+        <h1>
+            My Projects 💻
+        </h1>
+
+        <p>
+            Projects I've built, what I learned from them,
+            the problems I faced, screenshots, technologies
+            and practical experience.
+        </p>
+
+    </section>
+
+
+    <!-- PROJECTS -->
+
+    <section class="section">
+
+        <h2>
+            🚀 Projects
+        </h2>
+
+
+        <div class="empty">
+
+            <h3>
+                Your projects will appear here.
+            </h3>
+
+            <p>
+                Add your real projects, screenshots,
+                GitHub links and what you learned.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- PROJECT STRUCTURE -->
+
+    <section class="section">
+
+        <h2>
+            📋 What each project will contain
+        </h2>
+
+
+        <div class="project-grid">
+
+
+            <div class="project-card">
+
+                <h3>
+                    📖 About
+                </h3>
+
+                <p>
+                    What the project does,
+                    why you built it and what problem
+                    it solves.
+                </p>
+
+            </div>
+
+
+            <div class="project-card">
+
+                <h3>
+                    🛠️ Technologies
+                </h3>
+
+                <p>
+                    The languages, frameworks,
+                    databases and tools used.
+                </p>
+
+            </div>
+
+
+            <div class="project-card">
+
+                <h3>
+                    📸 Screenshots
+                </h3>
+
+                <p>
+                    Real screenshots of your project
+                    and important features.
+                </p>
+
+            </div>
+
+
+            <div class="project-card">
+
+                <h3>
+                    🧠 What I Learned
+                </h3>
+
+                <p>
+                    Your own explanation of what
+                    you learned while building it.
+                </p>
+
+            </div>
+
+
+            <div class="project-card">
+
+                <h3>
+                    ⚠️ Problems I Faced
+                </h3>
+
+                <p>
+                    Bugs, errors and challenges
+                    you encountered and solved.
+                </p>
+
+            </div>
+
+
+            <div class="project-card">
+
+                <h3>
+                    🔗 Links
+                </h3>
+
+                <p>
+                    GitHub repository, live demo
+                    and other useful project links.
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+</main>
+
+
+</body>
+
+</html>
