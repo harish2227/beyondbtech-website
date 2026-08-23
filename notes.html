@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Notes | Beyond BTech</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f7f8fc;
+            color: #111827;
+        }
+
+        header {
+            background: #171923;
+            color: white;
+            padding: 25px;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #635bff;
+        }
+
+        .hero {
+            padding: 60px 0 35px;
+        }
+
+        .hero h1 {
+            font-size: 45px;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            color: #667085;
+            font-size: 17px;
+        }
+
+        .search {
+            width: 100%;
+            padding: 15px;
+            margin: 30px 0;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            font-size: 16px;
+        }
+
+        .notes {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .note {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            border: 1px solid #e5e7eb;
+        }
+
+        .note h2 {
+            margin-bottom: 8px;
+        }
+
+        .note p {
+            color: #667085;
+            margin-bottom: 15px;
+        }
+
+        .day {
+            color: #635bff;
+            font-weight: bold;
+            font-size: 13px;
+        }
+
+        .read {
+            display: inline-block;
+            margin-top: 15px;
+            background: #171923;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 8px;
+        }
+
+        @media (max-width: 700px) {
+
+            .notes {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 35px;
+            }
+
+        }
+
+    </style>
+</head>
+
+<body>
+
+<header>
+
+    <div class="container">
+
+        <div class="logo">
+            Beyond<span>BTech</span>
+        </div>
+
+    </div>
+
+</header>
+
+
+<main class="container">
+
+    <div class="hero">
+
+        <h1>Daily Notes 📚</h1>
+
+        <p>
+            Learn SQL, Data Analytics and important technical concepts
+            one day at a time.
+        </p>
+
+    </div>
+
+
+    <input
+        type="text"
+        class="search"
+        placeholder="Search notes..."
+    >
+
+
+    <div class="notes">
+
+        <div class="note">
+
+            <div class="day">
+                SQL · DAY 33
+            </div>
+
+            <h2>
+                SQL Joins
+            </h2>
+
+            <p>
+                Understand INNER JOIN, LEFT JOIN,
+                RIGHT JOIN and FULL JOIN with practical examples.
+            </p>
+
+            <a href="#" class="read">
+                Read Note →
+            </a>
+
+        </div>
+
+
+        <div class="note">
+
+            <div class="day">
+                SQL · DAY 34
+            </div>
+            <h2>
+                CTE
+            </h2>
+            <p>
+                Learn what Common Table Expressions are
+                and when you should use them.
+            </p>
+            <a href="#" class="read">
+                Read Note →
+            </a>
+        </div>
+        <div class="note">
+            <div class="day">
+                SQL
+            </div>
+            <h2>
+                Window Functions
+            </h2>
+            <p>
+                ROW_NUMBER, RANK, DENSE_RANK,
+                LAG and LEAD explained simply.
+            </p>
+            <a href="#" class="read">
+                Read Note →
+            </a>
+        </div>
+        <div class="note">
+            <div class="day">
+                DATA ANALYTICS
+            </div>
+            <h2>
+                Data Analytics Roadmap
+            </h2>
+            <p>
+                A practical journey from Excel to SQL,
+                Power BI and projects.
+            </p>
+            <a href="#" class="read">
+                Read Note →
+            </a>
+        </div>
+    </div>
+</main>
+
+</body>
+</html>
