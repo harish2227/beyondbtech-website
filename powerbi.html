@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Power BI | Beyond BTech</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f7f8fc;
+            color: #171923;
+            line-height: 1.6;
+        }
+
+        /* =========================
+           HEADER
+        ========================= */
+
+        header {
+            background: #171923;
+            color: white;
+            padding: 22px 0;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            text-decoration: none;
+            color: white;
+        }
+
+        .logo span {
+            color: #635bff;
+        }
+
+        nav {
+            display: flex;
+            gap: 25px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        nav a:hover {
+            color: #635bff;
+        }
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .hero {
+            padding: 65px 0 40px;
+        }
+
+        .hero h1 {
+            font-size: 45px;
+            margin-bottom: 12px;
+        }
+
+        .hero p {
+            color: #667085;
+            max-width: 700px;
+            font-size: 17px;
+        }
+
+        /* =========================
+           SEARCH
+        ========================= */
+
+        .search {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            font-size: 16px;
+            margin: 20px 0 45px;
+        }
+
+        /* =========================
+           SECTIONS
+        ========================= */
+
+        .section {
+            margin-bottom: 60px;
+        }
+
+        .section h2 {
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        /* =========================
+           EMPTY
+        ========================= */
+
+        .empty {
+            background: white;
+            border: 1px dashed #cfd3dc;
+            border-radius: 16px;
+            padding: 45px 25px;
+            text-align: center;
+        }
+
+        .empty h3 {
+            margin-bottom: 8px;
+        }
+
+        .empty p {
+            color: #667085;
+        }
+
+        /* =========================
+           TOPIC CARDS
+        ========================= */
+
+        .topic-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+
+        .topic-card {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 15px;
+            padding: 24px;
+        }
+
+        .topic-card h3 {
+            margin-bottom: 8px;
+        }
+
+        .topic-card p {
+            color: #667085;
+            font-size: 14px;
+        }
+
+        /* =========================
+           VISUAL LEARNING
+        ========================= */
+
+        .visual-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 18px;
+        }
+
+        .visual-card {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 15px;
+            padding: 25px;
+        }
+
+        .visual-card h3 {
+            margin-bottom: 8px;
+        }
+
+        .visual-card p {
+            color: #667085;
+            font-size: 14px;
+        }
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 750px) {
+
+            .nav {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            nav {
+                flex-wrap: wrap;
+                gap: 15px;
+            }
+
+            .hero h1 {
+                font-size: 35px;
+            }
+
+            .topic-grid,
+            .visual-grid {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<header>
+
+    <div class="container nav">
+
+        <a href="index.html" class="logo">
+            Beyond<span>BTech</span>
+        </a>
+
+        <nav>
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="notes.html">
+                Knowledge Hub
+            </a>
+
+            <a href="https://instagram.com/beyondbtech07"
+               target="_blank">
+                Instagram
+            </a>
+
+        </nav>
+
+    </div>
+
+</header>
+
+
+<main class="container">
+
+
+    <!-- HERO -->
+
+    <section class="hero">
+
+        <h1>
+            Power BI 📊
+        </h1>
+
+        <p>
+            My Power BI learning journey — concepts,
+            dashboards, visuals, screenshots,
+            handwritten notes and practical learning.
+        </p>
+
+    </section>
+
+
+    <!-- SEARCH -->
+
+    <input
+        type="text"
+        class="search"
+        placeholder="Search Power BI topics..."
+    >
+
+
+    <!-- LEARNING JOURNEY -->
+
+    <section class="section">
+
+        <h2>
+            📚 My Power BI Journey
+        </h2>
+
+        <div class="empty">
+
+            <h3>
+                Your Power BI journey starts here ✍️
+            </h3>
+
+            <p>
+                Your real notes will appear here as:
+            </p>
+
+            <p>
+                <strong>Day + Topic</strong>
+            </p>
+
+            <p>
+                Example: Day 1 — Your actual topic
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- IMPORTANT TOPICS -->
+
+    <section class="section">
+
+        <h2>
+            ⭐ Important Power BI Topics
+        </h2>
+
+        <div class="topic-grid">
+
+
+            <div class="topic-card">
+
+                <h3>
+                    Power BI Basics
+                </h3>
+
+                <p>
+                    Your notes about the fundamentals
+                    you learn.
+                </p>
+
+            </div>
+
+
+            <div class="topic-card">
+
+                <h3>
+                    Power Query
+                </h3>
+
+                <p>
+                    Data cleaning and transformation
+                    concepts.
+                </p>
+
+            </div>
+
+
+            <div class="topic-card">
+
+                <h3>
+                    Data Modeling
+                </h3>
+
+                <p>
+                    Relationships, tables and
+                    data models.
+                </p>
+
+            </div>
+
+
+            <div class="topic-card">
+
+                <h3>
+                    DAX
+                </h3>
+
+                <p>
+                    Your DAX formulas and
+                    calculations.
+                </p>
+
+            </div>
+
+
+            <div class="topic-card">
+
+                <h3>
+                    Visualizations
+                </h3>
+
+                <p>
+                    Charts, visuals and
+                    dashboard design.
+                </p>
+
+            </div>
+
+
+            <div class="topic-card">
+
+                <h3>
+                    Dashboards
+                </h3>
+
+                <p>
+                    Your dashboard projects,
+                    screenshots and insights.
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- VISUAL LEARNING -->
+
+    <section class="section">
+
+        <h2>
+            👀 Visual Learning
+        </h2>
+
+        <div class="visual-grid">
+
+
+            <div class="visual-card">
+
+                <h3>
+                    📸 My Handwritten Notes
+                </h3>
+
+                <p>
+                    Upload your own handwritten
+                    Power BI notes here.
+                </p>
+
+            </div>
+
+
+            <div class="visual-card">
+
+                <h3>
+                    🖥️ Dashboard Screenshots
+                </h3>
+
+                <p>
+                    Add screenshots of dashboards
+                    and Power BI practice.
+                </p>
+
+            </div>
+
+
+            <div class="visual-card">
+
+                <h3>
+                    👀 Visual Explanations
+                </h3>
+
+                <p>
+                    Add diagrams and visuals that
+                    help explain concepts.
+                </p>
+
+            </div>
+
+
+            <div class="visual-card">
+
+                <h3>
+                    🧠 What I Understood
+                </h3>
+
+                <p>
+                    Explain Power BI concepts
+                    in your own words.
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+</main>
+
+
+</body>
+
+</html>
