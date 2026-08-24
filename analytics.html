@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Data Analytics | Beyond BTech</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f7f8fc;
+            color: #171923;
+            line-height: 1.6;
+        }
+
+        /* NAVIGATION */
+
+        header {
+            background: #171923;
+            color: white;
+            padding: 22px 0;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: #635bff;
+        }
+
+        nav {
+            display: flex;
+            gap: 25px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        nav a:hover {
+            color: #635bff;
+        }
+
+        /* HERO */
+
+        .hero {
+            padding: 65px 0 40px;
+        }
+
+        .hero h1 {
+            font-size: 45px;
+            margin-bottom: 12px;
+        }
+
+        .hero p {
+            color: #667085;
+            max-width: 700px;
+            font-size: 17px;
+        }
+
+        /* TOOLS */
+
+        .section {
+            margin-bottom: 60px;
+        }
+
+        .section h2 {
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        .tools {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .tool-card {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 16px;
+            padding: 30px;
+            text-decoration: none;
+            color: #171923;
+            transition: 0.2s;
+        }
+
+        .tool-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.07);
+        }
+
+        .icon {
+            font-size: 35px;
+            margin-bottom: 15px;
+        }
+
+        .tool-card h3 {
+            font-size: 22px;
+            margin-bottom: 8px;
+        }
+
+        .tool-card p {
+            color: #667085;
+            font-size: 14px;
+        }
+
+        /* EMPTY */
+
+        .empty {
+            background: white;
+            border: 1px dashed #cfd3dc;
+            border-radius: 16px;
+            padding: 40px 25px;
+            text-align: center;
+        }
+
+        .empty p {
+            color: #667085;
+            margin-top: 8px;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 750px) {
+
+            .nav {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            nav {
+                flex-wrap: wrap;
+                gap: 15px;
+            }
+
+            .hero h1 {
+                font-size: 35px;
+            }
+
+            .tools {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<header>
+
+    <div class="container nav">
+
+        <a href="index.html" class="logo">
+            Beyond<span>BTech</span>
+        </a>
+
+        <nav>
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="notes.html">
+                Knowledge Hub
+            </a>
+
+            <a href="https://instagram.com/beyondbtech07"
+               target="_blank">
+                Instagram
+            </a>
+
+        </nav>
+
+    </div>
+
+</header>
+
+
+<main class="container">
+
+
+    <section class="hero">
+
+        <h1>
+            Data Analytics 📊
+        </h1>
+
+        <p>
+            My journey into Data Analytics —
+            learning tools, concepts, visualization
+            and practical skills step by step.
+        </p>
+
+    </section>
+
+
+    <section class="section">
+
+        <h2>
+            🛠️ What I'm Learning
+        </h2>
+
+
+        <div class="tools">
+
+
+            <a href="powerbi.html" class="tool-card">
+
+                <div class="icon">
+                    📊
+                </div>
+
+                <h3>
+                    Power BI
+                </h3>
+
+                <p>
+                    My Power BI learning journey,
+                    notes, visuals, dashboards and
+                    practical examples.
+                </p>
+
+            </a>
+
+
+            <div class="tool-card">
+
+                <div class="icon">
+                    📗
+                </div>
+
+                <h3>
+                    Excel
+                </h3>
+
+                <p>
+                    Excel concepts, formulas,
+                    analysis and practical learning.
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+    <section class="section">
+
+        <h2>
+            📚 My Analytics Journey
+        </h2>
+
+        <div class="empty">
+
+            <h3>
+                Your learning notes will appear here ✍️
+            </h3>
+
+            <p>
+                Real notes, screenshots, dashboards,
+                visuals and explanations will be added
+                as you learn.
+            </p>
+
+        </div>
+
+    </section>
+
+
+</main>
+
+
+</body>
+
+</html>
