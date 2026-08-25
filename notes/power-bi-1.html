@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Power BI Day 1 | Beyond BTech</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f7f8fc;
+            color: #171923;
+            line-height: 1.7;
+        }
+
+        header {
+            background: #171923;
+            color: white;
+            padding: 22px 0;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1000px;
+            margin: auto;
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            text-decoration: none;
+            color: white;
+        }
+
+        .logo span {
+            color: #635bff;
+        }
+
+        nav {
+            display: flex;
+            gap: 25px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        nav a:hover {
+            color: #635bff;
+        }
+
+        .back {
+            display: inline-block;
+            margin-top: 30px;
+            color: #635bff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .hero {
+            padding: 45px 0 30px;
+        }
+
+        .label {
+            color: #635bff;
+            font-size: 13px;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 12px;
+        }
+
+        .hero p {
+            color: #667085;
+            font-size: 17px;
+        }
+
+        .section {
+            margin: 45px 0;
+        }
+
+        .section h2 {
+            font-size: 28px;
+            margin-bottom: 18px;
+        }
+
+        .content {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 16px;
+            padding: 28px;
+        }
+
+        .flow {
+            background: #171923;
+            color: white;
+            border-radius: 16px;
+            padding: 28px;
+            text-align: center;
+            font-size: 17px;
+            line-height: 2.2;
+        }
+
+        .flow span {
+            color: #b9b5ff;
+        }
+
+        .terms {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+
+        .term {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 14px;
+            padding: 20px;
+        }
+
+        .term h3 {
+            margin-bottom: 5px;
+        }
+
+        .term p {
+            color: #667085;
+            font-size: 14px;
+        }
+
+        .notes-gallery {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .notes-gallery img {
+            width: 100%;
+            display: block;
+            border-radius: 14px;
+            border: 1px solid #e5e7eb;
+        }
+
+        .highlight {
+            border-left: 4px solid #635bff;
+            background: white;
+            padding: 20px;
+            border-radius: 0 12px 12px 0;
+        }
+
+        .footer-note {
+            text-align: center;
+            color: #667085;
+            padding: 30px 0 60px;
+        }
+
+        @media (max-width: 700px) {
+
+            .nav {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            nav {
+                flex-wrap: wrap;
+                gap: 15px;
+            }
+
+            .hero h1 {
+                font-size: 34px;
+            }
+
+            .terms,
+            .notes-gallery {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<header>
+
+    <div class="container nav">
+
+        <a href="../index.html" class="logo">
+            Beyond<span>BTech</span>
+        </a>
+
+        <nav>
+
+            <a href="../index.html">
+                Home
+            </a>
+
+            <a href="../notes.html">
+                Knowledge Hub
+            </a>
+
+            <a href="https://instagram.com/beyondbtech07"
+               target="_blank">
+                Instagram
+            </a>
+
+        </nav>
+
+    </div>
+
+</header>
+
+
+<main class="container">
+
+
+    <a href="../powerbi.html" class="back">
+        ← Back to Power BI
+    </a>
+
+
+    <!-- TITLE -->
+
+    <section class="hero">
+
+        <div class="label">
+            POWER BI · DAY 1
+        </div>
+
+        <h1>
+            Introduction to Power BI
+        </h1>
+
+        <p>
+            My first Power BI learning notes —
+            understanding Power BI, data sources,
+            Power Query, data modeling, DAX,
+            visualizations and reports.
+        </p>
+
+    </section>
+
+
+    <!-- MY UNDERSTANDING -->
+
+    <section class="section">
+
+        <h2>
+            🧠 What I Understood
+        </h2>
+
+        <div class="content">
+
+            <p>
+                Power BI is a Microsoft business analytics
+                and data visualization tool. It can take
+                data from different sources, help clean
+                and transform the data, organize it into
+                a model, perform calculations and present
+                the results through interactive reports
+                and visualizations.
+            </p>
+
+            <br>
+
+            <p>
+                The main purpose is to make business data
+                easier to understand so that people can
+                identify things such as sales performance,
+                changes in sales and other important
+                business insights.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- DATA TO DECISION -->
+
+    <section class="section">
+
+        <h2>
+            🔄 Power BI — Data to Decision
+        </h2>
+
+        <div class="flow">
+
+            <span>Raw Data</span>
+            <br>↓<br>
+
+            <span>Clean Data</span>
+            <br>↓<br>
+
+            <span>Connect Tables / Data Model</span>
+            <br>↓<br>
+
+            <span>Perform Calculations</span>
+            <br>↓<br>
+
+            <span>Visualizations</span>
+            <br>↓<br>
+
+            <span>Reports</span>
+            <br>↓<br>
+
+            <span>Business Decision</span>
+
+        </div>
+
+    </section>
+
+
+    <!-- IMPORTANT TERMS -->
+
+    <section class="section">
+
+        <h2>
+            📚 Important Terms I Learned
+        </h2>
+
+
+        <div class="terms">
+
+
+            <div class="term">
+
+                <h3>
+                    Data Source
+                </h3>
+
+                <p>
+                    The place from which data comes,
+                    such as Excel, SQL databases,
+                    CSV files or web data.
+                </p>
+
+            </div>
+
+
+            <div class="term">
+
+                <h3>
+                    Table
+                </h3>
+
+                <p>
+                    Data arranged in rows and columns.
+                </p>
+
+            </div>
+
+
+            <div class="term">
+
+                <h3>
+                    Row
+                </h3>
+
+                <p>
+                    One record in a table.
+                </p>
+
+            </div>
+
+
+            <div class="term">
+
+                <h3>
+                    Column
+                </h3>
+
+                <p>
+                    One type of information in a table.
+                </p>
+
+            </div>
+
+
+            <div class="term">
+
+                <h3>
+                    Power Query
+                </h3>
+
+                <p>
+                    Used to connect, clean, transform
+                    and reshape data before loading it.
+                </p>
+
+            </div>
+
+
+            <div class="term">
+
+                <h3>
+                    Data Model
+                </h3>
+
+                <p>
+                    An organized structure of tables
+                    and their relationships.
+                </p>
+
+            </div>
+
+
+            <div class="term">
+
+                <h3>
+                    DAX
+                </h3>
+
+                <p>
+                    Data Analysis Expressions,
+                    used for calculations in Power BI.
+                </p>
+
+            </div>
+
+
+            <div class="term">
+
+                <h3>
+                    Visualization
+                </h3>
+
+                <p>
+                    A visual representation of data,
+                    such as charts, tables and maps.
+                </p>
+
+            </div>
+
+
+            <div class="term">
+
+                <h3>
+                    Report
+                </h3>
+
+                <p>
+                    A report can contain one or more
+                    pages of visuals used to analyze data.
+                </p>
+
+            </div>
+
+
+            <div class="term">
+
+                <h3>
+                    Dashboard
+                </h3>
+
+                <p>
+                    A high-level, single-page view
+                    containing tiles and visuals.
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- DATA MODELING -->
+
+    <section class="section">
+
+        <h2>
+            🔗 Data Modeling
+        </h2>
+
+        <div class="highlight">
+
+            <p>
+                Data modeling helps connect related
+                tables instead of keeping all information
+                inside one huge table.
+            </p>
+
+            <br>
+
+            <p>
+                Example:
+                Customers → Sales ← Products
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- DAX -->
+
+    <section class="section">
+
+        <h2>
+            🧮 DAX
+        </h2>
+
+        <div class="content">
+
+            <p>
+                DAX stands for
+                <strong>Data Analysis Expressions</strong>.
+                It is used to create calculations in Power BI.
+            </p>
+
+            <br>
+
+            <p>
+                Example:
+            </p>
+
+            <br>
+
+            <code>
+                Total Sales = SUM(Sales[Amount])
+            </code>
+
+            <br><br>
+
+            <p>
+                One important point I learned:
+                DAX is not SQL.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- MY HANDWRITTEN NOTES -->
+
+    <section class="section">
+
+        <h2>
+            📸 My Original Handwritten Notes
+        </h2>
+
+        <div class="notes-gallery">
+
+            <img src="../images/powerbi/powerbi-day1-01.jpg"
+                 alt="Power BI Day 1 handwritten notes page 1">
+
+            <img src="../images/powerbi/powerbi-day1-02.jpg"
+                 alt="Power BI Day 1 handwritten notes page 2">
+
+            <img src="../images/powerbi/powerbi-day1-03.jpg"
+                 alt="Power BI Day 1 handwritten notes page 3">
+
+            <img src="../images/powerbi/powerbi-day1-04.jpg"
+                 alt="Power BI Day 1 handwritten notes page 4">
+
+        </div>
+
+    </section>
+
+
+    <!-- FINAL THOUGHT -->
+
+    <section class="section">
+
+        <h2>
+            ⭐ My Key Takeaway
+        </h2>
+
+        <div class="highlight">
+
+            <p>
+                Power BI is not just about creating charts.
+                The process starts with data and goes through
+                cleaning, modeling, calculations and
+                visualization so that the final information
+                can help people understand the business.
+            </p>
+
+        </div>
+
+    </section>
+
+
+</main>
+
+
+<div class="footer-note">
+
+    Beyond BTech · My Learning Journey
+
+</div>
+
+
+</body>
+
+</html>
