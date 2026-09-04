@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Power BI Day 4 | Basic Data Cleaning with Power Query | Beyond BTech</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#f7f8fc;--card:#fff;--text:#171923;--muted:#667085;--line:#e5e7eb;--accent:#635bff;--dark:#171923;--soft:#f1efff}
+body{font-family:Inter,system-ui,-apple-system,Segoe UI,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.7}
+a{text-decoration:none;color:inherit}.container{width:min(1050px,92%);margin:auto}
+header{background:var(--dark);color:#fff;padding:18px 0}.nav{display:flex;align-items:center;justify-content:space-between;gap:20px}
+.logo{font-size:23px;font-weight:850}.logo span{color:var(--accent)}nav{display:flex;gap:24px;font-size:14px}nav a:hover{color:#b9b3ff}
+.hero{padding:58px 0 35px}.breadcrumb{font-size:13px;color:var(--muted);margin-bottom:18px}
+.badge{display:inline-block;background:#eeeaff;color:var(--accent);font-size:12px;font-weight:800;padding:7px 11px;border-radius:999px;margin-bottom:16px}
+h1{font-size:clamp(34px,5vw,58px);line-height:1.08;letter-spacing:-2px;margin-bottom:16px}.hero p{max-width:820px;color:var(--muted);font-size:17px}
+.intro,.tip,.step,.takeaway{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:28px;margin-bottom:22px}
+h2{font-size:27px;margin-bottom:12px}h3{font-size:21px;margin-bottom:9px}.muted{color:var(--muted)}
+.tip{background:#fffaf0;border-color:#f1d99a}.tip strong{color:#9a6700}
+.step-number{color:var(--accent);font-size:12px;font-weight:850;letter-spacing:.7px}.step p{color:var(--muted);margin-bottom:18px}
+.screenshot{width:100%;display:block;border-radius:12px;border:1px solid #dfe2e8}
+.caption{font-size:13px;color:var(--muted);margin-top:10px}
+.option{padding:16px 18px;border:1px solid var(--line);border-radius:13px;margin:12px 0;background:#fff}
+.option b{color:var(--accent)}ul{margin-left:22px}.takeaway{background:#fff}
+.back{display:inline-block;margin:10px 0 60px;color:var(--accent);font-weight:800}
+footer{background:var(--dark);color:#fff;padding:28px 0;text-align:center;font-size:13px}
+@media(max-width:800px){.nav{flex-direction:column;align-items:flex-start}nav{flex-wrap:wrap}}
+</style>
+</head>
+<body>
+<header><div class="container nav">
+<a class="logo" href="../index.html">Beyond<span>BTech</span></a>
+<nav><a href="../index.html">Home</a><a href="../powerbi.html">Power BI</a><a href="../notes.html">Knowledge Hub</a><a href="https://instagram.com/beyondbtech07" target="_blank">Instagram</a></nav>
+</div></header>
+
+<main class="container">
+<section class="hero">
+<div class="breadcrumb">Home → Power BI → Day 4</div>
+<div class="badge">POWER BI · DAY 4</div>
+<h1>Basic Data Cleaning with Power Query</h1>
+<p>Data Power BI loki vachina tarvata, report build cheyyadaniki mundu data correct format lo undho verify cheyyali. Ee roju Power Query lo basic data cleaning concepts ni practical thinking tho nerchukundam.</p>
+</section>
+
+<section class="intro">
+<h2>🧠 Data Cleaning enduku important?</h2>
+<p>Real projects lo source data always perfect ga undadu. Data types wrong ga undachu, unnecessary columns undachu, duplicate records undachu, errors or inconsistent values undachu.</p>
+<p style="margin-top:12px"><strong>Important:</strong> Power Query data ni report/model ki ready cheyyadaniki use chese transformation layer. Cleaning ante random ga columns or values delete cheyyadam kaadu; business requirement ni understand chesi data ni prepare cheyyadam.</p>
+</section>
+
+<section class="tip">
+<h3>⭐ First and important thinking</h3>
+<p><strong>Business requirement / question → Required data → Transformation → Analysis / Report</strong></p>
+<p style="margin-top:10px">Example: Business asks, <strong>“Category and Product wise Sales entha?”</strong> appudu Category, Product and Sales columns relevant. Requirement ki use leni internal/code columns working query lo unnecessary ayithe remove cheyyachu.</p>
+<p style="margin-top:10px"><strong>Remember:</strong> Power Query lo column remove cheyyadam original Excel/database nunchi permanent ga delete cheyyadam kaadu. Adi query transformation.</p>
+</section>
+
+<section class="step">
+<div class="step-number">STEP 1</div>
+<h3>Automatic Data Type Detection</h3>
+<p>Power Query data load chestunnappudu columns ki data types ni automatically detect cheyyadaniki try chestundi. Kani automatic detection ni blindly trust cheyyakunda, <strong>verify</strong> cheyyali.</p>
+<p><strong>Mana Orders data lo sensible types:</strong></p>
+<ul>
+<li>Row ID → Whole Number</li>
+<li>Order ID → Text</li>
+<li>Order Date → Date</li>
+<li>Ship Date → Date</li>
+<li>Ship Mode → Text</li>
+<li>Customer ID → Text</li>
+<li>Customer Name → Text</li>
+</ul>
+</section>
+
+<section class="step">
+<div class="step-number">STEP 2</div>
+<h3>Common Data Types</h3>
+<div class="option"><b>Text</b> — Names, IDs, categories, codes etc.</div>
+<div class="option"><b>Whole Number</b> — Decimal values leni numbers.</div>
+<div class="option"><b>Decimal Number</b> — Fractional/decimal values such as 12.50.</div>
+<div class="option"><b>Date</b> — Date values such as Order Date.</div>
+<div class="option"><b>Date/Time</b> — Date plus time.</div>
+<div class="option"><b>True/False</b> — Boolean values.</div>
+</section>
+
+<section class="step">
+<div class="step-number">STEP 3</div>
+<h3>Verify the Detected Data Type</h3>
+<p>Column header daggara unna data type icon ni observe cheyyali. Data actual meaning ki match avutundha check cheyyali.</p>
+<p>For example, <strong>Order Date</strong> date laga use cheyyali. Wrong ga Text ga detect ayithe, manam correct type ki change cheyyali.</p>
+<p><strong>Practice:</strong> Order Date ni Text → Date ga change chesi, type icon ela change avutundo observe cheyyachu. Correct type already unte, unnecessary ga change cheyyalsina avasaram ledu.</p>
+</section>
+
+<section class="step">
+<div class="step-number">STEP 4</div>
+<h3>Change Type</h3>
+<p>Column meeda right-click chesi <strong>Change Type</strong> option nunchi required data type select cheyyachu.</p>
+<p>Example: Text ga unna date column actual date values represent chestunte, <strong>Change Type → Date</strong> use cheyyachu.</p>
+<img class="screenshot" src="../images/powerbi/pbi-day4-change-type.png" alt="Power Query Change Type menu">
+<div class="caption">Power Query lo Change Type options — mana actual screenshot.</div>
+</section>
+
+<section class="step">
+<div class="step-number">STEP 5</div>
+<h3>Applied Steps</h3>
+<p>Power Query Editor right side lo <strong>Applied Steps</strong> section untundi. Manam perform chesina transformations ni idi record chestundi.</p>
+<ul>
+<li>Source</li>
+<li>Promoted Headers</li>
+<li>Changed Type</li>
+<li>Removed Columns</li>
+<li>Other transformations</li>
+</ul>
+<p style="margin-top:12px">Oka step ni revisit cheyyachu, modify cheyyachu, or unnecessary step ayithe remove cheyyachu. So, data ni ela transform chesamo track cheyyadaniki Applied Steps chala useful.</p>
+</section>
+
+<section class="step">
+<div class="step-number">STEP 6</div>
+<h3>Remove Unwanted Columns — But Based on Requirement</h3>
+<p>Columns ni random ga remove cheyyakudadhu. Mundu <strong>“What question are we trying to answer?”</strong> ani ask cheskovali. Tarvata <strong>“What data do we need to answer it?”</strong> ani decide cheyyali.</p>
+<p>Requirement ki use leni columns working query lo unnecessary ayithe remove cheyyachu.</p>
+<div class="tip"><strong>Key idea:</strong> Business requirement and analysis question base cheskoni required columns ni select chesi, unnecessary columns ni remove/transform chestam.</div>
+</section>
+
+<section class="step">
+<div class="step-number">STEP 7</div>
+<h3>Useful Right-Click Options</h3>
+<div class="option"><b>Change Type</b> — Column data type ni change cheyyadaniki.</div>
+<div class="option"><b>Remove</b> — Selected column ni query nunchi remove cheyyadaniki.</div>
+<div class="option"><b>Remove Other Columns</b> — Selected columns ni keep chesi migatha columns ni remove cheyyadaniki.</div>
+<div class="option"><b>Remove Duplicates</b> — Duplicates actually unwanted ayinappudu remove cheyyadaniki. Duplicate undi ante automatic ga wrong ani kaadu.</div>
+<div class="option"><b>Remove Errors</b> — Error rows ni remove cheyyachu, kani first error enduku vachindo understand cheyyadam important.</div>
+<div class="option"><b>Replace Values</b> — Wrong/inconsistent values ni correct value tho replace cheyyadaniki.</div>
+<div class="option"><b>Rename</b> — Columns ki meaningful names ivvadaniki.</div>
+</section>
+
+<section class="takeaway">
+<h2>💡 Today's Takeaway</h2>
+<ul>
+<li>Power Query automatic ga data types detect cheyyagaladu, but analyst should verify them.</li>
+<li>Correct data types analysis and calculations ki important.</li>
+<li>Applied Steps transformations ni track and revisit cheyyadaniki useful.</li>
+<li>Columns ni business requirement/question base cheskoni remove or keep cheyyali.</li>
+<li>Right-click options ni purpose ardham cheskoni use cheyyali—not blindly.</li>
+</ul>
+</section>
+
+<a class="back" href="../powerbi.html">← Back to Power BI Journey</a>
+</main>
+<footer>Beyond BTech · Power BI Learning Journey</footer>
+</body>
+</html>
