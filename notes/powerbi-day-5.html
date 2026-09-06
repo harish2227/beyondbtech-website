@@ -1,0 +1,1306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Power BI Day 5 | Filtering and Sorting Data | Beyond BTech</title>
+
+<style>
+
+*{
+box-sizing:border-box;
+margin:0;
+padding:0
+}
+
+:root{
+--bg:#f7f8fc;
+--card:#fff;
+--text:#171923;
+--muted:#667085;
+--line:#e5e7eb;
+--accent:#635bff;
+--dark:#171923;
+--soft:#f1efff
+}
+
+body{
+font-family:Inter,system-ui,-apple-system,Segoe UI,Arial,sans-serif;
+background:var(--bg);
+color:var(--text);
+line-height:1.7
+}
+
+a{
+text-decoration:none;
+color:inherit
+}
+
+.container{
+width:min(1050px,92%);
+margin:auto
+}
+
+/* HEADER */
+
+header{
+background:var(--dark);
+color:#fff;
+padding:18px 0
+}
+
+.nav{
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:20px
+}
+
+.logo{
+font-size:23px;
+font-weight:850
+}
+
+.logo span{
+color:var(--accent)
+}
+
+nav{
+display:flex;
+gap:24px;
+font-size:14px
+}
+
+nav a:hover{
+color:#b9b3ff
+}
+
+/* HERO */
+
+.hero{
+padding:58px 0 35px
+}
+
+.breadcrumb{
+font-size:13px;
+color:var(--muted);
+margin-bottom:18px
+}
+
+.badge{
+display:inline-block;
+background:#eeeaff;
+color:var(--accent);
+font-size:12px;
+font-weight:800;
+padding:7px 11px;
+border-radius:999px;
+margin-bottom:16px
+}
+
+h1{
+font-size:clamp(34px,5vw,58px);
+line-height:1.08;
+letter-spacing:-2px;
+margin-bottom:16px
+}
+
+.hero p{
+max-width:820px;
+color:var(--muted);
+font-size:17px
+}
+
+/* CONTENT CARDS */
+
+.intro,
+.tip,
+.step,
+.takeaway,
+.practice{
+background:var(--card);
+border:1px solid var(--line);
+border-radius:18px;
+padding:28px;
+margin-bottom:22px
+}
+
+h2{
+font-size:27px;
+margin-bottom:12px
+}
+
+h3{
+font-size:21px;
+margin-bottom:10px
+}
+
+.muted{
+color:var(--muted)
+}
+
+.tip{
+background:#fffaf0;
+border-color:#f1d99a
+}
+
+.tip strong{
+color:#9a6700
+}
+
+.step-number{
+color:var(--accent);
+font-size:12px;
+font-weight:850;
+letter-spacing:.7px
+}
+
+.step p{
+color:var(--muted);
+margin-bottom:16px
+}
+
+/* OPTIONS */
+
+.option{
+padding:16px 18px;
+border:1px solid var(--line);
+border-radius:13px;
+margin:12px 0;
+background:#fff
+}
+
+.option b{
+color:var(--accent)
+}
+
+/* TABLE */
+
+.table-wrap{
+overflow-x:auto;
+margin:18px 0
+}
+
+table{
+width:100%;
+border-collapse:collapse;
+background:#fff
+}
+
+th,
+td{
+padding:12px;
+border:1px solid var(--line);
+text-align:left
+}
+
+th{
+background:var(--soft)
+}
+
+/* FLOW */
+
+.flow{
+background:var(--soft);
+padding:18px;
+border-radius:12px;
+margin:16px 0;
+font-weight:650;
+line-height:2
+}
+
+ul{
+margin-left:22px
+}
+
+.back{
+display:inline-block;
+margin:10px 0 60px;
+color:var(--accent);
+font-weight:800
+}
+
+footer{
+background:var(--dark);
+color:#fff;
+padding:28px 0;
+text-align:center;
+font-size:13px
+}
+
+/* MOBILE */
+
+@media(max-width:800px){
+
+.nav{
+flex-direction:column;
+align-items:flex-start
+}
+
+nav{
+flex-wrap:wrap
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+
+<header>
+
+<div class="container nav">
+
+<a class="logo" href="../index.html">
+Beyond<span>BTech</span>
+</a>
+
+<nav>
+
+<a href="../index.html">Home</a>
+
+<a href="../powerbi.html">Power BI</a>
+
+<a href="../notes.html">Knowledge Hub</a>
+
+<a href="https://instagram.com/beyondbtech07" target="_blank">
+Instagram
+</a>
+
+</nav>
+
+</div>
+
+</header>
+
+
+<main class="container">
+
+
+<!-- HERO -->
+
+<section class="hero">
+
+<div class="breadcrumb">
+Home → Power BI → Day 5
+</div>
+
+<div class="badge">
+POWER BI · DAY 5
+</div>
+
+<h1>
+Filtering and Sorting Data in Power Query
+</h1>
+
+<p>
+Data cleaning tarvata, manaki required data ni select cheyyadam and data ni proper order lo arrange cheyyadam important. Ee roju Power Query lo Filtering and Sorting concepts ni beginner-friendly examples tho nerchukundam.
+</p>
+
+</section>
+
+
+<!-- INTRO -->
+
+<section class="intro">
+
+<h2>🧠 Today manam em nerchukuntam?</h2>
+
+<p>
+Power Query lo data ni transform chestunnappudu, manaki anni rows always avasaram undavu. Business requirement batti required rows ni select cheyyalsi untundi.
+</p>
+
+<p style="margin-top:12px">
+
+Alage, data ni smallest to largest or highest to lowest order lo arrange cheyyalsina situations untayi.
+
+</p>
+
+<p style="margin-top:12px">
+
+Ee rendu concepts ni ee lesson lo nerchukuntam:
+
+</p>
+
+<ul>
+
+<li><strong>Filtering</strong> — Required rows ni select cheyyadam.</li>
+
+<li><strong>Sorting</strong> — Data ni specific order lo arrange cheyyadam.</li>
+
+</ul>
+
+</section>
+
+
+<!-- STEP 1 -->
+
+<section class="step">
+
+<div class="step-number">
+STEP 1
+</div>
+
+<h3>
+What is Filtering?
+</h3>
+
+<p>
+
+Imagine mana company daggara thousands of sales records unnayi.
+
+</p>
+
+<p>
+
+Kani manager manalni ila aduguthe:
+
+</p>
+
+<div class="tip">
+
+<strong>
+"Show me only Technology category sales."
+</strong>
+
+</div>
+
+<p>
+
+Appudu manaki anni records avasaram undavu.
+
+Technology category ki related records matrame kavali.
+
+</p>
+
+<p>
+
+<strong>
+Required condition ni satisfy chese rows ni select cheyyadam ni Filtering antam.
+</strong>
+
+</p>
+
+<div class="flow">
+
+Business Requirement
+
+↓<br>
+
+Choose Required Data
+
+↓<br>
+
+Apply Filter
+
+↓<br>
+
+Analyze Results
+
+</div>
+
+</section>
+
+
+<!-- STEP 2 -->
+
+<section class="step">
+
+<div class="step-number">
+STEP 2
+</div>
+
+<h3>
+Why Do We Filter Data?
+</h3>
+
+<p>
+
+Real projects lo business ki different questions untayi.
+
+Prathi question ki complete dataset avasaram undakapovachu.
+
+</p>
+
+<p>
+
+For example:
+
+</p>
+
+<div class="table-wrap">
+
+<table>
+
+<tr>
+<th>Category</th>
+<th>Product</th>
+<th>Sales</th>
+</tr>
+
+<tr>
+<td>Furniture</td>
+<td>Chair</td>
+<td>500</td>
+</tr>
+
+<tr>
+<td>Technology</td>
+<td>Laptop</td>
+<td>1000</td>
+</tr>
+
+<tr>
+<td>Office Supplies</td>
+<td>Paper</td>
+<td>200</td>
+</tr>
+
+<tr>
+<td>Technology</td>
+<td>Monitor</td>
+<td>700</td>
+</tr>
+
+</table>
+
+</div>
+
+<p>
+
+Business asks:
+
+</p>
+
+<div class="tip">
+
+<strong>
+"Show only Technology products."
+</strong>
+
+</div>
+
+<p>
+
+Appudu Furniture and Office Supplies rows current analysis ki avasaram undavu.
+
+Technology rows matrame select cheyyachu.
+
+</p>
+
+<div class="flow">
+
+Business Question
+
+↓
+
+Required Data
+
+↓
+
+Apply Appropriate Filter
+
+↓
+
+Analyze Results
+
+</div>
+
+</section>
+
+
+<!-- STEP 3 -->
+
+<section class="step">
+
+<div class="step-number">
+STEP 3
+</div>
+
+<h3>
+How to Filter Data in Power Query
+</h3>
+
+<p>
+
+Filtering apply cheyyadaniki mundu, manam which column base cheskoni filter cheyyalo identify cheyyali.
+
+</p>
+
+<p>
+
+Mana example lo:
+
+</p>
+
+<div class="option">
+
+<b>Business Requirement:</b>
+
+Show only Technology category products.
+
+</div>
+
+<p>
+
+Kabatti manam <strong>Category</strong> column ni use chestam.
+
+</p>
+
+<h3 style="margin-top:18px">
+
+Follow These Steps
+
+</h3>
+
+<div class="option">
+
+<b>1. Find the Column</b><br>
+
+Filter apply cheyyali anukunna column ni identify cheyyandi.
+
+</div>
+
+<div class="option">
+
+<b>2. Click the Dropdown</b><br>
+
+Column header daggara unna dropdown/filter button click cheyyandi.
+
+</div>
+
+<div class="option">
+
+<b>3. Select Required Value</b><br>
+
+Available values lo required value ni select cheyyandi.
+
+</div>
+
+<div class="option">
+
+<b>4. Click OK</b><br>
+
+Power Query selected condition ki match ayye rows ni chupistundi.
+
+</div>
+
+<div class="flow">
+
+Category Column
+
+↓
+
+Click Filter Dropdown
+
+↓
+
+Select Technology
+
+↓
+
+Click OK
+
+↓
+
+Only Technology Rows
+
+</div>
+
+<p>
+
+<strong>Important:</strong>
+
+Filter apply chesina tarvata Applied Steps lo usually oka new transformation step record avutundi.
+
+</p>
+
+</section>
+
+
+<!-- STEP 4 -->
+
+<section class="step">
+
+<div class="step-number">
+STEP 4
+</div>
+
+<h3>
+Text Filters
+</h3>
+
+<p>
+
+Sometimes column lo thousands of different text values undachu.
+
+Prathi value manually select cheyyadam convenient kakapovachu.
+
+Appudu Text Filters use cheyyachu.
+
+</p>
+
+<h3 style="margin-top:18px">
+
+Example: Contains
+
+</h3>
+
+<p>
+
+Suppose Product Name column lo ee values unnayi:
+
+</p>
+
+<div class="table-wrap">
+
+<table>
+
+<tr>
+<th>Product Name</th>
+</tr>
+
+<tr>
+<td>Office Chair</td>
+</tr>
+
+<tr>
+<td>Laptop</td>
+</tr>
+
+<tr>
+<td>Gaming Chair</td>
+</tr>
+
+<tr>
+<td>Monitor</td>
+</tr>
+
+<tr>
+<td>Chair Mat</td>
+</tr>
+
+</table>
+
+</div>
+
+<p>
+
+Business asks:
+
+</p>
+
+<div class="tip">
+
+<strong>
+"Show all products containing the word Chair."
+</strong>
+
+</div>
+
+<div class="flow">
+
+Product Name
+
+↓
+
+Text Filters
+
+↓
+
+Contains
+
+↓
+
+Chair
+
+</div>
+
+<p>
+
+Result lo Office Chair, Gaming Chair and Chair Mat lanti matching values vastayi.
+
+</p>
+
+<h3 style="margin-top:18px">
+
+Other Useful Text Filters
+
+</h3>
+
+<div class="option">
+
+<b>Equals</b> — Exact value match kosam.
+
+</div>
+
+<div class="option">
+
+<b>Contains</b> — Specific text contain chese values kosam.
+
+</div>
+
+<div class="option">
+
+<b>Begins With</b> — Specific text tho start ayye values kosam.
+
+</div>
+
+<p style="margin-top:16px">
+
+<strong>Beginner Tip:</strong>
+
+Mundu business requirement ni understand cheyyandi. Tarvata correct filter condition select cheyyandi.
+
+</p>
+
+</section>
+
+
+<!-- STEP 5 -->
+
+<section class="step">
+
+<div class="step-number">
+STEP 5
+</div>
+
+<h3>
+Number Filters
+</h3>
+
+<p>
+
+Text data ni filter cheyyadaniki Text Filters use chestam.
+
+Numeric columns ni conditions base cheskoni filter cheyyadaniki Number Filters use chestam.
+
+</p>
+
+<p>
+
+Example:
+
+</p>
+
+<div class="table-wrap">
+
+<table>
+
+<tr>
+<th>Product</th>
+<th>Sales</th>
+</tr>
+
+<tr>
+<td>Chair</td>
+<td>500</td>
+</tr>
+
+<tr>
+<td>Laptop</td>
+<td>1500</td>
+</tr>
+
+<tr>
+<td>Monitor</td>
+<td>800</td>
+</tr>
+
+<tr>
+<td>Table</td>
+<td>2000</td>
+</tr>
+
+<tr>
+<td>Keyboard</td>
+<td>300</td>
+</tr>
+
+</table>
+
+</div>
+
+<div class="tip">
+
+<strong>
+Business asks: "Show products where Sales is greater than 1000."
+</strong>
+
+</div>
+
+<div class="flow">
+
+Sales Column
+
+↓
+
+Number Filters
+
+↓
+
+Greater Than
+
+↓
+
+1000
+
+</div>
+
+<p>
+
+Only Sales value 1000 kanna greater unna rows result lo untayi.
+
+</p>
+
+<h3 style="margin-top:18px">
+
+Useful Number Filters
+
+</h3>
+
+<div class="option">
+
+<b>Greater Than</b> — Example: Sales > 1000
+
+</div>
+
+<div class="option">
+
+<b>Less Than</b> — Example: Quantity < 10
+
+</div>
+
+<div class="option">
+
+<b>Between</b> — Example: Sales between 500 and 1500
+
+</div>
+
+</section>
+
+
+<!-- STEP 6 -->
+
+<section class="step">
+
+<div class="step-number">
+STEP 6
+</div>
+
+<h3>
+Date Filters
+</h3>
+
+<p>
+
+Real-world datasets lo date columns chala common.
+
+For example:
+
+</p>
+
+<ul>
+
+<li>Order Date</li>
+
+<li>Ship Date</li>
+
+<li>Joining Date</li>
+
+<li>Transaction Date</li>
+
+</ul>
+
+<p style="margin-top:16px">
+
+Suppose business asks:
+
+</p>
+
+<div class="tip">
+
+<strong>
+"Show only orders placed after January 1, 2023."
+</strong>
+
+</div>
+
+<p>
+
+Appudu Order Date column ni filter cheyyachu.
+
+</p>
+
+<div class="flow">
+
+Order Date
+
+↓
+
+Date Filters
+
+↓
+
+After
+
+↓
+
+01-Jan-2023
+
+</div>
+
+<h3 style="margin-top:18px">
+
+Useful Date Conditions
+
+</h3>
+
+<div class="option">
+
+<b>Before</b> — Selected date mundu unna records.
+
+</div>
+
+<div class="option">
+
+<b>After</b> — Selected date tarvata unna records.
+
+</div>
+
+<div class="option">
+
+<b>Equals</b> — Specific date ki match ayye records.
+
+</div>
+
+<div class="option">
+
+<b>Between</b> — Two dates madhyalo unna records.
+
+</div>
+
+<div class="tip" style="margin-top:18px">
+
+<strong>Important:</strong>
+
+Date Filter use cheyyadaniki mundu, aa column correct <strong>Date</strong> data type lo undho verify cheyyandi.
+
+</div>
+
+</section>
+
+
+<!-- STEP 7 -->
+
+<section class="step">
+
+<div class="step-number">
+STEP 7
+</div>
+
+<h3>
+Filtering vs Sorting
+</h3>
+
+<p>
+
+Beginners ki Filtering and Sorting similar ga anipinchachu.
+
+Kani rendu different operations.
+
+</p>
+
+<div class="option">
+
+<b>Filtering</b><br>
+
+Required condition ni satisfy chese rows ni select cheyyadam.
+
+</div>
+
+<div class="option">
+
+<b>Sorting</b><br>
+
+Data ni specific order lo arrange cheyyadam.
+
+</div>
+
+<h3 style="margin-top:18px">
+
+Simple Example
+
+</h3>
+
+<div class="flow">
+
+FILTERING
+
+↓
+
+Which rows do I need?
+
+
+<br><br>
+
+
+SORTING
+
+↓
+
+In what order should I see the rows?
+
+</div>
+
+<h3 style="margin-top:18px">
+
+If You Know SQL
+
+</h3>
+
+<div class="option">
+
+<b>Filtering ≈ WHERE</b><br>
+
+SQL lo WHERE condition base cheskoni rows ni select chestundi.
+
+</div>
+
+<div class="option">
+
+<b>Sorting ≈ ORDER BY</b><br>
+
+SQL lo ORDER BY rows ni specific order lo arrange chestundi.
+
+</div>
+
+</section>
+
+
+<!-- STEP 8 -->
+
+<section class="step">
+
+<div class="step-number">
+STEP 8
+</div>
+
+<h3>
+How to Sort Data in Power Query
+</h3>
+
+<p>
+
+Sorting means data ni required order lo arrange cheyyadam.
+
+</p>
+
+<p>
+
+Suppose Sales values:
+
+</p>
+
+<div class="flow">
+
+500
+
+1500
+
+200
+
+1000
+
+</div>
+
+<h3>
+
+Sort Ascending
+
+</h3>
+
+<p>
+
+Smallest → Largest
+
+</p>
+
+<div class="flow">
+
+200
+
+500
+
+1000
+
+1500
+
+</div>
+
+<h3>
+
+Sort Descending
+
+</h3>
+
+<p>
+
+Largest → Smallest
+
+</p>
+
+<div class="flow">
+
+1500
+
+1000
+
+500
+
+200
+
+</div>
+
+<div class="tip">
+
+<strong>
+Business Example:
+</strong>
+
+Manager asks: "Show products from highest sales to lowest sales."
+
+<br><br>
+
+Solution:
+
+<strong>Sales → Sort Descending</strong>
+
+</div>
+
+<p style="margin-top:16px">
+
+Just like filtering, sorting apply chesina tarvata Applied Steps lo transformation record avutundi.
+
+</p>
+
+</section>
+
+
+<!-- PRACTICE -->
+
+<section class="practice">
+
+<h2>
+🎯 Try It Yourself
+</h2>
+
+<div class="option">
+
+<b>Practice 1</b><br>
+
+Category column ni filter chesi one category data matrame select cheyyandi.
+
+</div>
+
+<div class="option">
+
+<b>Practice 2</b><br>
+
+Sales column lo Number Filter use chesi specific value kanna greater unna records select cheyyandi.
+
+</div>
+
+<div class="option">
+
+<b>Practice 3</b><br>
+
+Sales column ni Descending order lo sort cheyyandi.
+
+</div>
+
+<div class="option">
+
+<b>Practice 4</b><br>
+
+Applied Steps section lo new steps observe cheyyandi.
+
+</div>
+
+</section>
+
+
+<!-- TAKEAWAY -->
+
+<section class="takeaway">
+
+<h2>
+💡 Today's Takeaway
+</h2>
+
+<ul>
+
+<li>Filtering means selecting rows based on a condition.</li>
+
+<li>Sorting means arranging data in a specific order.</li>
+
+<li>Text data ki Text Filters use cheyyachu.</li>
+
+<li>Number data ki Number Filters use cheyyachu.</li>
+
+<li>Date data ki Date Filters use cheyyachu.</li>
+
+<li>Filtering is similar to SQL <strong>WHERE</strong>.</li>
+
+<li>Sorting is similar to SQL <strong>ORDER BY</strong>.</li>
+
+<li>Filtering and Sorting transformations Applied Steps lo record avutayi.</li>
+
+</ul>
+
+<div class="tip" style="margin-top:20px">
+
+<strong>
+Most Important Mindset:
+</strong>
+
+<br><br>
+
+Don't start with:
+
+"What button should I click?"
+
+<br><br>
+
+Start with:
+
+<strong>
+"What does the business want to see?"
+</strong>
+
+</div>
+
+</section>
+
+
+<a class="back" href="../powerbi.html">
+← Back to Power BI Journey
+</a>
+
+
+</main>
+
+
+<footer>
+
+Beyond BTech · Power BI Learning Journey
+
+</footer>
+
+
+</body>
+</html>
