@@ -57,8 +57,23 @@ footer{background:var(--dark);color:#fff;padding:28px 0;text-align:center;font-s
 <section class="step">
 <div class="step-number">STEP 1</div>
 <h3>Automatic Data Type Detection</h3>
-<p>Power Query data load chestunnappudu columns ki data types ni automatically detect cheyyadaniki try chestundi. Kani automatic detection ni blindly trust cheyyakunda, <strong>verify</strong> cheyyali.</p>
+
+<p>Power Query data load chestunnappudu columns ki data types ni automatically detect cheyyadaniki try chestundi.</p>
+
+<p>For example, date values ni <strong>Date</strong> ga, names ni <strong>Text</strong> ga, numbers ni <strong>Whole Number</strong> or <strong>Decimal Number</strong> ga detect cheyyachu.</p>
+
+<img class="screenshot" 
+src="../images/powerbi/pbi-day4-auto-detection.png" 
+alt="Power Query automatic data type detection">
+
+<div class="caption">
+Power Query automatically detects data types when data is loaded.
+</div>
+
+<p style="margin-top:15px"><strong>Important:</strong> Automatic detection useful, but blindly trust cheyyakunda manam data types correct ga unnaya ani verify cheyyali.</p>
+
 <p><strong>Mana Orders data lo sensible types:</strong></p>
+
 <ul>
 <li>Row ID → Whole Number</li>
 <li>Order ID → Text</li>
@@ -84,32 +99,85 @@ footer{background:var(--dark);color:#fff;padding:28px 0;text-align:center;font-s
 <section class="step">
 <div class="step-number">STEP 3</div>
 <h3>Verify the Detected Data Type</h3>
+
 <p>Column header daggara unna data type icon ni observe cheyyali. Data actual meaning ki match avutundha check cheyyali.</p>
-<p>For example, <strong>Order Date</strong> date laga use cheyyali. Wrong ga Text ga detect ayithe, manam correct type ki change cheyyali.</p>
-<p><strong>Practice:</strong> Order Date ni Text → Date ga change chesi, type icon ela change avutundo observe cheyyachu. Correct type already unte, unnecessary ga change cheyyalsina avasaram ledu.</p>
+
+<img class="screenshot" 
+src="../images/powerbi/pbi-day4-verify-datatype.png" 
+alt="Verify data type in Power Query">
+
+<div class="caption">
+Column header daggara unna icon ni check chesi detected data type correct ga undho verify cheyyali.
+</div>
+
+<p style="margin-top:15px">
+For example, <strong>Order Date</strong> actual ga date information represent chestundi.
+Kabatti adi <strong>Date</strong> data type lo undali.
+</p>
+
+<p>
+Wrong ga <strong>Text</strong> ga detect ayithe, manam correct data type ki change cheyyali.
+</p>
 </section>
 
 <section class="step">
 <div class="step-number">STEP 4</div>
 <h3>Change Type</h3>
-<p>Column meeda right-click chesi <strong>Change Type</strong> option nunchi required data type select cheyyachu.</p>
-<p>Example: Text ga unna date column actual date values represent chestunte, <strong>Change Type → Date</strong> use cheyyachu.</p>
-<img class="screenshot" src="../images/powerbi/pbi-day4-change-type.png" alt="Power Query Change Type menu">
-<div class="caption">Power Query lo Change Type options — mana actual screenshot.</div>
+
+<p>
+Data type wrong ga detect ayithe, manam manually correct data type ki change cheyyachu.
+</p>
+
+<p>
+Column select chesi <strong>Data Type</strong> dropdown nunchi required type select cheyyachu.
+</p>
+
+<p>
+Example: Text ga unna date column actual date values represent chestunte,
+<strong>Change Type → Date</strong> select cheyyachu.
+</p>
+
+<img class="screenshot" 
+src="../images/powerbi/pbi-day4-change-type.png" 
+alt="Power Query Change Type menu">
+
+<div class="caption">
+Power Query lo Data Type dropdown nunchi required data type select cheyyachu.
+</div>
 </section>
 
 <section class="step">
 <div class="step-number">STEP 5</div>
 <h3>Applied Steps</h3>
-<p>Power Query Editor right side lo <strong>Applied Steps</strong> section untundi. Manam perform chesina transformations ni idi record chestundi.</p>
-<ul>
+
+<p>
+Power Query Editor right side lo <strong>Applied Steps</strong> section untundi.
+Manam data meeda perform chesina transformations anni ikkada record avutayi.
+</p>
+
+<img class="screenshot" 
+src="../images/powerbi/pbi-day4-applied-steps.png" 
+alt="Power Query Applied Steps">
+
+<div class="caption">
+Applied Steps lo manam data meeda apply chesina transformations kanipistayi.
+</div>
+
+<ul style="margin-top:15px">
 <li>Source</li>
 <li>Promoted Headers</li>
 <li>Changed Type</li>
 <li>Removed Columns</li>
 <li>Other transformations</li>
 </ul>
-<p style="margin-top:12px">Oka step ni revisit cheyyachu, modify cheyyachu, or unnecessary step ayithe remove cheyyachu. So, data ni ela transform chesamo track cheyyadaniki Applied Steps chala useful.</p>
+
+<p style="margin-top:15px">
+So, data ni <strong>step by step ela transform chesamo</strong> easy ga track cheyyachu.
+</p>
+
+<p>
+Oka step ni revisit cheyyachu, modify cheyyachu, or unnecessary ayithe remove cheyyachu.
+</p>
 </section>
 
 <section class="step">
@@ -123,13 +191,48 @@ footer{background:var(--dark);color:#fff;padding:28px 0;text-align:center;font-s
 <section class="step">
 <div class="step-number">STEP 7</div>
 <h3>Useful Right-Click Options</h3>
-<div class="option"><b>Change Type</b> — Column data type ni change cheyyadaniki.</div>
-<div class="option"><b>Remove</b> — Selected column ni query nunchi remove cheyyadaniki.</div>
-<div class="option"><b>Remove Other Columns</b> — Selected columns ni keep chesi migatha columns ni remove cheyyadaniki.</div>
-<div class="option"><b>Remove Duplicates</b> — Duplicates actually unwanted ayinappudu remove cheyyadaniki. Duplicate undi ante automatic ga wrong ani kaadu.</div>
-<div class="option"><b>Remove Errors</b> — Error rows ni remove cheyyachu, kani first error enduku vachindo understand cheyyadam important.</div>
-<div class="option"><b>Replace Values</b> — Wrong/inconsistent values ni correct value tho replace cheyyadaniki.</div>
-<div class="option"><b>Rename</b> — Columns ki meaningful names ivvadaniki.</div>
+
+<p>
+Column meeda right-click chesthe data ni transform cheyyadaniki different options kanipistayi.
+Manam requirement batti required option ni use cheyyali.
+</p>
+
+<img class="screenshot" 
+src="../images/powerbi/pbi-day4-right-click-options.png" 
+alt="Power Query right click options">
+
+<div class="caption">
+Column meeda right-click chesthe different transformation options kanipistayi.
+</div>
+
+<div class="option">
+<b>Change Type</b> — Column data type ni change cheyyadaniki.
+</div>
+
+<div class="option">
+<b>Remove</b> — Selected column ni query nunchi remove cheyyadaniki.
+</div>
+
+<div class="option">
+<b>Remove Other Columns</b> — Selected columns ni keep chesi migatha columns ni remove cheyyadaniki.
+</div>
+
+<div class="option">
+<b>Remove Duplicates</b> — Duplicate records actually unnecessary ayinappudu remove cheyyadaniki.
+</div>
+
+<div class="option">
+<b>Replace Values</b> — Wrong or inconsistent values ni another value tho replace cheyyadaniki.
+</div>
+
+<div class="option">
+<b>Rename</b> — Column ki meaningful name ivvadaniki.
+</div>
+
+<p style="margin-top:15px">
+<strong>Important:</strong> Ee options anni blindly use cheyyakudadhu.
+Data and business requirement ni understand chesina tarvata use cheyyali.
+</p>
 </section>
 
 <section class="takeaway">
