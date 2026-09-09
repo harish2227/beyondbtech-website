@@ -20,10 +20,12 @@ gtag('config', 'G-B1JNHYSWEY');
 
 <meta charset="UTF-8">
 
-<meta name="viewport"
+<meta
+name="viewport"
 content="width=device-width, initial-scale=1.0">
 
-<meta name="description"
+<meta
+name="description"
 content="Beyond BTech — daily notes, SQL, Data Analytics, interview preparation and important tech topics.">
 
 <title>Beyond BTech | Learn • Build • Grow</title>
@@ -41,11 +43,14 @@ content="Beyond BTech — daily notes, SQL, Data Analytics, interview preparatio
     box-sizing:border-box;
 }
 
-
 html{
     scroll-behavior:smooth;
 }
 
+
+/* =========================
+   VARIABLES
+========================= */
 
 :root{
 
@@ -61,9 +66,7 @@ html{
 
     --accent:#635bff;
 
-    --dark:#171923;
-
-    --radius:18px;
+    --dark:#090b12;
 
 }
 
@@ -92,7 +95,6 @@ body{
 
 }
 
-
 a{
 
     text-decoration:none;
@@ -100,7 +102,6 @@ a{
     color:inherit;
 
 }
-
 
 .container{
 
@@ -117,24 +118,25 @@ a{
 
 nav{
 
-    position:sticky;
+    position:absolute;
 
     top:0;
 
+    left:0;
+
+    width:100%;
+
     z-index:100;
 
-    background:rgba(255,255,255,.88);
+    background:transparent;
 
-    backdrop-filter:blur(14px);
-
-    border-bottom:1px solid var(--line);
+    transition:.4s;
 
 }
 
-
 .nav-container{
 
-    height:74px;
+    height:76px;
 
     display:flex;
 
@@ -144,7 +146,6 @@ nav{
 
 }
 
-
 .logo{
 
     font-size:23px;
@@ -153,15 +154,15 @@ nav{
 
     letter-spacing:-1px;
 
-}
+    color:white;
 
+}
 
 .logo span{
 
-    color:var(--accent);
+    color:#8b83ff;
 
 }
-
 
 .navlinks{
 
@@ -173,30 +174,23 @@ nav{
 
 }
 
-
 .navlinks a{
 
     font-size:14px;
 
     font-weight:650;
 
-    color:#374151;
+    color:#d7d9e2;
 
-    transition:.2s;
+    transition:.25s;
 
 }
-
 
 .navlinks a:hover{
 
-    color:var(--accent);
+    color:white;
 
 }
-
-
-/* =========================
-   MOBILE MENU BUTTON
-========================= */
 
 .menu{
 
@@ -206,6 +200,8 @@ nav{
 
     background:none;
 
+    color:white;
+
     font-size:26px;
 
     cursor:pointer;
@@ -214,119 +210,166 @@ nav{
 
 
 /* =========================
-   HERO
+   PARTICLE HERO
 ========================= */
 
-.hero{
+.particle-hero{
 
-    padding:100px 0 85px;
+    min-height:100vh;
+
+    position:relative;
+
+    overflow:hidden;
 
     background:
 
     radial-gradient(
-        circle at 85% 20%,
-        #dedaff 0%,
-        transparent 28%
-    ),
-
-    linear-gradient(
-        135deg,
-        #ffffff 0%,
-        #f1efff 100%
+        circle at 50% 45%,
+        #15192b 0%,
+        #090b12 45%,
+        #05060a 100%
     );
 
-}
-
-
-.hero-grid{
-
-    display:grid;
-
-    grid-template-columns:
-    1.2fr .8fr;
-
-    gap:60px;
+    display:flex;
 
     align-items:center;
 
-}
-
-
-.badge{
-
-    display:inline-flex;
-
-    align-items:center;
-
-    gap:6px;
-
-    padding:8px 13px;
-
-    border:1px solid #ddd9ff;
-
-    background:#ffffff;
-
-    border-radius:100px;
-
-    color:var(--accent);
-
-    font-size:13px;
-
-    font-weight:750;
-
-    margin-bottom:22px;
+    justify-content:center;
 
 }
 
+#particleCanvas{
 
-h1{
+    position:absolute;
 
-    font-size:
+    inset:0;
 
-    clamp(
-        46px,
-        6vw,
-        76px
-    );
+    width:100%;
 
-    line-height:1.03;
-
-    letter-spacing:-3px;
-
-}
-
-
-.hero p{
-
-    font-size:18px;
-
-    color:var(--muted);
-
-    max-width:650px;
-
-    margin:
-
-    24px
-    0
-    32px;
+    height:100%;
 
 }
 
 
 /* =========================
-   BUTTONS
+   GLOW EFFECT
 ========================= */
 
-.buttons{
+.hero-glow{
+
+    position:absolute;
+
+    width:700px;
+
+    height:700px;
+
+    border-radius:50%;
+
+    background:
+
+    radial-gradient(
+        circle,
+        rgba(99,91,255,.12),
+        transparent 65%
+    );
+
+    pointer-events:none;
+
+    filter:blur(20px);
+
+}
+
+
+/* =========================
+   HERO CONTENT
+========================= */
+
+.hero-content{
+
+    position:relative;
+
+    z-index:5;
+
+    text-align:center;
+
+    color:white;
+
+    width:min(850px,90%);
+
+    opacity:0;
+
+    transform:translateY(20px);
+
+    animation:
+
+    revealHero
+    1.2s
+    ease
+    2.8s
+    forwards;
+
+    pointer-events:none;
+
+}
+
+.hero-content h1{
+
+    font-size:
+
+    clamp(
+        42px,
+        7vw,
+        86px
+    );
+
+    line-height:1;
+
+    letter-spacing:-4px;
+
+    margin-bottom:22px;
+
+    text-shadow:
+
+    0 0 30px
+    rgba(255,255,255,.08);
+
+}
+
+.hero-content h1 span{
+
+    color:#8b83ff;
+
+}
+
+.hero-content p{
+
+    color:#b8bdcc;
+
+    font-size:18px;
+
+    max-width:650px;
+
+    margin:
+
+    auto
+    auto
+    30px;
+
+}
+
+.hero-buttons{
 
     display:flex;
+
+    justify-content:center;
 
     gap:12px;
 
     flex-wrap:wrap;
 
-}
+    pointer-events:auto;
 
+}
 
 .btn{
 
@@ -338,8 +381,8 @@ h1{
 
     padding:
 
-    13px
-    20px;
+    14px
+    22px;
 
     border-radius:12px;
 
@@ -349,134 +392,145 @@ h1{
 
     transition:
 
-    transform .2s ease,
-
-    box-shadow .2s ease,
-
-    background .2s ease;
+    transform .25s ease,
+    background .25s ease,
+    box-shadow .25s ease;
 
 }
-
 
 .btn:hover{
 
-    transform:
-    translateY(-2px);
+    transform:translateY(-3px);
 
 }
-
 
 .primary{
 
-    background:var(--dark);
+    background:white;
 
-    color:#fff;
+    color:#111827;
 
 }
-
 
 .primary:hover{
 
     box-shadow:
 
-    0 10px 25px
-
-    rgba(23,25,35,.18);
+    0 15px 35px
+    rgba(255,255,255,.15);
 
 }
 
-
 .secondary{
 
-    background:#fff;
+    color:white;
 
-    border:1px solid var(--line);
+    border:
+
+    1px solid
+    rgba(255,255,255,.2);
+
+    background:
+    rgba(255,255,255,.05);
+
+}
+
+.secondary:hover{
+
+    background:
+    rgba(255,255,255,.1);
 
 }
 
 
 /* =========================
-   FEATURED CARD
+   HERO INFO
 ========================= */
 
-.note-card{
+.hero-bottom{
 
-    background:#171923;
+    position:absolute;
 
-    color:#fff;
+    bottom:35px;
 
-    border-radius:24px;
+    left:50%;
 
-    padding:30px;
+    transform:translateX(-50%);
 
-    box-shadow:
+    z-index:5;
 
-    0 30px 70px
+    color:#777d8f;
 
-    rgba(99,91,255,.15);
+    font-size:13px;
 
-    transition:
+    text-align:center;
 
-    transform .3s ease,
+    animation:
 
-    box-shadow .3s ease;
-
-}
-
-
-.note-card:hover{
-
-    transform:
-    translateY(-5px);
-
-    box-shadow:
-
-    0 35px 80px
-
-    rgba(99,91,255,.22);
+    floating
+    3s
+    ease-in-out
+    infinite;
 
 }
 
+.scroll-line{
 
-.note-card small{
+    width:1px;
 
-    color:#aeb4c3;
-
-}
-
-
-.note-card h3{
-
-    font-size:26px;
-
-    line-height:1.35;
+    height:35px;
 
     margin:
 
-    14px
+    10px
+    auto
     0;
+
+    background:
+
+    linear-gradient(
+        transparent,
+        #8b83ff
+    );
 
 }
 
 
-.tag{
+/* =========================
+   HERO ANIMATION
+========================= */
 
-    display:inline-block;
+@keyframes revealHero{
 
-    background:#292d3b;
+    to{
 
-    color:#d8d4ff;
+        opacity:1;
 
-    padding:
+        transform:translateY(0);
 
-    6px
-    10px;
+    }
 
-    border-radius:8px;
+}
 
-    font-size:12px;
+@keyframes floating{
 
-    margin-right:5px;
+    0%{
+        transform:
+        translateX(-50%)
+        translateY(0);
+    }
+
+    50%{
+        transform:
+        translateX(-50%)
+        translateY(-6px);
+    }
+
+    100%{
+        transform:
+        translateX(-50%)
+        translateY(0);
+    }
 
 }
 
@@ -489,39 +543,36 @@ section{
 
     padding:
 
-    80px
+    85px
     0;
 
 }
 
-
 .section-head{
 
-    margin-bottom:30px;
+    margin-bottom:32px;
 
 }
-
 
 .section-head h2{
 
     font-size:
 
     clamp(
-        28px,
+        30px,
         4vw,
-        36px
+        38px
     );
 
-    letter-spacing:-1px;
+    letter-spacing:-1.5px;
 
 }
-
 
 .section-head p{
 
     color:var(--muted);
 
-    margin-top:5px;
+    margin-top:6px;
 
 }
 
@@ -545,69 +596,107 @@ section{
 
 }
 
-
 .card{
 
     background:var(--card);
 
-    border:1px solid var(--line);
+    border:
 
-    border-radius:var(--radius);
+    1px solid
+    var(--line);
 
-    padding:25px;
+    border-radius:20px;
 
-    min-height:250px;
+    padding:28px;
+
+    min-height:260px;
 
     display:flex;
 
     flex-direction:column;
 
+    position:relative;
+
+    overflow:hidden;
+
     transition:
 
-    transform .25s ease,
-
-    box-shadow .25s ease,
-
-    border-color .25s ease;
+    transform .35s ease,
+    box-shadow .35s ease;
 
 }
 
+.card::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:180px;
+
+    height:180px;
+
+    border-radius:50%;
+
+    background:
+
+    radial-gradient(
+        circle,
+        rgba(99,91,255,.1),
+        transparent 70%
+    );
+
+    top:-80px;
+
+    right:-80px;
+
+    transition:.4s;
+
+}
 
 .card:hover{
 
     transform:
-    translateY(-6px);
-
-    border-color:#d5d1ff;
+    translateY(-8px);
 
     box-shadow:
 
-    0 20px 40px
-
-    rgba(17,24,39,.08);
+    0 25px 50px
+    rgba(17,24,39,.1);
 
 }
 
+.card:hover::before{
+
+    transform:scale(1.5);
+
+}
 
 .icon{
 
-    font-size:30px;
+    font-size:32px;
+
+    position:relative;
+
+    z-index:2;
 
 }
-
 
 .card h3{
 
     margin:
 
-    16px
+    18px
     0
     8px;
 
     font-size:21px;
 
-}
+    position:relative;
 
+    z-index:2;
+
+}
 
 .card p{
 
@@ -615,20 +704,27 @@ section{
 
     font-size:14px;
 
-}
+    position:relative;
 
+    z-index:2;
+
+}
 
 .count{
 
     margin-top:auto;
 
-    padding-top:22px;
+    padding-top:24px;
+
+    color:var(--accent);
 
     font-size:12px;
 
     font-weight:800;
 
-    color:var(--accent);
+    position:relative;
+
+    z-index:2;
 
 }
 
@@ -652,16 +748,18 @@ section{
 
 }
 
-
 .note{
 
-    background:#fff;
+    background:white;
 
-    border:1px solid var(--line);
+    border:
 
-    border-radius:16px;
+    1px solid
+    var(--line);
 
-    padding:21px;
+    border-radius:18px;
+
+    padding:22px;
 
     display:flex;
 
@@ -671,33 +769,28 @@ section{
 
     transition:
 
-    transform .2s ease,
-
-    box-shadow .2s ease;
+    transform .25s ease,
+    box-shadow .25s ease;
 
 }
-
 
 .note:hover{
 
     transform:
-    translateY(-3px);
+    translateY(-4px);
 
     box-shadow:
 
-    0 12px 30px
-
-    rgba(17,24,39,.06);
+    0 15px 35px
+    rgba(17,24,39,.08);
 
 }
-
 
 .note h3{
 
     font-size:17px;
 
 }
-
 
 .note p{
 
@@ -708,7 +801,6 @@ section{
     margin-top:5px;
 
 }
-
 
 .day{
 
@@ -733,12 +825,15 @@ section{
 
     padding:
 
-    15px
-    17px;
+    16px
+    18px;
 
-    border:1px solid var(--line);
+    border:
 
-    border-radius:12px;
+    1px solid
+    var(--line);
+
+    border-radius:14px;
 
     font:inherit;
 
@@ -746,72 +841,119 @@ section{
 
     outline:none;
 
-    background:#fff;
+    background:white;
 
-    transition:.2s;
+    transition:.25s;
 
 }
 
-
 .search:focus{
 
-    border-color:var(--accent);
+    border-color:
+
+    var(--accent);
 
     box-shadow:
 
     0 0 0 4px
-
     rgba(99,91,255,.08);
 
 }
 
 
 /* =========================
-   IMPORTANT SECTION
+   CTA
 ========================= */
 
 .cta{
 
-    background:var(--dark);
+    background:
 
-    color:#fff;
+    linear-gradient(
+        135deg,
+        #11131d,
+        #1b1e2d
+    );
 
-    border-radius:26px;
+    color:white;
+
+    border-radius:28px;
 
     padding:
 
-    55px
+    65px
     30px;
 
     text-align:center;
 
+    position:relative;
+
+    overflow:hidden;
+
 }
 
+.cta::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:500px;
+
+    height:500px;
+
+    border-radius:50%;
+
+    background:
+
+    radial-gradient(
+        circle,
+        rgba(99,91,255,.22),
+        transparent 65%
+    );
+
+    top:-250px;
+
+    left:50%;
+
+    transform:
+    translateX(-50%);
+
+}
 
 .cta h2{
+
+    position:relative;
 
     font-size:
 
     clamp(
-        28px,
+        30px,
         4vw,
-        38px
+        42px
     );
 
 }
 
-
 .cta p{
+
+    position:relative;
 
     color:#b9bfce;
 
     margin:
 
-    12px
+    14px
     auto
-    25px;
+    26px;
 
     max-width:620px;
+
+}
+
+.cta .btn{
+
+    position:relative;
 
 }
 
@@ -826,13 +968,11 @@ section{
 
 }
 
-
 .instagram h2{
 
-    font-size:32px;
+    font-size:34px;
 
 }
-
 
 .instagram p{
 
@@ -842,7 +982,7 @@ section{
 
     8px
     0
-    20px;
+    22px;
 
 }
 
@@ -853,16 +993,18 @@ section{
 
 footer{
 
-    padding:30px 0;
+    padding:32px 0;
 
-    border-top:1px solid var(--line);
+    border-top:
+
+    1px solid
+    var(--line);
 
     color:var(--muted);
 
     font-size:13px;
 
 }
-
 
 .footer{
 
@@ -878,15 +1020,6 @@ footer{
 ========================= */
 
 @media(max-width:900px){
-
-    .hero-grid{
-
-        grid-template-columns:1fr;
-
-        gap:40px;
-
-    }
-
 
     .cards{
 
@@ -914,13 +1047,11 @@ footer{
 
     }
 
-
     .menu{
 
         display:block;
 
     }
-
 
     .navlinks{
 
@@ -934,11 +1065,14 @@ footer{
 
         width:100%;
 
-        background:#fff;
+        background:#0c0f17;
 
-        border-bottom:1px solid var(--line);
+        border-bottom:
 
-        padding:20px;
+        1px solid
+        rgba(255,255,255,.1);
+
+        padding:22px;
 
         flex-direction:column;
 
@@ -948,48 +1082,46 @@ footer{
 
     }
 
-
     .navlinks.active{
 
         display:flex;
 
     }
 
+    .particle-hero{
 
-    .hero{
-
-        padding:
-
-        65px
-        0
-        60px;
+        min-height:100svh;
 
     }
 
-
-    h1{
+    .hero-content h1{
 
         letter-spacing:-2px;
 
     }
 
+    .hero-content p{
 
-    .hero p{
-
-        font-size:16px;
+        font-size:15px;
 
     }
 
+    .hero-bottom{
+
+        bottom:20px;
+
+        font-size:11px;
+
+    }
 
     section{
 
         padding:
 
-        60px
+        65px
         0;
 
     }
-
 
     .cards{
 
@@ -997,13 +1129,11 @@ footer{
 
     }
 
-
     .notes{
 
         grid-template-columns:1fr;
 
     }
-
 
     .note{
 
@@ -1013,33 +1143,17 @@ footer{
 
     }
 
-
     .day{
 
         align-self:flex-start;
 
     }
 
-
     .footer{
 
         flex-direction:column;
 
         gap:8px;
-
-    }
-
-
-    .note-card{
-
-        padding:24px;
-
-    }
-
-
-    .cta{
-
-        padding:40px 22px;
 
     }
 
@@ -1054,7 +1168,9 @@ footer{
 <body>
 
 
-<!-- NAVBAR -->
+<!-- =========================
+     NAVBAR
+========================= -->
 
 <nav>
 
@@ -1094,7 +1210,8 @@ Instagram
 
 <button
 class="menu"
-id="menu">
+id="menu"
+aria-label="Open Menu">
 
 ☰
 
@@ -1107,21 +1224,18 @@ id="menu">
 
 
 
-<!-- HERO -->
+<!-- =========================
+     PARTICLE HERO
+========================= -->
 
-<header class="hero">
+<header class="particle-hero">
 
-<div class="container hero-grid">
+<canvas id="particleCanvas"></canvas>
+
+<div class="hero-glow"></div>
 
 
-<div>
-
-<div class="badge">
-
-🚀 Daily learning, made simple
-
-</div>
-
+<div class="hero-content">
 
 <h1>
 
@@ -1129,11 +1243,8 @@ Learn today.
 
 <br>
 
-<span
-style="color:#635bff">
-
+<span>
 Grow Every day.
-
 </span>
 
 </h1>
@@ -1148,7 +1259,7 @@ preparation — explained in a simple way.
 </p>
 
 
-<div class="buttons">
+<div class="hero-buttons">
 
 <a
 class="btn primary"
@@ -1173,61 +1284,22 @@ Browse Topics
 </div>
 
 
+<div class="hero-bottom">
 
-<div class="note-card">
+Move your cursor ✦
 
-<small>
-
-FEATURED NOTE · SQL
-
-</small>
-
-
-<h3>
-
-CTE vs Subquery —
-When should you use each?
-
-</h3>
-
-
-<p
-style="color:#c2c7d2">
-
-A simple explanation with examples,
-mistakes to avoid and interview tips.
-
-</p>
-
-
-<div
-style="margin-top:18px">
-
-<span class="tag">
-SQL
-</span>
-
-<span class="tag">
-Interview
-</span>
-
-<span class="tag">
-Beginner
-</span>
+<div class="scroll-line"></div>
 
 </div>
 
-
-</div>
-
-
-</div>
 
 </header>
 
 
 
-<!-- CATEGORIES -->
+<!-- =========================
+     CATEGORIES
+========================= -->
 
 <section id="categories">
 
@@ -1237,20 +1309,14 @@ Beginner
 <div class="section-head">
 
 <h2>
-
 Explore topics
-
 </h2>
 
 <p>
-
-Everything organized so you can learn
-without getting lost.
-
+Everything organized so you can learn without getting lost.
 </p>
 
 </div>
-
 
 
 <div class="cards">
@@ -1261,34 +1327,22 @@ class="card"
 href="sql.html">
 
 <div class="icon">
-
 🗃️
-
 </div>
 
-
 <h3>
-
 SQL & Databases
-
 </h3>
 
-
 <p>
-
 Queries, joins, subqueries,
 CTEs, window functions,
 views, procedures and triggers.
-
 </p>
 
-
 <div class="count">
-
 START LEARNING →
-
 </div>
-
 
 </a>
 
@@ -1299,34 +1353,22 @@ class="card"
 href="analytics.html">
 
 <div class="icon">
-
 📊
-
 </div>
 
-
 <h3>
-
 Data Analytics
-
 </h3>
 
-
 <p>
-
 Excel, Power BI,
 statistics, dashboards
 and important analyst concepts.
-
 </p>
 
-
 <div class="count">
-
 EXPLORE TOPICS →
-
 </div>
-
 
 </a>
 
@@ -1337,34 +1379,22 @@ class="card"
 href="interview.html">
 
 <div class="icon">
-
 🎯
-
 </div>
 
-
 <h3>
-
 Interview Prep
-
 </h3>
 
-
 <p>
-
 Important concepts,
 practical questions
 and revision notes.
-
 </p>
 
-
 <div class="count">
-
 REVISE NOW →
-
 </div>
-
 
 </a>
 
@@ -1378,12 +1408,11 @@ REVISE NOW →
 
 
 
-<!-- NOTES -->
+<!-- =========================
+     NOTES
+========================= -->
 
-<section
-id="notes"
-style="padding-top:20px">
-
+<section id="notes">
 
 <div class="container">
 
@@ -1391,22 +1420,14 @@ style="padding-top:20px">
 <div class="section-head">
 
 <h2>
-
 Latest notes
-
 </h2>
 
-
 <p>
-
-Fresh learning,
-one day at a time.
-
+Fresh learning, one day at a time.
 </p>
 
-
 </div>
-
 
 
 <input
@@ -1420,7 +1441,6 @@ placeholder="Search notes... e.g. JOIN, CTE, Excel"
 >
 
 
-
 <div
 class="notes"
 id="noteList">
@@ -1431,27 +1451,19 @@ id="noteList">
 <div>
 
 <h3>
-
 SQL Joins —
 Understand them visually
-
 </h3>
 
-
 <p>
-
 INNER, LEFT, RIGHT and FULL joins
 with practical examples.
-
 </p>
 
 </div>
 
-
 <span class="day">
-
 DAY 33
-
 </span>
 
 </article>
@@ -1463,27 +1475,19 @@ DAY 33
 <div>
 
 <h3>
-
 CTE —
 Why and when to use it
-
 </h3>
 
-
 <p>
-
 Break complex SQL into
 readable steps.
-
 </p>
 
 </div>
 
-
 <span class="day">
-
 DAY 34
-
 </span>
 
 </article>
@@ -1495,27 +1499,19 @@ DAY 34
 <div>
 
 <h3>
-
 Window Functions —
 The real idea
-
 </h3>
 
-
 <p>
-
 ROW_NUMBER, RANK,
 DENSE_RANK, LAG and LEAD.
-
 </p>
 
 </div>
 
-
 <span class="day">
-
 SQL
-
 </span>
 
 </article>
@@ -1527,26 +1523,18 @@ SQL
 <div>
 
 <h3>
-
 Data Analytics Roadmap
-
 </h3>
 
-
 <p>
-
 Excel → SQL →
 Power BI → Projects.
-
 </p>
 
 </div>
 
-
 <span class="day">
-
 ROADMAP
-
 </span>
 
 </article>
@@ -1561,23 +1549,20 @@ ROADMAP
 
 
 
-<!-- IMPORTANT -->
+<!-- =========================
+     IMPORTANT
+========================= -->
 
 <section id="important">
 
 <div class="container">
 
-
 <div class="cta">
 
-
 <h2>
-
 Important topics,
 without the confusion.
-
 </h2>
-
 
 <p>
 
@@ -1600,36 +1585,29 @@ Start Revising
 
 </div>
 
-
 </div>
 
 </section>
 
 
 
-<!-- INSTAGRAM -->
+<!-- =========================
+     INSTAGRAM
+========================= -->
 
-<section
-id="instagram"
-style="padding-top:20px">
+<section id="instagram">
 
-
-<div
-class="container instagram">
+<div class="container instagram">
 
 
 <h2>
-
 Follow the daily journey
-
 </h2>
 
 
 <p>
-
 New notes and learning content
 on Instagram.
-
 </p>
 
 
@@ -1649,25 +1627,21 @@ target="_blank">
 
 
 
-<!-- FOOTER -->
+<!-- =========================
+     FOOTER
+========================= -->
 
 <footer>
 
 <div class="container footer">
 
 <span>
-
 © 2026 Beyond BTech
-
 </span>
-
 
 <span>
-
 Learn • Build • Grow
-
 </span>
-
 
 </div>
 
@@ -1679,47 +1653,768 @@ Learn • Build • Grow
 
 
 /* =========================
+   PARTICLE SYSTEM
+========================= */
+
+const canvas =
+document.getElementById(
+    "particleCanvas"
+);
+
+
+const ctx =
+canvas.getContext(
+    "2d"
+);
+
+
+let particles = [];
+
+let targets = [];
+
+let mouse = {
+
+    x:null,
+
+    y:null
+
+};
+
+
+let width;
+
+let height;
+
+let particleLimit;
+
+
+/* =========================
+   RESIZE
+========================= */
+
+function resizeCanvas(){
+
+    const dpr =
+    Math.min(
+        window.devicePixelRatio,
+        2
+    );
+
+
+    width =
+    window.innerWidth;
+
+
+    height =
+    window.innerHeight;
+
+
+    canvas.width =
+    width * dpr;
+
+
+    canvas.height =
+    height * dpr;
+
+
+    canvas.style.width =
+    width + "px";
+
+
+    canvas.style.height =
+    height + "px";
+
+
+    ctx.setTransform(
+        dpr,
+        0,
+        0,
+        dpr,
+        0,
+        0
+    );
+
+
+    createTextTargets();
+
+}
+
+
+window.addEventListener(
+    "resize",
+    resizeCanvas
+);
+
+
+
+/* =========================
+   CREATE TEXT TARGETS
+========================= */
+
+function createTextTargets(){
+
+    const offCanvas =
+    document.createElement(
+        "canvas"
+    );
+
+
+    const offCtx =
+    offCanvas.getContext(
+        "2d"
+    );
+
+
+    offCanvas.width =
+    width;
+
+
+    offCanvas.height =
+    height;
+
+
+    let fontSize;
+
+
+    if(width < 600){
+
+        fontSize =
+        Math.min(
+            width * .13,
+            62
+        );
+
+    }
+
+    else{
+
+        fontSize =
+        Math.min(
+            width * .10,
+            130
+        );
+
+    }
+
+
+    offCtx.fillStyle =
+    "white";
+
+
+    offCtx.textAlign =
+    "center";
+
+
+    offCtx.textBaseline =
+    "middle";
+
+
+    offCtx.font =
+    `800 ${fontSize}px Arial`;
+
+
+    if(width < 600){
+
+        offCtx.fillText(
+
+            "BEYOND",
+
+            width / 2,
+
+            height / 2 - 50
+
+        );
+
+
+        offCtx.fillText(
+
+            "BTECH",
+
+            width / 2,
+
+            height / 2 + 35
+
+        );
+
+    }
+
+    else{
+
+        offCtx.fillText(
+
+            "BEYOND BTECH",
+
+            width / 2,
+
+            height / 2 - 20
+
+        );
+
+    }
+
+
+    const imageData =
+    offCtx.getImageData(
+        0,
+        0,
+        width,
+        height
+    );
+
+
+    targets = [];
+
+
+    const gap =
+    width < 600
+    ? 7
+    : 8;
+
+
+    for(
+
+        let y = 0;
+
+        y < height;
+
+        y += gap
+
+    ){
+
+        for(
+
+            let x = 0;
+
+            x < width;
+
+            x += gap
+
+        ){
+
+            const index =
+            (y * width + x)
+            * 4;
+
+
+            if(
+                imageData.data[index + 3]
+                > 128
+            ){
+
+                targets.push({
+
+                    x:x,
+
+                    y:y
+
+                });
+
+            }
+
+        }
+
+    }
+
+
+    particleLimit =
+    width < 600
+    ? 500
+    : 1100;
+
+
+    if(
+        targets.length >
+        particleLimit
+    ){
+
+        const step =
+        Math.ceil(
+            targets.length /
+            particleLimit
+        );
+
+
+        targets =
+        targets.filter(
+
+            (
+                _,
+                index
+            ) =>
+
+            index % step === 0
+
+        );
+
+    }
+
+
+    createParticles();
+
+}
+
+
+
+/* =========================
+   CREATE PARTICLES
+========================= */
+
+function createParticles(){
+
+    particles = [];
+
+
+    targets.forEach(
+        target => {
+
+            particles.push({
+
+                x:
+                Math.random()
+                * width,
+
+                y:
+                Math.random()
+                * height,
+
+                vx:
+                0,
+
+                vy:
+                0,
+
+                tx:
+                target.x,
+
+                ty:
+                target.y,
+
+                size:
+
+                Math.random()
+                * 1.8
+                + .6,
+
+                speed:
+
+                Math.random()
+                * .02
+                + .015,
+
+                phase:
+
+                Math.random()
+                * Math.PI
+                * 2
+
+            });
+
+        }
+
+    );
+
+}
+
+
+
+/* =========================
+   MOUSE
+========================= */
+
+window.addEventListener(
+
+    "mousemove",
+
+    event => {
+
+        mouse.x =
+        event.clientX;
+
+
+        mouse.y =
+        event.clientY;
+
+    }
+
+);
+
+
+window.addEventListener(
+
+    "mouseleave",
+
+    () => {
+
+        mouse.x = null;
+
+        mouse.y = null;
+
+    }
+
+);
+
+
+canvas.addEventListener(
+
+    "touchmove",
+
+    event => {
+
+        const touch =
+        event.touches[0];
+
+
+        mouse.x =
+        touch.clientX;
+
+
+        mouse.y =
+        touch.clientY;
+
+    },
+
+    {
+        passive:true
+    }
+
+);
+
+
+
+/* =========================
+   DRAW PARTICLES
+========================= */
+
+function animate(){
+
+    ctx.clearRect(
+
+        0,
+
+        0,
+
+        width,
+
+        height
+
+    );
+
+
+    particles.forEach(
+
+        particle => {
+
+
+            const time =
+            Date.now()
+            * .001;
+
+
+            /* FLOAT */
+
+            const floatX =
+            Math.sin(
+
+                time
+                + particle.phase
+
+            ) * 1.5;
+
+
+            const floatY =
+            Math.cos(
+
+                time
+                + particle.phase
+
+            ) * 1.5;
+
+
+            /* MOVE TO TEXT */
+
+            particle.vx +=
+
+            (
+                particle.tx
+                + floatX
+                - particle.x
+            )
+
+            * particle.speed;
+
+
+            particle.vy +=
+
+            (
+                particle.ty
+                + floatY
+                - particle.y
+            )
+
+            * particle.speed;
+
+
+
+            /* MOUSE INTERACTION */
+
+            if(
+
+                mouse.x !== null
+
+            ){
+
+
+                const dx =
+                particle.x
+                - mouse.x;
+
+
+                const dy =
+                particle.y
+                - mouse.y;
+
+
+                const distance =
+                Math.sqrt(
+
+                    dx * dx
+                    + dy * dy
+
+                );
+
+
+                const radius =
+                140;
+
+
+                if(
+
+                    distance <
+                    radius
+
+                ){
+
+
+                    const force =
+
+                    (
+                        radius
+                        - distance
+                    )
+
+                    / radius;
+
+
+                    particle.vx +=
+
+                    dx
+                    * force
+                    * .08;
+
+
+                    particle.vy +=
+
+                    dy
+                    * force
+                    * .08;
+
+                }
+
+            }
+
+
+            /* FRICTION */
+
+            particle.vx *= .84;
+
+            particle.vy *= .84;
+
+
+            particle.x +=
+            particle.vx;
+
+
+            particle.y +=
+            particle.vy;
+
+
+
+            /* GLOW */
+
+            const glow =
+
+            ctx.createRadialGradient(
+
+                particle.x,
+
+                particle.y,
+
+                0,
+
+                particle.x,
+
+                particle.y,
+
+                particle.size * 5
+
+            );
+
+
+            glow.addColorStop(
+
+                0,
+
+                "rgba(255,255,255,.95)"
+
+            );
+
+
+            glow.addColorStop(
+
+                .35,
+
+                "rgba(160,170,255,.65)"
+
+            );
+
+
+            glow.addColorStop(
+
+                1,
+
+                "rgba(99,91,255,0)"
+
+            );
+
+
+            ctx.fillStyle =
+            glow;
+
+
+            ctx.beginPath();
+
+
+            ctx.arc(
+
+                particle.x,
+
+                particle.y,
+
+                particle.size * 4,
+
+                0,
+
+                Math.PI * 2
+
+            );
+
+
+            ctx.fill();
+
+
+
+            /* PARTICLE CORE */
+
+            ctx.fillStyle =
+            "rgba(255,255,255,.95)";
+
+
+            ctx.beginPath();
+
+
+            ctx.arc(
+
+                particle.x,
+
+                particle.y,
+
+                particle.size,
+
+                0,
+
+                Math.PI * 2
+
+            );
+
+
+            ctx.fill();
+
+
+        }
+
+    );
+
+
+    requestAnimationFrame(
+        animate
+    );
+
+}
+
+
+
+/* =========================
+   START
+========================= */
+
+resizeCanvas();
+
+animate();
+
+
+
+/* =========================
    SEARCH
 ========================= */
 
 const search =
-document.getElementById("search");
+document.getElementById(
+    "search"
+);
 
 
 const notes =
-[...document.querySelectorAll(".note")];
+[
+    ...document.querySelectorAll(
+        ".note"
+    )
+];
 
 
 search.addEventListener(
 
-"input",
+    "input",
 
-() => {
-
-const q =
-search.value
-.toLowerCase()
-.trim();
+    () => {
 
 
-notes.forEach(
+        const q =
+        search.value
+        .toLowerCase()
+        .trim();
 
-note => {
 
-note.style.display =
-note.innerText
-.toLowerCase()
-.includes(q)
+        notes.forEach(
 
-? "flex"
+            note => {
 
-: "none";
 
-}
+                note.style.display =
 
-);
+                note.innerText
+                .toLowerCase()
+                .includes(q)
 
-}
+                ? "flex"
+
+                : "none";
+
+
+            }
+
+        );
+
+    }
 
 );
 
@@ -1730,48 +2425,64 @@ note.innerText
 ========================= */
 
 const menu =
-document.getElementById("menu");
+document.getElementById(
+    "menu"
+);
 
 
 const navlinks =
-document.getElementById("navlinks");
+document.getElementById(
+    "navlinks"
+);
 
 
 menu.addEventListener(
 
-"click",
+    "click",
 
-() => {
+    () => {
 
-navlinks.classList.toggle("active");
+        navlinks
+        .classList
+        .toggle(
+            "active"
+        );
 
-}
+    }
 
 );
 
 
 
-/* CLOSE MENU AFTER CLICK */
+/* =========================
+   CLOSE MOBILE MENU
+========================= */
 
 document
-.querySelectorAll(".navlinks a")
+.querySelectorAll(
+    ".navlinks a"
+)
 .forEach(
 
-link => {
+    link => {
 
-link.addEventListener(
+        link.addEventListener(
 
-"click",
+            "click",
 
-() => {
+            () => {
 
-navlinks.classList.remove("active");
+                navlinks
+                .classList
+                .remove(
+                    "active"
+                );
 
-}
+            }
 
-);
+        );
 
-}
+    }
 
 );
 
