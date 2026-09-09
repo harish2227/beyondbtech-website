@@ -243,6 +243,204 @@ flex-wrap:wrap
 }
 
 }
+/* ===============================
+   PRACTICE DATASET SECTION
+================================ */
+
+.practice-section {
+    margin-top: 50px;
+}
+
+.practice-card {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+
+    padding: 35px;
+
+    background: linear-gradient(
+        135deg,
+        #171923,
+        #242638
+    );
+
+    border: 1px solid rgba(129,119,255,.25);
+
+    border-radius: 22px;
+
+    color: white;
+
+    transition:
+        transform .35s ease,
+        box-shadow .35s ease,
+        border-color .35s ease;
+}
+
+.practice-card:hover {
+    transform: translateY(-6px);
+
+    border-color: rgba(129,119,255,.6);
+
+    box-shadow:
+        0 20px 45px rgba(0,0,0,.18),
+        0 0 30px rgba(99,91,255,.15);
+}
+
+.practice-icon {
+    font-size: 52px;
+
+    width: 90px;
+    height: 90px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(255,255,255,.08);
+
+    border-radius: 20px;
+
+    flex-shrink: 0;
+
+    transition:
+        transform .35s ease,
+        background .35s ease;
+}
+
+.practice-card:hover .practice-icon {
+    transform: rotate(-5deg) scale(1.08);
+
+    background: rgba(129,119,255,.18);
+}
+
+.practice-content {
+    flex: 1;
+}
+
+.practice-label {
+    display: inline-block;
+
+    font-size: 12px;
+    font-weight: 800;
+
+    letter-spacing: 1px;
+
+    color: #aaa5ff;
+
+    margin-bottom: 8px;
+}
+
+.practice-content h2 {
+    font-size: 27px;
+
+    margin-bottom: 10px;
+}
+
+.practice-content p {
+    color: #c2c5d0;
+
+    max-width: 700px;
+
+    line-height: 1.7;
+}
+
+.practice-points {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 10px;
+
+    margin: 20px 0;
+}
+
+.practice-points span {
+    background: rgba(255,255,255,.08);
+
+    padding: 8px 12px;
+
+    border-radius: 8px;
+
+    font-size: 13px;
+
+    color: #d8d9e0;
+}
+
+.dataset-btn {
+    display: inline-block;
+
+    background: #635bff;
+
+    color: white;
+
+    padding: 13px 20px;
+
+    border-radius: 10px;
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    text-decoration: none;
+
+    transition:
+        transform .25s ease,
+        box-shadow .25s ease,
+        background .25s ease;
+}
+
+.dataset-btn:hover {
+    transform: translateY(-3px);
+
+    background: #756dff;
+
+    box-shadow:
+        0 10px 25px rgba(99,91,255,.35);
+}
+
+
+/* ===============================
+   MOBILE RESPONSIVE
+================================ */
+
+@media (max-width: 700px) {
+
+    .practice-card {
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        padding: 25px;
+    }
+
+    .practice-icon {
+        width: 70px;
+        height: 70px;
+
+        font-size: 38px;
+
+        border-radius: 16px;
+    }
+
+    .practice-content h2 {
+        font-size: 23px;
+    }
+
+    .practice-points {
+        flex-direction: column;
+
+        align-items: flex-start;
+    }
+
+    .dataset-btn {
+        width: 100%;
+
+        text-align: center;
+    }
+
+}
+  
 
 </style>
 </head>
