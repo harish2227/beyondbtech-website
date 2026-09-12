@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,9 +9,9 @@
 
     <style>
 
-        /* ================================
+        /* ========================================
            GLOBAL
-        ================================= */
+        ======================================== */
 
         * {
             margin: 0;
@@ -24,20 +25,21 @@
 
         body {
             font-family: Arial, Helvetica, sans-serif;
-            background: #f7f8fc;
-            color: #1f2937;
-            line-height: 1.6;
+            background: #080a14;
+            color: #f5f5f7;
+            line-height: 1.7;
             overflow-x: hidden;
         }
 
         a {
             text-decoration: none;
+            color: inherit;
         }
 
 
-        /* ================================
+        /* ========================================
            NAVBAR
-        ================================= */
+        ======================================== */
 
         nav {
             position: sticky;
@@ -49,20 +51,22 @@
             align-items: center;
 
             padding: 18px 8%;
-            background: rgba(255, 255, 255, 0.92);
-            backdrop-filter: blur(14px);
 
-            border-bottom: 1px solid #e5e7eb;
+            background: rgba(8, 10, 20, 0.82);
+            backdrop-filter: blur(18px);
+
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
         }
 
         .logo {
             font-size: 1.4rem;
             font-weight: 800;
-            color: #111827;
+            letter-spacing: -0.5px;
+            color: white;
         }
 
         .logo span {
-            color: #6c4df6;
+            color: #8b5cf6;
         }
 
         .nav-links {
@@ -71,84 +75,128 @@
         }
 
         .nav-links a {
-            color: #4b5563;
+            color: #a9acb8;
+            font-size: 0.95rem;
             font-weight: 600;
-            transition: 0.3s;
+            transition: 0.3s ease;
         }
 
         .nav-links a:hover {
-            color: #6c4df6;
+            color: #a78bfa;
         }
 
 
-        /* ================================
+        /* ========================================
            HERO
-        ================================= */
+        ======================================== */
 
         .hero {
+            position: relative;
+            overflow: hidden;
+
             min-height: 620px;
 
             display: flex;
             align-items: center;
-            justify-content: center;
 
-            padding: 80px 8%;
-
-            background:
-                radial-gradient(
-                    circle at top left,
-                    rgba(108, 77, 246, 0.18),
-                    transparent 35%
-                ),
-                radial-gradient(
-                    circle at bottom right,
-                    rgba(59, 130, 246, 0.14),
-                    transparent 35%
-                ),
-                #ffffff;
+            padding: 100px 8%;
         }
 
-        .hero-container {
-            max-width: 1100px;
+        .hero::before {
+            content: "";
+
+            position: absolute;
+
+            width: 600px;
+            height: 600px;
+
+            top: -250px;
+            right: -150px;
+
+            background: rgba(124, 58, 237, 0.18);
+
+            filter: blur(120px);
+            border-radius: 50%;
+        }
+
+        .hero::after {
+            content: "";
+
+            position: absolute;
+
+            width: 450px;
+            height: 450px;
+
+            bottom: -250px;
+            left: -150px;
+
+            background: rgba(79, 70, 229, 0.12);
+
+            filter: blur(110px);
+            border-radius: 50%;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+
+            max-width: 1050px;
             width: 100%;
         }
 
-        .day-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-
-            padding: 8px 16px;
-            border-radius: 50px;
-
-            background: #ede9fe;
-            color: #6c4df6;
-
-            font-size: 0.85rem;
-            font-weight: 700;
-            letter-spacing: 1px;
-
+        .breadcrumb {
+            color: #8f93a3;
+            font-size: 0.9rem;
             margin-bottom: 25px;
         }
 
+        .breadcrumb a {
+            transition: 0.3s;
+        }
+
+        .breadcrumb a:hover {
+            color: #a78bfa;
+        }
+
+        .day-badge {
+            display: inline-block;
+
+            padding: 8px 16px;
+
+            border: 1px solid rgba(139, 92, 246, 0.4);
+            background: rgba(139, 92, 246, 0.1);
+
+            border-radius: 50px;
+
+            color: #a78bfa;
+
+            font-size: 0.78rem;
+            font-weight: 800;
+            letter-spacing: 1.5px;
+
+            margin-bottom: 24px;
+        }
+
         .hero h1 {
-            font-size: clamp(2.8rem, 7vw, 5.5rem);
-            line-height: 1.05;
             max-width: 850px;
-            color: #111827;
+
+            font-size: clamp(3rem, 7vw, 6rem);
+            line-height: 1.05;
+            letter-spacing: -3px;
         }
 
         .hero h1 span {
-            color: #6c4df6;
+            color: #8b5cf6;
         }
 
         .hero p {
-            max-width: 680px;
+            max-width: 700px;
 
             margin-top: 25px;
 
-            font-size: 1.15rem;
-            color: #6b7280;
+            color: #a9acb8;
+
+            font-size: 1.1rem;
         }
 
         .hero-buttons {
@@ -161,11 +209,13 @@
 
         .primary-btn,
         .secondary-btn {
+
             display: inline-flex;
             align-items: center;
             justify-content: center;
 
             padding: 14px 24px;
+
             border-radius: 12px;
 
             font-weight: 700;
@@ -174,186 +224,248 @@
         }
 
         .primary-btn {
-            background: #6c4df6;
+
+            background: #7c3aed;
             color: white;
 
-            box-shadow: 0 10px 25px rgba(108, 77, 246, 0.25);
+            box-shadow: 0 12px 35px rgba(124, 58, 237, 0.28);
         }
 
         .primary-btn:hover {
+
             transform: translateY(-4px);
-            box-shadow: 0 16px 30px rgba(108, 77, 246, 0.35);
+
+            background: #8b5cf6;
+
+            box-shadow: 0 18px 45px rgba(124, 58, 237, 0.4);
         }
 
         .secondary-btn {
-            background: white;
-            color: #374151;
 
-            border: 1px solid #e5e7eb;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+
+            color: #d7d9e0;
+
+            background: rgba(255, 255, 255, 0.03);
         }
 
         .secondary-btn:hover {
+
             transform: translateY(-4px);
-            border-color: #6c4df6;
-            color: #6c4df6;
+
+            border-color: #8b5cf6;
+
+            color: #c4b5fd;
         }
 
 
-        /* ================================
-           STATS
-        ================================= */
+        /* ========================================
+           HERO STATS
+        ======================================== */
 
         .stats {
+
             display: grid;
+
             grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
+
+            gap: 18px;
+
+            max-width: 800px;
 
             margin-top: 60px;
         }
 
         .stat-card {
+
             padding: 22px;
 
-            background: rgba(255, 255, 255, 0.75);
-            border: 1px solid #e5e7eb;
+            background: rgba(255, 255, 255, 0.035);
+
+            border: 1px solid rgba(255, 255, 255, 0.08);
+
             border-radius: 18px;
+
+            backdrop-filter: blur(10px);
 
             transition: all 0.35s ease;
         }
 
         .stat-card:hover {
+
             transform: translateY(-6px);
-            box-shadow: 0 18px 40px rgba(0, 0, 0, 0.08);
+
+            border-color: rgba(139, 92, 246, 0.45);
+
+            background: rgba(139, 92, 246, 0.06);
         }
 
         .stat-card h3 {
+
+            color: #a78bfa;
+
             font-size: 1.8rem;
-            color: #6c4df6;
         }
 
         .stat-card p {
-            margin-top: 5px;
+
+            margin-top: 3px;
+
+            color: #8f93a3;
+
             font-size: 0.9rem;
         }
 
 
-        /* ================================
-           MAIN CONTAINER
-        ================================= */
+        /* ========================================
+           MAIN
+        ======================================== */
 
         .container {
-            max-width: 1200px;
+
+            max-width: 1150px;
+
             margin: auto;
+
             padding: 100px 8%;
         }
 
 
-        /* ================================
-           SECTION TITLE
-        ================================= */
+        /* ========================================
+           SECTION HEADER
+        ======================================== */
 
         .section-tag {
-            color: #6c4df6;
-            font-size: 0.85rem;
+
+            color: #a78bfa;
+
+            font-size: 0.8rem;
+
             font-weight: 800;
+
             letter-spacing: 1.5px;
         }
 
         .section-title {
+
             margin-top: 12px;
 
             font-size: clamp(2rem, 4vw, 3.2rem);
-            color: #111827;
+
+            letter-spacing: -1px;
         }
 
         .section-description {
+
             max-width: 700px;
 
-            margin-top: 18px;
+            margin-top: 16px;
 
-            color: #6b7280;
+            color: #969aa8;
         }
 
 
-        /* ================================
+        /* ========================================
            ROADMAP
-        ================================= */
+        ======================================== */
 
         .roadmap {
-            margin-top: 50px;
 
             display: grid;
+
             grid-template-columns: repeat(5, 1fr);
+
             gap: 15px;
+
+            margin-top: 45px;
         }
 
         .roadmap-card {
-            position: relative;
 
             padding: 22px 18px;
 
-            background: white;
-            border: 1px solid #e5e7eb;
-            border-radius: 16px;
+            background: rgba(255, 255, 255, 0.035);
 
-            cursor: pointer;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+
+            border-radius: 18px;
 
             transition: all 0.35s ease;
         }
 
         .roadmap-card:hover {
+
             transform: translateY(-8px);
 
-            border-color: #6c4df6;
+            border-color: #8b5cf6;
 
-            box-shadow: 0 18px 35px rgba(108, 77, 246, 0.12);
+            background: rgba(139, 92, 246, 0.08);
+
+            box-shadow: 0 18px 45px rgba(0, 0, 0, 0.22);
         }
 
         .roadmap-number {
-            font-size: 0.8rem;
+
+            color: #a78bfa;
+
+            font-size: 0.78rem;
+
             font-weight: 800;
-            color: #6c4df6;
+
+            letter-spacing: 1px;
         }
 
         .roadmap-card h3 {
-            margin-top: 10px;
+
+            margin-top: 12px;
+
             font-size: 1rem;
-            color: #1f2937;
+
+            line-height: 1.4;
         }
 
 
-        /* ================================
+        /* ========================================
            LESSON
-        ================================= */
+        ======================================== */
 
         .lesson {
-            margin-top: 120px;
+
+            position: relative;
+
+            margin-top: 110px;
 
             padding: 45px;
 
-            background: white;
+            background: rgba(255, 255, 255, 0.025);
 
-            border: 1px solid #e5e7eb;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+
             border-radius: 28px;
 
-            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.04);
-
-            transition: 0.4s ease;
+            transition: all 0.4s ease;
         }
 
         .lesson:hover {
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.07);
+
+            border-color: rgba(139, 92, 246, 0.28);
+
+            box-shadow: 0 25px 70px rgba(0, 0, 0, 0.2);
         }
 
         .lesson-header {
+
             display: flex;
-            gap: 22px;
+
             align-items: center;
 
-            margin-bottom: 35px;
+            gap: 20px;
+
+            margin-bottom: 40px;
         }
 
         .lesson-number {
+
             min-width: 62px;
             height: 62px;
 
@@ -363,145 +475,303 @@
 
             border-radius: 18px;
 
-            background: #6c4df6;
+            background: linear-gradient(
+                135deg,
+                #7c3aed,
+                #4f46e5
+            );
+
             color: white;
 
-            font-size: 1.1rem;
             font-weight: 800;
 
-            box-shadow: 0 10px 25px rgba(108, 77, 246, 0.25);
+            box-shadow: 0 10px 30px rgba(124, 58, 237, 0.25);
         }
 
         .lesson-header h2 {
-            font-size: clamp(1.6rem, 3vw, 2.3rem);
-            color: #111827;
+
+            font-size: clamp(1.7rem, 3vw, 2.4rem);
+
+            letter-spacing: -1px;
         }
 
         .lesson-header p {
-            color: #6b7280;
+
             margin-top: 5px;
+
+            color: #9296a4;
         }
 
 
-        /* ================================
-           CONTENT CARDS
-        ================================= */
+        /* ========================================
+           CONTENT BLOCKS
+        ======================================== */
 
-        .content-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 25px;
-        }
+        .concept-block {
 
-        .info-card {
             padding: 28px;
 
-            background: #fafafa;
+            margin-bottom: 22px;
 
-            border: 1px solid #eeeeee;
+            background: rgba(255, 255, 255, 0.025);
+
+            border: 1px solid rgba(255, 255, 255, 0.07);
+
             border-radius: 20px;
 
             transition: all 0.35s ease;
         }
 
-        .info-card:hover {
-            transform: translateY(-5px);
-            border-color: #d8d1ff;
-            box-shadow: 0 15px 35px rgba(108, 77, 246, 0.08);
+        .concept-block:hover {
+
+            background: rgba(255, 255, 255, 0.04);
+
+            border-color: rgba(139, 92, 246, 0.3);
         }
 
-        .info-card .label {
+        .block-label {
+
             display: inline-block;
 
-            font-size: 0.8rem;
+            margin-bottom: 12px;
+
+            color: #a78bfa;
+
+            font-size: 0.78rem;
+
             font-weight: 800;
 
-            color: #6c4df6;
+            letter-spacing: 1.2px;
+        }
+
+        .concept-block h3 {
+
+            margin-bottom: 12px;
+
+            font-size: 1.3rem;
+        }
+
+        .concept-block p {
+
+            color: #a7aab6;
+        }
+
+
+        /* ========================================
+           EXAMPLE
+        ======================================== */
+
+        .example-box {
+
+            margin-top: 20px;
+
+            padding: 22px;
+
+            border-left: 3px solid #8b5cf6;
+
+            background: rgba(139, 92, 246, 0.06);
+
+            border-radius: 0 15px 15px 0;
+        }
+
+        .example-box h4 {
+
+            color: #c4b5fd;
 
             margin-bottom: 12px;
         }
 
-        .info-card h3 {
-            margin-bottom: 12px;
-            color: #111827;
+        .example-data {
+
+            margin-top: 15px;
+
+            padding: 18px;
+
+            overflow-x: auto;
+
+            background: #05060d;
+
+            border: 1px solid rgba(255, 255, 255, 0.06);
+
+            border-radius: 12px;
+
+            color: #c5c8d2;
+
+            font-family: Consolas, monospace;
+
+            line-height: 1.8;
+
+            white-space: pre-line;
         }
 
-        .info-card p {
-            color: #5f6672;
+
+        /* ========================================
+           FLOW
+        ======================================== */
+
+        .flow {
+
+            display: flex;
+
+            flex-wrap: wrap;
+
+            align-items: center;
+
+            justify-content: center;
+
+            gap: 14px;
+
+            margin-top: 20px;
+        }
+
+        .flow-step {
+
+            padding: 13px 18px;
+
+            background: rgba(255, 255, 255, 0.05);
+
+            border: 1px solid rgba(255, 255, 255, 0.1);
+
+            border-radius: 12px;
+
+            color: #d7d9e0;
+
+            font-weight: 600;
+
+            transition: 0.3s;
+        }
+
+        .flow-step:hover {
+
+            background: rgba(139, 92, 246, 0.15);
+
+            border-color: #8b5cf6;
+
+            transform: translateY(-4px);
+        }
+
+        .flow-arrow {
+
+            color: #8b5cf6;
+
+            font-size: 1.4rem;
         }
 
 
-        /* ================================
+        /* ========================================
            VIDEO
-        ================================= */
+        ======================================== */
 
         .video-section {
-            margin-top: 28px;
+
+            margin-top: 30px;
+
+            padding: 24px;
+
+            background: rgba(139, 92, 246, 0.045);
+
+            border: 1px solid rgba(139, 92, 246, 0.18);
+
+            border-radius: 22px;
         }
 
-        .video-label {
-            margin-bottom: 15px;
+        .video-heading {
 
-            font-size: 0.85rem;
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            gap: 15px;
+
+            margin-bottom: 18px;
+        }
+
+        .video-heading h3 {
+
+            font-size: 1.15rem;
+        }
+
+        .video-heading span {
+
+            color: #a78bfa;
+
+            font-size: 0.75rem;
+
             font-weight: 800;
-            color: #6c4df6;
+
+            letter-spacing: 1px;
         }
 
         .video-card {
-            padding: 12px;
 
-            border-radius: 22px;
+            padding: 10px;
 
-            background: #111827;
-
-            transition: all 0.4s ease;
-
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
-        }
-
-        .video-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 25px 55px rgba(0, 0, 0, 0.2);
-        }
-
-        video {
-            width: 100%;
-            display: block;
-
-            border-radius: 14px;
-        }
-
-
-        /* ================================
-           REMEMBER
-        ================================= */
-
-        .remember {
-            margin-top: 28px;
-
-            padding: 22px 25px;
+            background: #03040a;
 
             border-radius: 16px;
 
-            background: #f5f3ff;
-            border-left: 4px solid #6c4df6;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+
+            transition: all 0.4s ease;
+        }
+
+        .video-card:hover {
+
+            transform: translateY(-5px);
+
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.35);
+        }
+
+        video {
+
+            width: 100%;
+
+            display: block;
+
+            border-radius: 10px;
+        }
+
+
+        /* ========================================
+           IMPORTANT NOTE
+        ======================================== */
+
+        .remember {
+
+            margin-top: 25px;
+
+            padding: 22px 25px;
+
+            background: rgba(245, 158, 11, 0.05);
+
+            border: 1px solid rgba(245, 158, 11, 0.15);
+
+            border-left: 4px solid #f59e0b;
+
+            border-radius: 16px;
         }
 
         .remember h4 {
-            color: #4c32c7;
+
+            color: #fbbf24;
+
             margin-bottom: 8px;
         }
 
         .remember p {
-            color: #5f5b72;
+
+            color: #aaaeb9;
         }
 
 
-        /* ================================
+        /* ========================================
            APPLIED STEPS
-        ================================= */
+        ======================================== */
 
         .steps-section {
+
             margin-top: 100px;
 
             padding: 55px;
@@ -509,39 +779,48 @@
             background:
                 radial-gradient(
                     circle at top right,
-                    rgba(108, 77, 246, 0.12),
-                    transparent 30%
+                    rgba(139, 92, 246, 0.18),
+                    transparent 35%
                 ),
-                #111827;
+                rgba(255, 255, 255, 0.03);
+
+            border: 1px solid rgba(255, 255, 255, 0.08);
 
             border-radius: 30px;
-
-            color: white;
         }
 
         .steps-section h2 {
+
             font-size: 2rem;
         }
 
         .steps-section > p {
-            color: #b8bec9;
-            margin-top: 10px;
+
+            margin-top: 12px;
+
+            color: #989ca9;
         }
 
         .steps-flow {
+
             display: flex;
+
             flex-wrap: wrap;
+
             align-items: center;
-            gap: 15px;
+
+            gap: 12px;
 
             margin-top: 35px;
         }
 
         .step {
-            padding: 14px 20px;
 
-            background: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(255, 255, 255, 0.12);
+            padding: 14px 18px;
+
+            background: rgba(255, 255, 255, 0.05);
+
+            border: 1px solid rgba(255, 255, 255, 0.1);
 
             border-radius: 12px;
 
@@ -551,111 +830,140 @@
         }
 
         .step:hover {
-            background: #6c4df6;
+
+            background: #7c3aed;
+
+            border-color: #8b5cf6;
+
             transform: translateY(-4px);
         }
 
         .arrow {
-            color: #9ca3af;
-            font-size: 1.3rem;
+
+            color: #8b5cf6;
+
+            font-size: 1.2rem;
         }
 
 
-        /* ================================
+        /* ========================================
            DATASET
-        ================================= */
+        ======================================== */
 
         .dataset {
+
             margin-top: 100px;
 
             padding: 50px;
 
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            gap: 30px;
+
             border-radius: 28px;
 
-            background: linear-gradient(
-                135deg,
-                #6c4df6,
-                #4f46e5
-            );
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(124, 58, 237, 0.9),
+                    rgba(79, 70, 229, 0.9)
+                );
 
-            color: white;
-
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 30px;
+            box-shadow: 0 25px 60px rgba(79, 70, 229, 0.18);
         }
 
         .dataset h2 {
+
             font-size: clamp(1.8rem, 3vw, 2.5rem);
         }
 
         .dataset p {
+
+            max-width: 620px;
+
             margin-top: 12px;
-            color: #e5e1ff;
-            max-width: 600px;
+
+            color: #e5e7eb;
         }
 
         .download-btn {
+
             flex-shrink: 0;
 
             padding: 15px 24px;
 
-            background: white;
-            color: #5b3df0;
-
             border-radius: 12px;
+
+            background: white;
+
+            color: #5b21b6;
 
             font-weight: 800;
 
-            transition: 0.35s ease;
+            transition: all 0.35s ease;
         }
 
         .download-btn:hover {
+
             transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.18);
+
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
         }
 
 
-        /* ================================
+        /* ========================================
            FOOTER
-        ================================= */
+        ======================================== */
 
         footer {
+
             margin-top: 80px;
 
             padding: 40px 8%;
 
-            background: #111827;
-            color: #9ca3af;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+
+            color: #777b88;
 
             text-align: center;
         }
 
         footer strong {
+
             color: white;
         }
 
 
-        /* ================================
-           SCROLL ANIMATION
-        ================================= */
+        /* ========================================
+           SCROLL REVEAL
+        ======================================== */
 
         .reveal {
+
             opacity: 0;
+
             transform: translateY(35px);
-            transition: all 0.8s ease;
+
+            transition:
+                opacity 0.8s ease,
+                transform 0.8s ease;
         }
 
         .reveal.active {
+
             opacity: 1;
+
             transform: translateY(0);
         }
 
 
-        /* ================================
+        /* ========================================
            RESPONSIVE
-        ================================= */
+        ======================================== */
 
         @media (max-width: 1000px) {
 
@@ -681,6 +989,10 @@
                 padding: 90px 6%;
             }
 
+            .hero h1 {
+                letter-spacing: -2px;
+            }
+
             .stats {
                 grid-template-columns: 1fr;
             }
@@ -690,7 +1002,7 @@
             }
 
             .roadmap {
-                grid-template-columns: 1fr 1fr;
+                grid-template-columns: repeat(2, 1fr);
             }
 
             .lesson {
@@ -699,8 +1011,8 @@
                 border-radius: 22px;
             }
 
-            .content-grid {
-                grid-template-columns: 1fr;
+            .concept-block {
+                padding: 22px;
             }
 
             .steps-section {
@@ -734,7 +1046,7 @@
             }
 
             .hero h1 {
-                font-size: 2.7rem;
+                font-size: 2.8rem;
             }
 
             .lesson-header {
@@ -746,9 +1058,15 @@
                 height: 52px;
             }
 
+            .video-heading {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
         }
 
     </style>
+
 </head>
 
 
@@ -764,10 +1082,15 @@
         </a>
 
         <div class="nav-links">
+
             <a href="../index.html">Home</a>
+
             <a href="../powerbi.html">Power BI</a>
+
             <a href="../sql.html">SQL</a>
+
             <a href="../interview.html">Interview Prep</a>
+
         </div>
 
     </nav>
@@ -778,32 +1101,57 @@
 
     <section class="hero">
 
-        <div class="hero-container reveal">
+        <div class="hero-content reveal">
 
-            <div class="day-badge">
-                POWER BI • DAY 06
+            <div class="breadcrumb">
+
+                <a href="../index.html">Home</a>
+                /
+                <a href="../powerbi.html">Power BI</a>
+                /
+                Day 06
+
             </div>
 
+
+            <div class="day-badge">
+
+                POWER BI · DAY 06
+
+            </div>
+
+
             <h1>
-                Remove <span>Unnecessary Data</span>
-                with Power Query
+
+                Remove
+                <span>Unnecessary Data.</span>
+
             </h1>
 
+
             <p>
-                Learn how to clean your dataset by removing unnecessary
-                rows, blank records, unwanted columns and duplicate data.
-                Understand every concept with Telugu explanation,
-                practical videos and simple English.
+
+                Learn how to clean your dataset in Power Query by removing
+                unnecessary top rows, blank rows, unwanted columns and
+                duplicate records. Every concept includes explanation,
+                examples and practical demonstrations.
+
             </p>
+
 
             <div class="hero-buttons">
 
                 <a href="#roadmap" class="primary-btn">
+
                     Start Learning ↓
+
                 </a>
 
+
                 <a href="#practice" class="secondary-btn">
-                    Practice With Dataset
+
+                    Practice Dataset
+
                 </a>
 
             </div>
@@ -812,18 +1160,29 @@
             <div class="stats">
 
                 <div class="stat-card">
+
                     <h3>5</h3>
-                    <p>Concepts to Learn</p>
+
+                    <p>Data Cleaning Concepts</p>
+
                 </div>
 
-                <div class="stat-card">
-                    <h3>5</h3>
-                    <p>Practical Videos</p>
-                </div>
 
                 <div class="stat-card">
+
+                    <h3>5</h3>
+
+                    <p>Practical Demonstrations</p>
+
+                </div>
+
+
+                <div class="stat-card">
+
                     <h3>1</h3>
+
                     <p>Practice Dataset</p>
+
                 </div>
 
             </div>
@@ -834,53 +1193,82 @@
 
 
 
-    <!-- ================= ROADMAP ================= -->
+    <!-- ================= MAIN ================= -->
 
     <main class="container">
 
 
+        <!-- ================= ROADMAP ================= -->
+
         <section id="roadmap" class="reveal">
 
             <div class="section-tag">
-                LEARNING ROADMAP
+
+                TODAY'S ROADMAP
+
             </div>
 
+
             <h2 class="section-title">
-                What You'll Learn Today
+
+                Clean Your Data Step by Step
+
             </h2>
 
+
             <p class="section-description">
-                These five steps will help you understand how Power Query
-                removes unnecessary information and prepares your data
-                for better analysis.
+
+                Before analyzing data, we should make sure unnecessary
+                information does not affect our analysis. Let's learn five
+                useful Power Query cleaning steps.
+
             </p>
 
 
             <div class="roadmap">
 
                 <a href="#lesson1" class="roadmap-card">
+
                     <div class="roadmap-number">01</div>
+
                     <h3>Remove Top Rows</h3>
+
                 </a>
+
 
                 <a href="#lesson2" class="roadmap-card">
+
                     <div class="roadmap-number">02</div>
+
                     <h3>First Row as Headers</h3>
+
                 </a>
+
 
                 <a href="#lesson3" class="roadmap-card">
+
                     <div class="roadmap-number">03</div>
+
                     <h3>Remove Blank Rows</h3>
+
                 </a>
+
 
                 <a href="#lesson4" class="roadmap-card">
+
                     <div class="roadmap-number">04</div>
+
                     <h3>Remove Columns</h3>
+
                 </a>
 
+
                 <a href="#lesson5" class="roadmap-card">
+
                     <div class="roadmap-number">05</div>
+
                     <h3>Remove Duplicates</h3>
+
                 </a>
 
             </div>
@@ -898,50 +1286,101 @@
                 <div class="lesson-number">01</div>
 
                 <div>
+
                     <h2>Remove Top Rows</h2>
 
                     <p>
-                        Remove unnecessary rows before the actual dataset begins.
+
+                        Remove unnecessary information before the actual
+                        dataset begins.
+
                     </p>
+
                 </div>
 
             </div>
 
 
-            <div class="content-grid">
+            <div class="concept-block">
 
-                <div class="info-card">
+                <div class="block-label">
 
-                    <div class="label">
-                        🇮🇳 TELUGU LO
-                    </div>
-
-                    <h3>Simple Explanation</h3>
-
-                    <p>
-                        Bro, konni datasets lo actual data start avvadaniki
-                        mundhu report title, description leka unnecessary
-                        information untundi. Avi actual data lo part kaavu.
-                        Kabatti manam Remove Top Rows use chesi vatini remove
-                        chestham.
-                    </p>
+                    CONCEPT
 
                 </div>
 
 
-                <div class="info-card">
+                <h3>What does Remove Top Rows mean?</h3>
 
-                    <div class="label">
-                        🇬🇧 SIMPLE ENGLISH
-                    </div>
 
-                    <h3>Explain Like This</h3>
+                <p>
+
+                    Bro, konni datasets lo actual data start avvadaniki mundhu
+                    report title, company information, generated date or
+                    unnecessary details untayi. Avi mana actual dataset lo
+                    part kaavu. Kabatti manam Remove Top Rows option use chesi
+                    actual data mundhu unna unnecessary rows ni remove chestham.
+
+                </p>
+
+
+                <div class="example-box">
+
+                    <h4>💼 Example</h4>
 
                     <p>
-                        Sometimes a dataset contains unnecessary rows before
-                        the actual data starts. We can remove those rows using
-                        Remove Top Rows.
+
+                        Suppose we receive a sales report like this:
+
                     </p>
+
+
+                    <div class="example-data">ABC Company Sales Report
+Generated on: September 2026
+Confidential
+
+Order ID | Customer | Product | Sales
+OD101    | Ravi     | Laptop  | 50000
+OD102    | Kumar    | Mouse   | 1000</div>
+
+                    <p style="margin-top: 15px;">
+
+                        Here the first three rows are not actual data.
+                        Our dataset actually starts from the Order ID row.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="concept-block">
+
+                <div class="block-label">
+
+                    HOW IT WORKS
+
+                </div>
+
+
+                <div class="flow">
+
+                    <div class="flow-step">
+                        Unnecessary Top Rows
+                    </div>
+
+                    <div class="flow-arrow">→</div>
+
+                    <div class="flow-step">
+                        Remove Top Rows
+                    </div>
+
+                    <div class="flow-arrow">→</div>
+
+                    <div class="flow-step">
+                        Actual Data Starts
+                    </div>
 
                 </div>
 
@@ -950,17 +1389,26 @@
 
             <div class="video-section">
 
-                <div class="video-label">
-                    🎥 WATCH IT IN ACTION
+                <div class="video-heading">
+
+                    <h3>🎥 Watch It In Action</h3>
+
+                    <span>PRACTICAL DEMONSTRATION</span>
+
                 </div>
+
 
                 <div class="video-card">
 
                     <video controls>
+
                         <source
                             src="../assets/videos/powerbi/day6-remove-top-rows.mp4"
                             type="video/mp4"
                         >
+
+                        Your browser does not support the video tag.
+
                     </video>
 
                 </div>
@@ -970,12 +1418,13 @@
 
             <div class="remember">
 
-                <h4>💡 Remember This</h4>
+                <h4>💡 Important</h4>
 
                 <p>
+
                     Remove Top Rows works based on position. Always check
-                    how many rows appear before your actual data before
-                    removing them.
+                    where your actual dataset starts before removing rows.
+
                 </p>
 
             </div>
@@ -993,50 +1442,93 @@
                 <div class="lesson-number">02</div>
 
                 <div>
+
                     <h2>Use First Row as Headers</h2>
 
                     <p>
-                        Convert the first row of your data into column headers.
+
+                        Convert the first row of data into actual column names.
+
                     </p>
+
                 </div>
 
             </div>
 
 
-            <div class="content-grid">
+            <div class="concept-block">
 
-                <div class="info-card">
+                <div class="block-label">
 
-                    <div class="label">
-                        🇮🇳 TELUGU LO
-                    </div>
-
-                    <h3>Simple Explanation</h3>
-
-                    <p>
-                        Unnecessary top rows remove chesina tarvata mana
-                        actual column names first row lo untayi. Kani Power
-                        Query vatini data laga treat chesthundi. Kabatti
-                        Use First Row as Headers use chesi vatini actual
-                        column headers ga set chestham.
-                    </p>
+                    CONCEPT
 
                 </div>
 
 
-                <div class="info-card">
+                <h3>Why do we use First Row as Headers?</h3>
 
-                    <div class="label">
-                        🇬🇧 SIMPLE ENGLISH
+
+                <p>
+
+                    Konni datasets Power Query lo load ayinappudu actual
+                    column names first row lo data laga kanipisthayi.
+                    For example, Column1, Column2 ani headers untayi and
+                    actual Order ID, Customer Name, Sales values first row lo
+                    untayi. Appudu Use First Row as Headers use chesi aa
+                    first row ni actual column headers ga convert chestham.
+
+                </p>
+
+
+                <div class="example-box">
+
+                    <h4>💼 Before</h4>
+
+
+                    <div class="example-data">Column1      | Column2        | Column3
+Order ID     | Customer Name  | Sales
+OD101        | Ravi           | 5000
+OD102        | Kumar          | 8000</div>
+
+
+                    <h4 style="margin-top: 20px;">💼 After</h4>
+
+
+                    <div class="example-data">Order ID     | Customer Name  | Sales
+OD101        | Ravi           | 5000
+OD102        | Kumar          | 8000</div>
+
+                </div>
+
+            </div>
+
+
+            <div class="concept-block">
+
+                <div class="block-label">
+
+                    HOW IT WORKS
+
+                </div>
+
+
+                <div class="flow">
+
+                    <div class="flow-step">
+                        First Row Contains Names
                     </div>
 
-                    <h3>Explain Like This</h3>
+                    <div class="flow-arrow">→</div>
 
-                    <p>
-                        After removing unnecessary rows, our column names may
-                        appear in the first row as data. We use First Row as
-                        Headers to convert them into actual column names.
-                    </p>
+                    <div class="flow-step">
+                        Use First Row as Headers
+                    </div>
+
+                    <div class="flow-arrow">→</div>
+
+                    <div class="flow-step">
+                        Proper Column Headers
+                    </div>
 
                 </div>
 
@@ -1045,17 +1537,24 @@
 
             <div class="video-section">
 
-                <div class="video-label">
-                    🎥 WATCH IT IN ACTION
+                <div class="video-heading">
+
+                    <h3>🎥 Watch It In Action</h3>
+
+                    <span>PRACTICAL DEMONSTRATION</span>
+
                 </div>
+
 
                 <div class="video-card">
 
                     <video controls>
+
                         <source
                             src="../assets/videos/powerbi/day6-firstrow-as-headers.mp4"
                             type="video/mp4"
                         >
+
                     </video>
 
                 </div>
@@ -1065,11 +1564,13 @@
 
             <div class="remember">
 
-                <h4>💡 Remember This</h4>
+                <h4>💡 Important</h4>
 
                 <p>
-                    Before using First Row as Headers, make sure your first
-                    row actually contains column names and not normal data.
+
+                    Before using this option, make sure the first row
+                    actually contains column names and not normal data.
+
                 </p>
 
             </div>
@@ -1087,49 +1588,101 @@
                 <div class="lesson-number">03</div>
 
                 <div>
+
                     <h2>Remove Blank Rows</h2>
 
                     <p>
-                        Remove records that contain no information.
+
+                        Remove completely empty records from the dataset.
+
                     </p>
+
                 </div>
 
             </div>
 
 
-            <div class="content-grid">
+            <div class="concept-block">
 
-                <div class="info-card">
+                <div class="block-label">
 
-                    <div class="label">
-                        🇮🇳 TELUGU LO
-                    </div>
-
-                    <h3>Simple Explanation</h3>
-
-                    <p>
-                        Dataset lo completely empty ga unna row actual record
-                        kaadhu. Aa row lo information emi undadu. Kabatti
-                        Remove Blank Rows use chesi completely empty records
-                        ni remove chestham.
-                    </p>
+                    CONCEPT
 
                 </div>
 
 
-                <div class="info-card">
+                <h3>What is a Blank Row?</h3>
 
-                    <div class="label">
-                        🇬🇧 SIMPLE ENGLISH
+
+                <p>
+
+                    Dataset lo konni rows completely empty ga untayi.
+                    Aa row lo Order ID, Customer, Sales or any other
+                    information emi undadu. Ila completely empty ga unna
+                    records mana analysis ki use avvavu. Kabatti Remove Blank
+                    Rows use chesi vatini remove chestham.
+
+                </p>
+
+
+                <div class="example-box">
+
+                    <h4>💼 Example</h4>
+
+
+                    <div class="example-data">Order ID | Customer | Sales
+
+OD101    | Ravi     | 500
+
+(blank row)
+
+OD102    | Kumar    | 800</div>
+
+
+                    <p style="margin-top: 15px;">
+
+                        The blank row is not an actual order record,
+                        so we can remove it.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="concept-block">
+
+                <div class="block-label">
+
+                    HOW IT WORKS
+
+                </div>
+
+
+                <div class="flow">
+
+                    <div class="flow-step">
+                        Dataset
                     </div>
 
-                    <h3>Explain Like This</h3>
+                    <div class="flow-arrow">→</div>
 
-                    <p>
-                        A completely blank row does not contain any useful
-                        information. We can remove these empty records using
-                        Remove Blank Rows.
-                    </p>
+                    <div class="flow-step">
+                        Blank Row Found
+                    </div>
+
+                    <div class="flow-arrow">→</div>
+
+                    <div class="flow-step">
+                        Remove Blank Rows
+                    </div>
+
+                    <div class="flow-arrow">→</div>
+
+                    <div class="flow-step">
+                        Clean Dataset
+                    </div>
 
                 </div>
 
@@ -1138,17 +1691,24 @@
 
             <div class="video-section">
 
-                <div class="video-label">
-                    🎥 WATCH IT IN ACTION
+                <div class="video-heading">
+
+                    <h3>🎥 Watch It In Action</h3>
+
+                    <span>PRACTICAL DEMONSTRATION</span>
+
                 </div>
+
 
                 <div class="video-card">
 
                     <video controls>
+
                         <source
                             src="../assets/videos/powerbi/day6-remove-blank-rows.mp4"
                             type="video/mp4"
                         >
+
                     </video>
 
                 </div>
@@ -1158,11 +1718,13 @@
 
             <div class="remember">
 
-                <h4>💡 Remember This</h4>
+                <h4>💡 Important</h4>
 
                 <p>
+
                     A row with one missing value is not necessarily a blank
-                    row. Remove Blank Rows is for completely empty records.
+                    row. Here we are talking about completely empty rows.
+
                 </p>
 
             </div>
@@ -1180,49 +1742,117 @@
                 <div class="lesson-number">04</div>
 
                 <div>
+
                     <h2>Remove Columns</h2>
 
                     <p>
-                        Remove information that is not needed for your analysis.
+
+                        Remove columns that are not needed for your analysis.
+
                     </p>
+
                 </div>
 
             </div>
 
 
-            <div class="content-grid">
+            <div class="concept-block">
 
-                <div class="info-card">
+                <div class="block-label">
 
-                    <div class="label">
-                        🇮🇳 TELUGU LO
-                    </div>
-
-                    <h3>Simple Explanation</h3>
-
-                    <p>
-                        Bro, every column manaki every analysis lo avasaram
-                        undadu. Mana current analysis ki Postal Code
-                        information avasaram lekapothe, aa column ni remove
-                        cheyyachu.
-                    </p>
+                    CONCEPT
 
                 </div>
 
 
-                <div class="info-card">
+                <h3>Why do we remove columns?</h3>
 
-                    <div class="label">
-                        🇬🇧 SIMPLE ENGLISH
-                    </div>
 
-                    <h3>Explain Like This</h3>
+                <p>
+
+                    Bro, dataset lo unna every column mana current analysis
+                    ki avasaram undakapovachu. Example ki manam Sales and
+                    Profit analysis chesthunnam anukundham. Appudu Postal
+                    Code or Row ID avasaram lekapothe aa columns ni remove
+                    cheyyachu. Ila cheste dataset clean ga and easy to
+                    understand ga untundi.
+
+                </p>
+
+
+                <div class="example-box">
+
+                    <h4>💼 Example</h4>
+
 
                     <p>
-                        Not every column is required for every analysis.
-                        If a column is not needed for our current analysis,
-                        we can remove it.
+
+                        Our analysis requires:
+
                     </p>
+
+
+                    <div class="example-data">Customer Name
+Product
+Sales
+Profit</div>
+
+
+                    <p style="margin-top: 15px;">
+
+                        But the dataset also contains:
+
+                    </p>
+
+
+                    <div class="example-data">Row ID
+Postal Code</div>
+
+
+                    <p style="margin-top: 15px;">
+
+                        If these columns are not required for our current
+                        analysis, we can remove them.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="concept-block">
+
+                <div class="block-label">
+
+                    HOW IT WORKS
+
+                </div>
+
+
+                <div class="flow">
+
+                    <div class="flow-step">
+                        Large Dataset
+                    </div>
+
+                    <div class="flow-arrow">→</div>
+
+                    <div class="flow-step">
+                        Find Unnecessary Column
+                    </div>
+
+                    <div class="flow-arrow">→</div>
+
+                    <div class="flow-step">
+                        Remove Column
+                    </div>
+
+                    <div class="flow-arrow">→</div>
+
+                    <div class="flow-step">
+                        Cleaner Dataset
+                    </div>
 
                 </div>
 
@@ -1231,17 +1861,24 @@
 
             <div class="video-section">
 
-                <div class="video-label">
-                    🎥 WATCH IT IN ACTION
+                <div class="video-heading">
+
+                    <h3>🎥 Watch It In Action</h3>
+
+                    <span>PRACTICAL DEMONSTRATION</span>
+
                 </div>
+
 
                 <div class="video-card">
 
                     <video controls>
+
                         <source
                             src="../assets/videos/powerbi/day6-remove-columns.mp4"
                             type="video/mp4"
                         >
+
                     </video>
 
                 </div>
@@ -1251,12 +1888,14 @@
 
             <div class="remember">
 
-                <h4>💡 Remember This</h4>
+                <h4>💡 Important</h4>
 
                 <p>
-                    A column is not permanently unnecessary. Whether you
-                    remove it depends on the business requirement and
-                    current analysis.
+
+                    A column may be unnecessary for one analysis but useful
+                    for another. Always remove columns based on your
+                    business requirement.
+
                 </p>
 
             </div>
@@ -1274,50 +1913,107 @@
                 <div class="lesson-number">05</div>
 
                 <div>
+
                     <h2>Remove Duplicates</h2>
 
                     <p>
-                        Remove repeated records from your dataset.
+
+                        Remove repeated records after understanding your data.
+
                     </p>
+
                 </div>
 
             </div>
 
 
-            <div class="content-grid">
+            <div class="concept-block">
 
-                <div class="info-card">
+                <div class="block-label">
 
-                    <div class="label">
-                        🇮🇳 TELUGU LO
-                    </div>
-
-                    <h3>Simple Explanation</h3>
-
-                    <p>
-                        Mana dataset lo same record repeated ga unte,
-                        analysis wrong results ivvachu. Mana example lo
-                        Row ID unique undali. Same Row ID repeated ayithe
-                        duplicate undochu. Kabatti correct column ni
-                        select chesi Remove Duplicates use chestham.
-                    </p>
+                    CONCEPT
 
                 </div>
 
 
-                <div class="info-card">
+                <h3>What are Duplicate Records?</h3>
 
-                    <div class="label">
-                        🇬🇧 SIMPLE ENGLISH
-                    </div>
 
-                    <h3>Explain Like This</h3>
+                <p>
+
+                    Dataset lo same record repeated ga unte mana analysis
+                    incorrect results ivvachu. Kani important thing enti ante
+                    same value repeated avvadam always duplicate ani kaadhu.
+                    Manam first data ni understand chesi which column should
+                    be unique ani identify cheyyali.
+
+                </p>
+
+
+                <div class="example-box">
+
+                    <h4>💼 Example</h4>
+
 
                     <p>
-                        Duplicate records can affect our analysis. Before
-                        removing duplicates, we should understand which
-                        column or combination of columns should be unique.
+
+                        Suppose Order ID should be unique:
+
                     </p>
+
+
+                    <div class="example-data">Order ID
+
+OD101
+OD102
+OD101   ← Repeated
+OD103</div>
+
+
+                    <p style="margin-top: 15px;">
+
+                        Here OD101 appears twice. If it represents the same
+                        record, we may remove the duplicate.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="concept-block">
+
+                <div class="block-label">
+
+                    HOW IT WORKS
+
+                </div>
+
+
+                <div class="flow">
+
+                    <div class="flow-step">
+                        Check Data
+                    </div>
+
+                    <div class="flow-arrow">→</div>
+
+                    <div class="flow-step">
+                        Identify Unique Column
+                    </div>
+
+                    <div class="flow-arrow">→</div>
+
+                    <div class="flow-step">
+                        Remove Duplicates
+                    </div>
+
+                    <div class="flow-arrow">→</div>
+
+                    <div class="flow-step">
+                        Clean Records
+                    </div>
 
                 </div>
 
@@ -1326,17 +2022,24 @@
 
             <div class="video-section">
 
-                <div class="video-label">
-                    🎥 WATCH IT IN ACTION
+                <div class="video-heading">
+
+                    <h3>🎥 Watch It In Action</h3>
+
+                    <span>PRACTICAL DEMONSTRATION</span>
+
                 </div>
+
 
                 <div class="video-card">
 
                     <video controls>
+
                         <source
                             src="../assets/videos/powerbi/day6-remove-duplicates.mp4"
                             type="video/mp4"
                         >
+
                     </video>
 
                 </div>
@@ -1346,12 +2049,13 @@
 
             <div class="remember">
 
-                <h4>💡 Remember This</h4>
+                <h4>💡 Important</h4>
 
                 <p>
+
                     Repeated values do not always mean duplicate records.
-                    Always understand your data before choosing which
-                    column to use for removing duplicates.
+                    Always understand your data before removing duplicates.
+
                 </p>
 
             </div>
@@ -1364,11 +2068,25 @@
 
         <section class="steps-section reveal">
 
-            <h2>Your Power Query Journey</h2>
+            <div class="section-tag">
+
+                POWER QUERY PROCESS
+
+            </div>
+
+
+            <h2>
+
+                Your Applied Steps Journey
+
+            </h2>
+
 
             <p>
-                These transformations were applied step by step while
-                cleaning our Day 6 practice dataset.
+
+                Every transformation you perform in Power Query is recorded
+                step by step in the Applied Steps section.
+
             </p>
 
 
@@ -1408,12 +2126,19 @@
 
             <div>
 
-                <h2>Practice Along With Me 🚀</h2>
+                <h2>
+
+                    Practice It Yourself 🚀
+
+                </h2>
+
 
                 <p>
-                    Download the Day 6 practice dataset and perform all
-                    five transformations yourself in Power Query.
-                    Learning becomes easier when you practice every concept.
+
+                    Download the Day 6 practice dataset and perform all five
+                    transformations yourself in Power Query. Understanding
+                    becomes stronger when you practice the concepts.
+
                 </p>
 
             </div>
@@ -1424,7 +2149,9 @@
                 download
                 class="download-btn"
             >
+
                 Download Dataset ↓
+
             </a>
 
         </section>
@@ -1439,7 +2166,10 @@
     <footer>
 
         <p>
-            <strong>BeyondBTech</strong> · Learn by Understanding & Practicing
+
+            <strong>BeyondBTech</strong>
+            · Learn by Understanding & Practicing
+
         </p>
 
     </footer>
@@ -1450,22 +2180,27 @@
 
     <script>
 
-        /* Scroll Reveal */
+        const reveals =
+            document.querySelectorAll(".reveal");
 
-        const reveals = document.querySelectorAll(".reveal");
 
         function revealOnScroll() {
 
             reveals.forEach(element => {
 
-                const windowHeight = window.innerHeight;
+                const windowHeight =
+                    window.innerHeight;
 
                 const elementTop =
                     element.getBoundingClientRect().top;
 
                 const revealPoint = 100;
 
-                if (elementTop < windowHeight - revealPoint) {
+
+                if (
+                    elementTop <
+                    windowHeight - revealPoint
+                ) {
 
                     element.classList.add("active");
 
@@ -1488,4 +2223,5 @@
 
 
 </body>
+
 </html>
