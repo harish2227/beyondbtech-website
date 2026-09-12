@@ -1,0 +1,1491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Power BI Day 6 | BeyondBTech</title>
+
+    <style>
+
+        /* ================================
+           GLOBAL
+        ================================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f7f8fc;
+            color: #1f2937;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+
+        /* ================================
+           NAVBAR
+        ================================= */
+
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            padding: 18px 8%;
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(14px);
+
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .logo {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: #111827;
+        }
+
+        .logo span {
+            color: #6c4df6;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 28px;
+        }
+
+        .nav-links a {
+            color: #4b5563;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #6c4df6;
+        }
+
+
+        /* ================================
+           HERO
+        ================================= */
+
+        .hero {
+            min-height: 620px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            padding: 80px 8%;
+
+            background:
+                radial-gradient(
+                    circle at top left,
+                    rgba(108, 77, 246, 0.18),
+                    transparent 35%
+                ),
+                radial-gradient(
+                    circle at bottom right,
+                    rgba(59, 130, 246, 0.14),
+                    transparent 35%
+                ),
+                #ffffff;
+        }
+
+        .hero-container {
+            max-width: 1100px;
+            width: 100%;
+        }
+
+        .day-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+
+            padding: 8px 16px;
+            border-radius: 50px;
+
+            background: #ede9fe;
+            color: #6c4df6;
+
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+
+            margin-bottom: 25px;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.8rem, 7vw, 5.5rem);
+            line-height: 1.05;
+            max-width: 850px;
+            color: #111827;
+        }
+
+        .hero h1 span {
+            color: #6c4df6;
+        }
+
+        .hero p {
+            max-width: 680px;
+
+            margin-top: 25px;
+
+            font-size: 1.15rem;
+            color: #6b7280;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+
+            margin-top: 35px;
+        }
+
+        .primary-btn,
+        .secondary-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+
+            padding: 14px 24px;
+            border-radius: 12px;
+
+            font-weight: 700;
+
+            transition: all 0.35s ease;
+        }
+
+        .primary-btn {
+            background: #6c4df6;
+            color: white;
+
+            box-shadow: 0 10px 25px rgba(108, 77, 246, 0.25);
+        }
+
+        .primary-btn:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 16px 30px rgba(108, 77, 246, 0.35);
+        }
+
+        .secondary-btn {
+            background: white;
+            color: #374151;
+
+            border: 1px solid #e5e7eb;
+        }
+
+        .secondary-btn:hover {
+            transform: translateY(-4px);
+            border-color: #6c4df6;
+            color: #6c4df6;
+        }
+
+
+        /* ================================
+           STATS
+        ================================= */
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+
+            margin-top: 60px;
+        }
+
+        .stat-card {
+            padding: 22px;
+
+            background: rgba(255, 255, 255, 0.75);
+            border: 1px solid #e5e7eb;
+            border-radius: 18px;
+
+            transition: all 0.35s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 18px 40px rgba(0, 0, 0, 0.08);
+        }
+
+        .stat-card h3 {
+            font-size: 1.8rem;
+            color: #6c4df6;
+        }
+
+        .stat-card p {
+            margin-top: 5px;
+            font-size: 0.9rem;
+        }
+
+
+        /* ================================
+           MAIN CONTAINER
+        ================================= */
+
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 100px 8%;
+        }
+
+
+        /* ================================
+           SECTION TITLE
+        ================================= */
+
+        .section-tag {
+            color: #6c4df6;
+            font-size: 0.85rem;
+            font-weight: 800;
+            letter-spacing: 1.5px;
+        }
+
+        .section-title {
+            margin-top: 12px;
+
+            font-size: clamp(2rem, 4vw, 3.2rem);
+            color: #111827;
+        }
+
+        .section-description {
+            max-width: 700px;
+
+            margin-top: 18px;
+
+            color: #6b7280;
+        }
+
+
+        /* ================================
+           ROADMAP
+        ================================= */
+
+        .roadmap {
+            margin-top: 50px;
+
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 15px;
+        }
+
+        .roadmap-card {
+            position: relative;
+
+            padding: 22px 18px;
+
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 16px;
+
+            cursor: pointer;
+
+            transition: all 0.35s ease;
+        }
+
+        .roadmap-card:hover {
+            transform: translateY(-8px);
+
+            border-color: #6c4df6;
+
+            box-shadow: 0 18px 35px rgba(108, 77, 246, 0.12);
+        }
+
+        .roadmap-number {
+            font-size: 0.8rem;
+            font-weight: 800;
+            color: #6c4df6;
+        }
+
+        .roadmap-card h3 {
+            margin-top: 10px;
+            font-size: 1rem;
+            color: #1f2937;
+        }
+
+
+        /* ================================
+           LESSON
+        ================================= */
+
+        .lesson {
+            margin-top: 120px;
+
+            padding: 45px;
+
+            background: white;
+
+            border: 1px solid #e5e7eb;
+            border-radius: 28px;
+
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.04);
+
+            transition: 0.4s ease;
+        }
+
+        .lesson:hover {
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.07);
+        }
+
+        .lesson-header {
+            display: flex;
+            gap: 22px;
+            align-items: center;
+
+            margin-bottom: 35px;
+        }
+
+        .lesson-number {
+            min-width: 62px;
+            height: 62px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 18px;
+
+            background: #6c4df6;
+            color: white;
+
+            font-size: 1.1rem;
+            font-weight: 800;
+
+            box-shadow: 0 10px 25px rgba(108, 77, 246, 0.25);
+        }
+
+        .lesson-header h2 {
+            font-size: clamp(1.6rem, 3vw, 2.3rem);
+            color: #111827;
+        }
+
+        .lesson-header p {
+            color: #6b7280;
+            margin-top: 5px;
+        }
+
+
+        /* ================================
+           CONTENT CARDS
+        ================================= */
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+        }
+
+        .info-card {
+            padding: 28px;
+
+            background: #fafafa;
+
+            border: 1px solid #eeeeee;
+            border-radius: 20px;
+
+            transition: all 0.35s ease;
+        }
+
+        .info-card:hover {
+            transform: translateY(-5px);
+            border-color: #d8d1ff;
+            box-shadow: 0 15px 35px rgba(108, 77, 246, 0.08);
+        }
+
+        .info-card .label {
+            display: inline-block;
+
+            font-size: 0.8rem;
+            font-weight: 800;
+
+            color: #6c4df6;
+
+            margin-bottom: 12px;
+        }
+
+        .info-card h3 {
+            margin-bottom: 12px;
+            color: #111827;
+        }
+
+        .info-card p {
+            color: #5f6672;
+        }
+
+
+        /* ================================
+           VIDEO
+        ================================= */
+
+        .video-section {
+            margin-top: 28px;
+        }
+
+        .video-label {
+            margin-bottom: 15px;
+
+            font-size: 0.85rem;
+            font-weight: 800;
+            color: #6c4df6;
+        }
+
+        .video-card {
+            padding: 12px;
+
+            border-radius: 22px;
+
+            background: #111827;
+
+            transition: all 0.4s ease;
+
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        .video-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 25px 55px rgba(0, 0, 0, 0.2);
+        }
+
+        video {
+            width: 100%;
+            display: block;
+
+            border-radius: 14px;
+        }
+
+
+        /* ================================
+           REMEMBER
+        ================================= */
+
+        .remember {
+            margin-top: 28px;
+
+            padding: 22px 25px;
+
+            border-radius: 16px;
+
+            background: #f5f3ff;
+            border-left: 4px solid #6c4df6;
+        }
+
+        .remember h4 {
+            color: #4c32c7;
+            margin-bottom: 8px;
+        }
+
+        .remember p {
+            color: #5f5b72;
+        }
+
+
+        /* ================================
+           APPLIED STEPS
+        ================================= */
+
+        .steps-section {
+            margin-top: 100px;
+
+            padding: 55px;
+
+            background:
+                radial-gradient(
+                    circle at top right,
+                    rgba(108, 77, 246, 0.12),
+                    transparent 30%
+                ),
+                #111827;
+
+            border-radius: 30px;
+
+            color: white;
+        }
+
+        .steps-section h2 {
+            font-size: 2rem;
+        }
+
+        .steps-section > p {
+            color: #b8bec9;
+            margin-top: 10px;
+        }
+
+        .steps-flow {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 15px;
+
+            margin-top: 35px;
+        }
+
+        .step {
+            padding: 14px 20px;
+
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+
+            border-radius: 12px;
+
+            font-weight: 700;
+
+            transition: 0.3s;
+        }
+
+        .step:hover {
+            background: #6c4df6;
+            transform: translateY(-4px);
+        }
+
+        .arrow {
+            color: #9ca3af;
+            font-size: 1.3rem;
+        }
+
+
+        /* ================================
+           DATASET
+        ================================= */
+
+        .dataset {
+            margin-top: 100px;
+
+            padding: 50px;
+
+            border-radius: 28px;
+
+            background: linear-gradient(
+                135deg,
+                #6c4df6,
+                #4f46e5
+            );
+
+            color: white;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .dataset h2 {
+            font-size: clamp(1.8rem, 3vw, 2.5rem);
+        }
+
+        .dataset p {
+            margin-top: 12px;
+            color: #e5e1ff;
+            max-width: 600px;
+        }
+
+        .download-btn {
+            flex-shrink: 0;
+
+            padding: 15px 24px;
+
+            background: white;
+            color: #5b3df0;
+
+            border-radius: 12px;
+
+            font-weight: 800;
+
+            transition: 0.35s ease;
+        }
+
+        .download-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.18);
+        }
+
+
+        /* ================================
+           FOOTER
+        ================================= */
+
+        footer {
+            margin-top: 80px;
+
+            padding: 40px 8%;
+
+            background: #111827;
+            color: #9ca3af;
+
+            text-align: center;
+        }
+
+        footer strong {
+            color: white;
+        }
+
+
+        /* ================================
+           SCROLL ANIMATION
+        ================================= */
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(35px);
+            transition: all 0.8s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+
+        /* ================================
+           RESPONSIVE
+        ================================= */
+
+        @media (max-width: 1000px) {
+
+            .roadmap {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+        }
+
+
+        @media (max-width: 768px) {
+
+            nav {
+                padding: 16px 6%;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero {
+                min-height: auto;
+                padding: 90px 6%;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+            }
+
+            .container {
+                padding: 75px 6%;
+            }
+
+            .roadmap {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .lesson {
+                margin-top: 70px;
+                padding: 25px;
+                border-radius: 22px;
+            }
+
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .steps-section {
+                padding: 30px;
+                border-radius: 22px;
+            }
+
+            .steps-flow {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .arrow {
+                text-align: center;
+                transform: rotate(90deg);
+            }
+
+            .dataset {
+                padding: 35px;
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+        }
+
+
+        @media (max-width: 480px) {
+
+            .roadmap {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 2.7rem;
+            }
+
+            .lesson-header {
+                align-items: flex-start;
+            }
+
+            .lesson-number {
+                min-width: 52px;
+                height: 52px;
+            }
+
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+    <!-- ================= NAVBAR ================= -->
+
+    <nav>
+
+        <a href="../index.html" class="logo">
+            Beyond<span>BTech</span>
+        </a>
+
+        <div class="nav-links">
+            <a href="../index.html">Home</a>
+            <a href="../powerbi.html">Power BI</a>
+            <a href="../sql.html">SQL</a>
+            <a href="../interview.html">Interview Prep</a>
+        </div>
+
+    </nav>
+
+
+
+    <!-- ================= HERO ================= -->
+
+    <section class="hero">
+
+        <div class="hero-container reveal">
+
+            <div class="day-badge">
+                POWER BI • DAY 06
+            </div>
+
+            <h1>
+                Remove <span>Unnecessary Data</span>
+                with Power Query
+            </h1>
+
+            <p>
+                Learn how to clean your dataset by removing unnecessary
+                rows, blank records, unwanted columns and duplicate data.
+                Understand every concept with Telugu explanation,
+                practical videos and simple English.
+            </p>
+
+            <div class="hero-buttons">
+
+                <a href="#roadmap" class="primary-btn">
+                    Start Learning ↓
+                </a>
+
+                <a href="#practice" class="secondary-btn">
+                    Practice With Dataset
+                </a>
+
+            </div>
+
+
+            <div class="stats">
+
+                <div class="stat-card">
+                    <h3>5</h3>
+                    <p>Concepts to Learn</p>
+                </div>
+
+                <div class="stat-card">
+                    <h3>5</h3>
+                    <p>Practical Videos</p>
+                </div>
+
+                <div class="stat-card">
+                    <h3>1</h3>
+                    <p>Practice Dataset</p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================= ROADMAP ================= -->
+
+    <main class="container">
+
+
+        <section id="roadmap" class="reveal">
+
+            <div class="section-tag">
+                LEARNING ROADMAP
+            </div>
+
+            <h2 class="section-title">
+                What You'll Learn Today
+            </h2>
+
+            <p class="section-description">
+                These five steps will help you understand how Power Query
+                removes unnecessary information and prepares your data
+                for better analysis.
+            </p>
+
+
+            <div class="roadmap">
+
+                <a href="#lesson1" class="roadmap-card">
+                    <div class="roadmap-number">01</div>
+                    <h3>Remove Top Rows</h3>
+                </a>
+
+                <a href="#lesson2" class="roadmap-card">
+                    <div class="roadmap-number">02</div>
+                    <h3>First Row as Headers</h3>
+                </a>
+
+                <a href="#lesson3" class="roadmap-card">
+                    <div class="roadmap-number">03</div>
+                    <h3>Remove Blank Rows</h3>
+                </a>
+
+                <a href="#lesson4" class="roadmap-card">
+                    <div class="roadmap-number">04</div>
+                    <h3>Remove Columns</h3>
+                </a>
+
+                <a href="#lesson5" class="roadmap-card">
+                    <div class="roadmap-number">05</div>
+                    <h3>Remove Duplicates</h3>
+                </a>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ================= LESSON 1 ================= -->
+
+        <section id="lesson1" class="lesson reveal">
+
+            <div class="lesson-header">
+
+                <div class="lesson-number">01</div>
+
+                <div>
+                    <h2>Remove Top Rows</h2>
+
+                    <p>
+                        Remove unnecessary rows before the actual dataset begins.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="content-grid">
+
+                <div class="info-card">
+
+                    <div class="label">
+                        🇮🇳 TELUGU LO
+                    </div>
+
+                    <h3>Simple Explanation</h3>
+
+                    <p>
+                        Bro, konni datasets lo actual data start avvadaniki
+                        mundhu report title, description leka unnecessary
+                        information untundi. Avi actual data lo part kaavu.
+                        Kabatti manam Remove Top Rows use chesi vatini remove
+                        chestham.
+                    </p>
+
+                </div>
+
+
+                <div class="info-card">
+
+                    <div class="label">
+                        🇬🇧 SIMPLE ENGLISH
+                    </div>
+
+                    <h3>Explain Like This</h3>
+
+                    <p>
+                        Sometimes a dataset contains unnecessary rows before
+                        the actual data starts. We can remove those rows using
+                        Remove Top Rows.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="video-section">
+
+                <div class="video-label">
+                    🎥 WATCH IT IN ACTION
+                </div>
+
+                <div class="video-card">
+
+                    <video controls>
+                        <source
+                            src="../assets/videos/powerbi/day6-remove-top-rows.mp4"
+                            type="video/mp4"
+                        >
+                    </video>
+
+                </div>
+
+            </div>
+
+
+            <div class="remember">
+
+                <h4>💡 Remember This</h4>
+
+                <p>
+                    Remove Top Rows works based on position. Always check
+                    how many rows appear before your actual data before
+                    removing them.
+                </p>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ================= LESSON 2 ================= -->
+
+        <section id="lesson2" class="lesson reveal">
+
+            <div class="lesson-header">
+
+                <div class="lesson-number">02</div>
+
+                <div>
+                    <h2>Use First Row as Headers</h2>
+
+                    <p>
+                        Convert the first row of your data into column headers.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="content-grid">
+
+                <div class="info-card">
+
+                    <div class="label">
+                        🇮🇳 TELUGU LO
+                    </div>
+
+                    <h3>Simple Explanation</h3>
+
+                    <p>
+                        Unnecessary top rows remove chesina tarvata mana
+                        actual column names first row lo untayi. Kani Power
+                        Query vatini data laga treat chesthundi. Kabatti
+                        Use First Row as Headers use chesi vatini actual
+                        column headers ga set chestham.
+                    </p>
+
+                </div>
+
+
+                <div class="info-card">
+
+                    <div class="label">
+                        🇬🇧 SIMPLE ENGLISH
+                    </div>
+
+                    <h3>Explain Like This</h3>
+
+                    <p>
+                        After removing unnecessary rows, our column names may
+                        appear in the first row as data. We use First Row as
+                        Headers to convert them into actual column names.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="video-section">
+
+                <div class="video-label">
+                    🎥 WATCH IT IN ACTION
+                </div>
+
+                <div class="video-card">
+
+                    <video controls>
+                        <source
+                            src="../assets/videos/powerbi/day6-firstrow-as-headers.mp4"
+                            type="video/mp4"
+                        >
+                    </video>
+
+                </div>
+
+            </div>
+
+
+            <div class="remember">
+
+                <h4>💡 Remember This</h4>
+
+                <p>
+                    Before using First Row as Headers, make sure your first
+                    row actually contains column names and not normal data.
+                </p>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ================= LESSON 3 ================= -->
+
+        <section id="lesson3" class="lesson reveal">
+
+            <div class="lesson-header">
+
+                <div class="lesson-number">03</div>
+
+                <div>
+                    <h2>Remove Blank Rows</h2>
+
+                    <p>
+                        Remove records that contain no information.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="content-grid">
+
+                <div class="info-card">
+
+                    <div class="label">
+                        🇮🇳 TELUGU LO
+                    </div>
+
+                    <h3>Simple Explanation</h3>
+
+                    <p>
+                        Dataset lo completely empty ga unna row actual record
+                        kaadhu. Aa row lo information emi undadu. Kabatti
+                        Remove Blank Rows use chesi completely empty records
+                        ni remove chestham.
+                    </p>
+
+                </div>
+
+
+                <div class="info-card">
+
+                    <div class="label">
+                        🇬🇧 SIMPLE ENGLISH
+                    </div>
+
+                    <h3>Explain Like This</h3>
+
+                    <p>
+                        A completely blank row does not contain any useful
+                        information. We can remove these empty records using
+                        Remove Blank Rows.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="video-section">
+
+                <div class="video-label">
+                    🎥 WATCH IT IN ACTION
+                </div>
+
+                <div class="video-card">
+
+                    <video controls>
+                        <source
+                            src="../assets/videos/powerbi/day6-remove-blank-rows.mp4"
+                            type="video/mp4"
+                        >
+                    </video>
+
+                </div>
+
+            </div>
+
+
+            <div class="remember">
+
+                <h4>💡 Remember This</h4>
+
+                <p>
+                    A row with one missing value is not necessarily a blank
+                    row. Remove Blank Rows is for completely empty records.
+                </p>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ================= LESSON 4 ================= -->
+
+        <section id="lesson4" class="lesson reveal">
+
+            <div class="lesson-header">
+
+                <div class="lesson-number">04</div>
+
+                <div>
+                    <h2>Remove Columns</h2>
+
+                    <p>
+                        Remove information that is not needed for your analysis.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="content-grid">
+
+                <div class="info-card">
+
+                    <div class="label">
+                        🇮🇳 TELUGU LO
+                    </div>
+
+                    <h3>Simple Explanation</h3>
+
+                    <p>
+                        Bro, every column manaki every analysis lo avasaram
+                        undadu. Mana current analysis ki Postal Code
+                        information avasaram lekapothe, aa column ni remove
+                        cheyyachu.
+                    </p>
+
+                </div>
+
+
+                <div class="info-card">
+
+                    <div class="label">
+                        🇬🇧 SIMPLE ENGLISH
+                    </div>
+
+                    <h3>Explain Like This</h3>
+
+                    <p>
+                        Not every column is required for every analysis.
+                        If a column is not needed for our current analysis,
+                        we can remove it.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="video-section">
+
+                <div class="video-label">
+                    🎥 WATCH IT IN ACTION
+                </div>
+
+                <div class="video-card">
+
+                    <video controls>
+                        <source
+                            src="../assets/videos/powerbi/day6-remove-columns.mp4"
+                            type="video/mp4"
+                        >
+                    </video>
+
+                </div>
+
+            </div>
+
+
+            <div class="remember">
+
+                <h4>💡 Remember This</h4>
+
+                <p>
+                    A column is not permanently unnecessary. Whether you
+                    remove it depends on the business requirement and
+                    current analysis.
+                </p>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ================= LESSON 5 ================= -->
+
+        <section id="lesson5" class="lesson reveal">
+
+            <div class="lesson-header">
+
+                <div class="lesson-number">05</div>
+
+                <div>
+                    <h2>Remove Duplicates</h2>
+
+                    <p>
+                        Remove repeated records from your dataset.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="content-grid">
+
+                <div class="info-card">
+
+                    <div class="label">
+                        🇮🇳 TELUGU LO
+                    </div>
+
+                    <h3>Simple Explanation</h3>
+
+                    <p>
+                        Mana dataset lo same record repeated ga unte,
+                        analysis wrong results ivvachu. Mana example lo
+                        Row ID unique undali. Same Row ID repeated ayithe
+                        duplicate undochu. Kabatti correct column ni
+                        select chesi Remove Duplicates use chestham.
+                    </p>
+
+                </div>
+
+
+                <div class="info-card">
+
+                    <div class="label">
+                        🇬🇧 SIMPLE ENGLISH
+                    </div>
+
+                    <h3>Explain Like This</h3>
+
+                    <p>
+                        Duplicate records can affect our analysis. Before
+                        removing duplicates, we should understand which
+                        column or combination of columns should be unique.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="video-section">
+
+                <div class="video-label">
+                    🎥 WATCH IT IN ACTION
+                </div>
+
+                <div class="video-card">
+
+                    <video controls>
+                        <source
+                            src="../assets/videos/powerbi/day6-remove-duplicates.mp4"
+                            type="video/mp4"
+                        >
+                    </video>
+
+                </div>
+
+            </div>
+
+
+            <div class="remember">
+
+                <h4>💡 Remember This</h4>
+
+                <p>
+                    Repeated values do not always mean duplicate records.
+                    Always understand your data before choosing which
+                    column to use for removing duplicates.
+                </p>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ================= APPLIED STEPS ================= -->
+
+        <section class="steps-section reveal">
+
+            <h2>Your Power Query Journey</h2>
+
+            <p>
+                These transformations were applied step by step while
+                cleaning our Day 6 practice dataset.
+            </p>
+
+
+            <div class="steps-flow">
+
+                <div class="step">Source</div>
+
+                <div class="arrow">→</div>
+
+                <div class="step">Removed Top Rows</div>
+
+                <div class="arrow">→</div>
+
+                <div class="step">Promoted Headers</div>
+
+                <div class="arrow">→</div>
+
+                <div class="step">Removed Blank Rows</div>
+
+                <div class="arrow">→</div>
+
+                <div class="step">Removed Columns</div>
+
+                <div class="arrow">→</div>
+
+                <div class="step">Removed Duplicates</div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ================= DATASET ================= -->
+
+        <section id="practice" class="dataset reveal">
+
+            <div>
+
+                <h2>Practice Along With Me 🚀</h2>
+
+                <p>
+                    Download the Day 6 practice dataset and perform all
+                    five transformations yourself in Power Query.
+                    Learning becomes easier when you practice every concept.
+                </p>
+
+            </div>
+
+
+            <a
+                href="../assets/datasets/Orders-Day6-Practice.txt"
+                download
+                class="download-btn"
+            >
+                Download Dataset ↓
+            </a>
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        <p>
+            <strong>BeyondBTech</strong> · Learn by Understanding & Practicing
+        </p>
+
+    </footer>
+
+
+
+    <!-- ================= JAVASCRIPT ================= -->
+
+    <script>
+
+        /* Scroll Reveal */
+
+        const reveals = document.querySelectorAll(".reveal");
+
+        function revealOnScroll() {
+
+            reveals.forEach(element => {
+
+                const windowHeight = window.innerHeight;
+
+                const elementTop =
+                    element.getBoundingClientRect().top;
+
+                const revealPoint = 100;
+
+                if (elementTop < windowHeight - revealPoint) {
+
+                    element.classList.add("active");
+
+                }
+
+            });
+
+        }
+
+
+        window.addEventListener(
+            "scroll",
+            revealOnScroll
+        );
+
+
+        revealOnScroll();
+
+    </script>
+
+
+</body>
+</html>
