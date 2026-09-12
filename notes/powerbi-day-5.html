@@ -561,6 +561,88 @@ flex-wrap:wrap
         padding: 18px;
     }
 
+}
+ /* ===============================
+   INLINE PRACTICAL VIDEO
+================================ */
+
+.topic-video {
+    margin-top: 25px;
+
+    background: #ffffff;
+
+    border: 1px solid #e5e7eb;
+
+    border-radius: 20px;
+
+    overflow: hidden;
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        border-color 0.3s ease;
+}
+
+.topic-video:hover {
+    transform: translateY(-5px);
+
+    border-color: #635bff;
+
+    box-shadow: 0 18px 40px rgba(0,0,0,0.10);
+}
+
+.topic-video-header {
+    padding: 20px 22px 15px;
+}
+
+.topic-video-label {
+    display: inline-block;
+
+    color: #635bff;
+
+    font-size: 12px;
+
+    font-weight: 800;
+
+    letter-spacing: 1px;
+
+    margin-bottom: 6px;
+}
+
+.topic-video-header h3 {
+    margin-bottom: 6px;
+}
+
+.topic-video-header p {
+    color: #667085;
+
+    font-size: 14px;
+}
+
+.topic-video video {
+    width: 100%;
+
+    display: block;
+
+    background: #171923;
+
+    max-height: 500px;
+}
+
+.topic-video-tip {
+    margin: 18px 22px 22px;
+
+    padding: 12px;
+
+    background: #f5f4ff;
+
+    border-left: 3px solid #635bff;
+
+    border-radius: 8px;
+
+    font-size: 13px;
+
+    color: #4b5563;
 }  
 
 </style>
@@ -940,7 +1022,49 @@ Filter apply chesina tarvata Applied Steps lo usually oka new transformation ste
 
 </section>
 
+<!-- BASIC FILTER VIDEO -->
 
+<section class="topic-video">
+
+    <div class="topic-video-header">
+
+        <span class="topic-video-label">
+            PRACTICAL DEMONSTRATION
+        </span>
+
+        <h3>
+            🎥 Watch Basic Filtering in Action
+        </h3>
+
+        <p>
+            Now that you understand what filtering is,
+            why we use it and how to apply it, watch the
+            complete practical demonstration in Power Query.
+        </p>
+
+    </div>
+
+
+    <video controls preload="metadata">
+
+        <source
+            src="../assets/videos/powerbi/day5-basic-filter.mp4"
+            type="video/mp4">
+
+        Your browser does not support video.
+
+    </video>
+
+
+    <div class="topic-video-tip">
+
+        💡 Practice along with the video:
+        Filter the Category column and select only
+        Technology products.
+
+    </div>
+
+</section>
 <!-- STEP 4 -->
 
 <section class="step">
@@ -1078,7 +1202,49 @@ Mundu business requirement ni understand cheyyandi. Tarvata correct filter condi
 </p>
 
 </section>
+<!-- TEXT FILTER VIDEO -->
 
+<section class="topic-video">
+
+    <div class="topic-video-header">
+
+        <span class="topic-video-label">
+            PRACTICAL DEMONSTRATION
+        </span>
+
+        <h3>
+            🎥 Watch Text Filters in Action
+        </h3>
+
+        <p>
+            You learned how Text Filters work with
+            Contains, Equals and Begins With.
+            Now watch the practical demonstration.
+        </p>
+
+    </div>
+
+
+    <video controls preload="metadata">
+
+        <source
+            src="../assets/videos/powerbi/day5-text-filter.mp4"
+            type="video/mp4">
+
+        Your browser does not support video.
+
+    </video>
+
+
+    <div class="topic-video-tip">
+
+        💡 Try this:
+        Use Text Filters to find products containing
+        a specific word.
+
+    </div>
+
+</section>
 
 <!-- STEP 5 -->
 
@@ -1201,7 +1367,49 @@ Useful Number Filters
 </div>
 
 </section>
+<!-- NUMBER FILTER VIDEO -->
 
+<section class="topic-video">
+
+    <div class="topic-video-header">
+
+        <span class="topic-video-label">
+            PRACTICAL DEMONSTRATION
+        </span>
+
+        <h3>
+            🎥 Watch Number Filters in Action
+        </h3>
+
+        <p>
+            You now understand how numerical conditions
+            such as Greater Than, Less Than and Between work.
+            Let's see it practically in Power Query.
+        </p>
+
+    </div>
+
+
+    <video controls preload="metadata">
+
+        <source
+            src="../assets/videos/powerbi/day5-number-filter.mp4"
+            type="video/mp4">
+
+        Your browser does not support video.
+
+    </video>
+
+
+    <div class="topic-video-tip">
+
+        💡 Practice:
+        Filter the Sales column and display records
+        greater than a specific value.
+
+    </div>
+
+</section>
 
 <!-- STEP 6 -->
 
@@ -1508,7 +1716,49 @@ Just like filtering, sorting apply chesina tarvata Applied Steps lo transformati
 </p>
 
 </section>
+<!-- SORTING VIDEO -->
 
+<section class="topic-video">
+
+    <div class="topic-video-header">
+
+        <span class="topic-video-label">
+            PRACTICAL DEMONSTRATION
+        </span>
+
+        <h3>
+            🎥 Watch Sorting in Action
+        </h3>
+
+        <p>
+            You learned the difference between Ascending
+            and Descending order. Now watch how sorting
+            works practically in Power Query.
+        </p>
+
+    </div>
+
+
+    <video controls preload="metadata">
+
+        <source
+            src="../assets/videos/powerbi/day5-sorting.mp4"
+            type="video/mp4">
+
+        Your browser does not support video.
+
+    </video>
+
+
+    <div class="topic-video-tip">
+
+        💡 Practice:
+        Sort the Sales column from highest to lowest
+        using Descending order.
+
+    </div>
+
+</section>
   <section class="practice-section">
 
     <div class="practice-card">
@@ -1557,209 +1807,7 @@ Just like filtering, sorting apply chesina tarvata Applied Steps lo transformati
 
 </section>
 
-<!-- ===============================
-     WATCH IT IN ACTION
-================================ -->
 
-<section class="video-section">
-
-    <div class="video-section-header">
-
-        <h2>🎥 Watch It In Action</h2>
-
-        <p>
-            Watch how Filtering and Sorting actually work
-            in Power Query. Follow along and practice
-            using the Orders dataset.
-        </p>
-
-    </div>
-
-
-    <div class="video-grid">
-
-
-        <!-- VIDEO 1 -->
-
-        <div class="video-card">
-
-            <div class="video-wrapper">
-
-                <video
-                    controls
-                    preload="metadata"
-                    class="tutorial-video">
-
-                    <source
-                        src="../assets/videos/powerbi/day5-basic-filter.mp4"
-                        type="video/mp4">
-
-                    Your browser does not support video.
-
-                </video>
-
-            </div>
-
-
-            <div class="video-content">
-
-                <span class="video-number">
-                    PRACTICAL 01
-                </span>
-
-                <h3>
-                    Basic Filtering
-                </h3>
-
-                <p>
-                    Learn how to filter data by selecting
-                    only the values you need from a column.
-                </p>
-
-                <div class="video-tip">
-                    💡 Example: Show only Technology products.
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <!-- VIDEO 2 -->
-
-        <div class="video-card">
-
-            <div class="video-wrapper">
-
-                <video
-                    controls
-                    preload="metadata"
-                    class="tutorial-video">
-
-                    <source
-                        src="../assets/videos/powerbi/day5-text-filter.mp4"
-                        type="video/mp4">
-
-                </video>
-
-            </div>
-
-
-            <div class="video-content">
-
-                <span class="video-number">
-                    PRACTICAL 02
-                </span>
-
-                <h3>
-                    Text Filter
-                </h3>
-
-                <p>
-                    Learn how to find records that contain
-                    a specific word or text.
-                </p>
-
-                <div class="video-tip">
-                    💡 Example: Find products containing "Mouse".
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <!-- VIDEO 3 -->
-
-        <div class="video-card">
-
-            <div class="video-wrapper">
-
-                <video
-                    controls
-                    preload="metadata"
-                    class="tutorial-video">
-
-                    <source
-                        src="../assets/videos/powerbi/day5-number-filter.mp4"
-                        type="video/mp4">
-
-                </video>
-
-            </div>
-
-
-            <div class="video-content">
-
-                <span class="video-number">
-                    PRACTICAL 03
-                </span>
-
-                <h3>
-                    Number Filter
-                </h3>
-
-                <p>
-                    Filter records based on numerical
-                    conditions and values.
-                </p>
-
-                <div class="video-tip">
-                    💡 Example: Show records where Sales is greater than 500.
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <!-- VIDEO 4 -->
-
-        <div class="video-card">
-
-            <div class="video-wrapper">
-
-                <video
-                    controls
-                    preload="metadata"
-                    class="tutorial-video">
-
-                    <source
-                        src="../assets/videos/powerbi/day5-sorting.mp4"
-                        type="video/mp4">
-
-                </video>
-
-            </div>
-
-
-            <div class="video-content">
-
-                <span class="video-number">
-                    PRACTICAL 04
-                </span>
-
-                <h3>
-                    Sorting Data
-                </h3>
-
-                <p>
-                    Learn how to arrange your data in
-                    Ascending or Descending order.
-                </p>
-
-                <div class="video-tip">
-                    💡 Example: Sort Sales from highest to lowest.
-                </div>
-
-            </div>
-
-        </div>
-
-
-    </div>
-
-</section>
 <!-- PRACTICE -->
 
 <section class="practice">
