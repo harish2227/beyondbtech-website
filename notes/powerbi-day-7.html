@@ -1,25 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <!-- Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-B1JNHYSWEY"></script>
 
-<script>
-    window.dataLayer = window.dataLayer || [];
-
-    function gtag() {
-        dataLayer.push(arguments);
-    }
-
-    gtag('js', new Date());
-    gtag('config', 'G-B1JNHYSWEY');
-</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Power BI Day 7 | Replace Values & Error Handling</title>
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-B1JNHYSWEY"></script>
+
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'G-B1JNHYSWEY');
+    </script>
+
+    <title>Power BI Day 7 | BeyondBTech</title>
+
 
     <style>
+
+        /* ========================================
+           GLOBAL
+        ======================================== */
 
         * {
             margin: 0;
@@ -32,446 +41,1600 @@
         }
 
         body {
-            font-family: Arial, sans-serif;
-            background: #f6f8fc;
-            color: #1f2937;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f7f8fc;
+            color: #1e2330;
             line-height: 1.7;
+            overflow-x: hidden;
         }
 
-        /* HEADER */
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
 
-        .header {
-            background: #ffffff;
-            border-bottom: 1px solid #e5e7eb;
-            padding: 18px 8%;
+
+        /* ========================================
+           NAVBAR
+        ======================================== */
+
+        nav {
+
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+
             display: flex;
             justify-content: space-between;
             align-items: center;
-            position: sticky;
-            top: 0;
-            z-index: 100;
+
+            padding: 18px 8%;
+
+            background: rgba(255, 255, 255, 0.82);
+
+            backdrop-filter: blur(18px);
+
+            border-bottom: 1px solid rgba(30, 35, 48, 0.08);
         }
+
 
         .logo {
-            font-size: 22px;
-            font-weight: bold;
-            color: #2563eb;
+
+            font-size: 1.4rem;
+            font-weight: 800;
+
+            letter-spacing: -0.5px;
+
+            color: #1e2330;
         }
 
-        .back-btn {
-            text-decoration: none;
-            color: #374151;
+
+        .logo span {
+            color: #7c3aed;
+        }
+
+
+        .nav-links {
+
+            display: flex;
+
+            gap: 28px;
+        }
+
+
+        .nav-links a {
+
+            color: #666b78;
+
+            font-size: 0.95rem;
             font-weight: 600;
-            padding: 9px 16px;
-            border-radius: 8px;
+
+            transition: 0.3s ease;
+        }
+
+
+        .nav-links a:hover {
+            color: #7c3aed;
+        }
+
+
+        /* ========================================
+           HERO
+        ======================================== */
+
+        .hero {
+
+            position: relative;
+
+            overflow: hidden;
+
+            min-height: 620px;
+
+            display: flex;
+
+            align-items: center;
+
+            padding: 100px 8%;
+        }
+
+
+        .hero::before {
+
+            content: "";
+
+            position: absolute;
+
+            width: 600px;
+            height: 600px;
+
+            top: -250px;
+            right: -150px;
+
+            background: rgba(124, 58, 237, 0.12);
+
+            filter: blur(120px);
+
+            border-radius: 50%;
+        }
+
+
+        .hero::after {
+
+            content: "";
+
+            position: absolute;
+
+            width: 450px;
+            height: 450px;
+
+            bottom: -250px;
+            left: -150px;
+
+            background: rgba(79, 70, 229, 0.08);
+
+            filter: blur(110px);
+
+            border-radius: 50%;
+        }
+
+
+        .hero-content {
+
+            position: relative;
+
+            z-index: 2;
+
+            max-width: 1050px;
+
+            width: 100%;
+        }
+
+
+        .breadcrumb {
+
+            color: #777d8c;
+
+            font-size: 0.9rem;
+
+            margin-bottom: 25px;
+        }
+
+
+        .breadcrumb a {
+
             transition: 0.3s;
         }
 
-        .back-btn:hover {
-            background: #eef2ff;
-            color: #2563eb;
+
+        .breadcrumb a:hover {
+            color: #7c3aed;
         }
 
-        /* HERO */
-
-        .hero {
-            padding: 70px 8% 55px;
-            text-align: center;
-            background: linear-gradient(135deg, #eff6ff, #ffffff);
-        }
 
         .day-badge {
+
             display: inline-block;
-            background: #dbeafe;
-            color: #2563eb;
-            padding: 7px 16px;
-            border-radius: 30px;
-            font-size: 14px;
-            font-weight: bold;
-            margin-bottom: 18px;
+
+            padding: 8px 16px;
+
+            border: 1px solid rgba(124, 58, 237, 0.4);
+
+            background: rgba(124, 58, 237, 0.08);
+
+            border-radius: 50px;
+
+            color: #7c3aed;
+
+            font-size: 0.78rem;
+
+            font-weight: 800;
+
+            letter-spacing: 1.5px;
+
+            margin-bottom: 24px;
         }
+
 
         .hero h1 {
-            font-size: 42px;
-            margin-bottom: 15px;
-            color: #111827;
+
+            max-width: 900px;
+
+            font-size: clamp(3rem, 7vw, 6rem);
+
+            line-height: 1.05;
+
+            letter-spacing: -3px;
+
+            color: #1c2130;
         }
+
+
+        .hero h1 span {
+            color: #7c3aed;
+        }
+
 
         .hero p {
-            max-width: 750px;
-            margin: auto;
-            color: #6b7280;
-            font-size: 17px;
+
+            max-width: 700px;
+
+            margin-top: 25px;
+
+            color: #626978;
+
+            font-size: 1.1rem;
         }
 
-        /* MAIN */
+
+        .hero-buttons {
+
+            display: flex;
+
+            gap: 15px;
+
+            flex-wrap: wrap;
+
+            margin-top: 35px;
+        }
+
+
+        .primary-btn,
+        .secondary-btn {
+
+            display: inline-flex;
+
+            align-items: center;
+            justify-content: center;
+
+            padding: 14px 24px;
+
+            border-radius: 12px;
+
+            font-weight: 700;
+
+            transition: all 0.35s ease;
+        }
+
+
+        .primary-btn {
+
+            background: #7c3aed;
+
+            color: white;
+
+            box-shadow:
+                0 12px 35px
+                rgba(124, 58, 237, 0.28);
+        }
+
+
+        .primary-btn:hover {
+
+            transform: translateY(-4px);
+
+            background: #6d28d9;
+
+            box-shadow:
+                0 18px 45px
+                rgba(124, 58, 237, 0.4);
+        }
+
+
+        .secondary-btn {
+
+            background: white;
+
+            color: #4b5563;
+
+            border: 1px solid #dfe1e8;
+        }
+
+
+        .secondary-btn:hover {
+
+            transform: translateY(-4px);
+
+            color: #7c3aed;
+
+            border-color: #8b5cf6;
+        }
+
+
+        /* ========================================
+           HERO STATS
+        ======================================== */
+
+        .stats {
+
+            display: grid;
+
+            grid-template-columns: repeat(3, 1fr);
+
+            gap: 18px;
+
+            max-width: 800px;
+
+            margin-top: 60px;
+        }
+
+
+        .stat-card {
+
+            padding: 22px;
+
+            background:
+                rgba(255, 255, 255, 0.8);
+
+            border: 1px solid #e5e7ee;
+
+            border-radius: 18px;
+
+            box-shadow:
+                0 10px 30px
+                rgba(30, 35, 48, 0.04);
+
+            transition: all 0.35s ease;
+        }
+
+
+        .stat-card:hover {
+
+            transform: translateY(-6px);
+
+            background: white;
+
+            border-color:
+                rgba(124, 58, 237, 0.45);
+        }
+
+
+        .stat-card h3 {
+
+            color: #7c3aed;
+
+            font-size: 1.8rem;
+        }
+
+
+        .stat-card p {
+
+            margin-top: 3px;
+
+            color: #737988;
+
+            font-size: 0.9rem;
+        }
+
+
+        /* ========================================
+           MAIN
+        ======================================== */
 
         .container {
-            max-width: 1000px;
+
+            max-width: 1150px;
+
             margin: auto;
-            padding: 60px 25px;
+
+            padding: 100px 8%;
         }
 
-        /* TOPIC CARD */
 
-        .topic {
-            background: #ffffff;
+        /* ========================================
+           SECTION HEADER
+        ======================================== */
+
+        .section-tag {
+
+            color: #7c3aed;
+
+            font-size: 0.8rem;
+
+            font-weight: 800;
+
+            letter-spacing: 1.5px;
+        }
+
+
+        .section-title {
+
+            margin-top: 12px;
+
+            font-size:
+                clamp(2rem, 4vw, 3.2rem);
+
+            letter-spacing: -1px;
+
+            color: #1c2130;
+        }
+
+
+        .section-description {
+
+            max-width: 700px;
+
+            margin-top: 16px;
+
+            color: #69707f;
+        }
+
+
+        /* ========================================
+           ROADMAP
+        ======================================== */
+
+        .roadmap {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(5, 1fr);
+
+            gap: 15px;
+
+            margin-top: 45px;
+        }
+
+
+        .roadmap-card {
+
+            padding: 22px 18px;
+
+            background: white;
+
+            border: 1px solid #e5e7ee;
+
             border-radius: 18px;
-            padding: 35px;
-            margin-bottom: 35px;
-            border: 1px solid #e5e7eb;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.04);
-            transition: 0.35s ease;
+
+            box-shadow:
+                0 8px 25px
+                rgba(30, 35, 48, 0.04);
+
+            transition: all 0.35s ease;
         }
 
-        .topic:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+
+        .roadmap-card:hover {
+
+            transform: translateY(-8px);
+
+            background: #faf8ff;
+
+            border-color: #8b5cf6;
+
+            box-shadow:
+                0 18px 45px
+                rgba(124, 58, 237, 0.12);
         }
 
-        .topic-number {
-            color: #2563eb;
-            font-weight: bold;
-            font-size: 14px;
-            margin-bottom: 8px;
+
+        .roadmap-number {
+
+            color: #7c3aed;
+
+            font-size: 0.78rem;
+
+            font-weight: 800;
+
+            letter-spacing: 1px;
         }
 
-        .topic h2 {
-            font-size: 28px;
-            margin-bottom: 18px;
-            color: #111827;
+
+        .roadmap-card h3 {
+
+            margin-top: 12px;
+
+            font-size: 1rem;
+
+            line-height: 1.4;
+
+            color: #252a38;
         }
 
-        .topic h3 {
-            margin-top: 25px;
-            margin-bottom: 10px;
-            font-size: 18px;
-            color: #1f2937;
+
+        /* ========================================
+           LESSON
+        ======================================== */
+
+        .lesson {
+
+            position: relative;
+
+            margin-top: 110px;
+
+            padding: 45px;
+
+            background: white;
+
+            border: 1px solid #e4e6ed;
+
+            border-radius: 28px;
+
+            box-shadow:
+                0 12px 35px
+                rgba(30, 35, 48, 0.05);
+
+            transition: all 0.4s ease;
         }
 
-        .topic p {
-            color: #4b5563;
+
+        .lesson:hover {
+
+            border-color:
+                rgba(124, 58, 237, 0.35);
+
+            box-shadow:
+                0 25px 70px
+                rgba(30, 35, 48, 0.08);
+        }
+
+
+        .lesson-header {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 20px;
+
+            margin-bottom: 40px;
+        }
+
+
+        .lesson-number {
+
+            min-width: 62px;
+            height: 62px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 18px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #7c3aed,
+                    #4f46e5
+                );
+
+            color: white;
+
+            font-weight: 800;
+
+            box-shadow:
+                0 10px 30px
+                rgba(124, 58, 237, 0.25);
+        }
+
+
+        .lesson-header h2 {
+
+            font-size:
+                clamp(1.7rem, 3vw, 2.4rem);
+
+            letter-spacing: -1px;
+
+            color: #1c2130;
+        }
+
+
+        .lesson-header p {
+
+            margin-top: 5px;
+
+            color: #737988;
+        }
+
+
+        /* ========================================
+           CONCEPT BLOCK
+        ======================================== */
+
+        .concept-block {
+
+            padding: 28px;
+
+            margin-bottom: 22px;
+
+            background: #fafbfe;
+
+            border: 1px solid #e6e8ef;
+
+            border-radius: 20px;
+
+            transition: all 0.35s ease;
+        }
+
+
+        .concept-block:hover {
+
+            background: white;
+
+            border-color:
+                rgba(124, 58, 237, 0.3);
+        }
+
+
+        .block-label {
+
+            display: inline-block;
+
+            margin-bottom: 12px;
+
+            color: #7c3aed;
+
+            font-size: 0.78rem;
+
+            font-weight: 800;
+
+            letter-spacing: 1.2px;
+        }
+
+
+        .concept-block h3 {
+
+            margin-bottom: 12px;
+
+            font-size: 1.3rem;
+
+            color: #252a38;
+        }
+
+
+        .concept-block p {
+
+            color: #626978;
+        }
+
+
+        /* ========================================
+           EXAMPLE
+        ======================================== */
+
+        .example-box {
+
+            margin-top: 20px;
+
+            padding: 22px;
+
+            border-left:
+                3px solid #7c3aed;
+
+            background: #f7f3ff;
+
+            border-radius:
+                0 15px 15px 0;
+        }
+
+
+        .example-box h4 {
+
+            color: #6d28d9;
+
             margin-bottom: 12px;
         }
 
-        /* TELUGU EXPLANATION */
 
-        .easy-explanation {
-            margin-top: 22px;
-            padding: 20px;
-            background: #f0f7ff;
-            border-left: 4px solid #2563eb;
-            border-radius: 10px;
-        }
+        .example-data {
 
-        .easy-explanation h3 {
-            margin-top: 0;
-            color: #2563eb;
-        }
+            margin-top: 15px;
 
-        /* EXAMPLE */
-
-        .example {
-            margin-top: 25px;
-            background: #f9fafb;
-            border: 1px solid #e5e7eb;
-            border-radius: 12px;
-            padding: 22px;
-        }
-
-        .example-title {
-            font-weight: bold;
-            color: #111827;
-            margin-bottom: 15px;
-        }
-
-        .code-box {
-            background: #111827;
-            color: #e5e7eb;
             padding: 18px;
-            border-radius: 10px;
-            font-family: monospace;
-            white-space: pre-line;
+
             overflow-x: auto;
+
+            background: white;
+
+            border: 1px solid #e2e4eb;
+
+            border-radius: 12px;
+
+            color: #343946;
+
+            font-family:
+                Consolas, monospace;
+
+            line-height: 1.8;
+
+            white-space: pre-line;
         }
 
-        /* IMPORTANT */
 
-        .important {
-            margin-top: 25px;
-            padding: 20px;
-            background: #fff7ed;
-            border-left: 4px solid #f97316;
-            border-radius: 10px;
+        /* ========================================
+           FLOW
+        ======================================== */
+
+        .flow {
+
+            display: flex;
+
+            flex-wrap: wrap;
+
+            align-items: center;
+
+            justify-content: center;
+
+            gap: 14px;
+
+            margin-top: 20px;
         }
 
-        .important strong {
-            color: #c2410c;
+
+        .flow-step {
+
+            padding: 13px 18px;
+
+            background: white;
+
+            border: 1px solid #dfe2ea;
+
+            border-radius: 12px;
+
+            color: #444a58;
+
+            font-weight: 600;
+
+            transition: 0.3s;
         }
 
-        /* VIDEO */
+
+        .flow-step:hover {
+
+            background: #f3efff;
+
+            border-color: #8b5cf6;
+
+            transform: translateY(-4px);
+        }
+
+
+        .flow-arrow {
+
+            color: #7c3aed;
+
+            font-size: 1.4rem;
+        }
+
+
+        /* ========================================
+           VIDEO
+        ======================================== */
 
         .video-section {
+
             margin-top: 30px;
+
+            padding: 24px;
+
+            background: #faf8ff;
+
+            border:
+                1px solid
+                rgba(124, 58, 237, 0.2);
+
+            border-radius: 22px;
         }
 
-        .video-title {
-            font-size: 18px;
-            font-weight: bold;
-            margin-bottom: 15px;
-            color: #111827;
+
+        .video-heading {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            gap: 15px;
+
+            margin-bottom: 18px;
         }
+
+
+        .video-heading h3 {
+
+            font-size: 1.15rem;
+
+            color: #252a38;
+        }
+
+
+        .video-heading span {
+
+            color: #7c3aed;
+
+            font-size: 0.75rem;
+
+            font-weight: 800;
+
+            letter-spacing: 1px;
+        }
+
+
+        .video-card {
+
+            padding: 10px;
+
+            background: white;
+
+            border-radius: 16px;
+
+            border: 1px solid #e3e5ec;
+
+            transition: all 0.4s ease;
+        }
+
+
+        .video-card:hover {
+
+            transform: translateY(-5px);
+
+            box-shadow:
+                0 20px 45px
+                rgba(30, 35, 48, 0.12);
+        }
+
 
         video {
+
             width: 100%;
-            border-radius: 14px;
-            border: 1px solid #e5e7eb;
-            background: #000;
+
+            display: block;
+
+            border-radius: 10px;
         }
 
-        /* SUMMARY TABLE */
 
-        .table-wrapper {
-            overflow-x: auto;
+        /* ========================================
+           IMPORTANT
+        ======================================== */
+
+        .remember {
+
             margin-top: 25px;
+
+            padding: 22px 25px;
+
+            background: #fffaf0;
+
+            border:
+                1px solid
+                rgba(245, 158, 11, 0.25);
+
+            border-left:
+                4px solid #f59e0b;
+
+            border-radius: 16px;
         }
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            min-width: 650px;
+
+        .remember h4 {
+
+            color: #b45309;
+
+            margin-bottom: 8px;
         }
 
-        th {
-            background: #2563eb;
-            color: white;
-            text-align: left;
+
+        .remember p {
+
+            color: #6b6870;
         }
 
-        th, td {
-            padding: 15px;
-            border: 1px solid #e5e7eb;
+
+        /* ========================================
+           SUMMARY SECTION
+        ======================================== */
+
+        .steps-section {
+
+            margin-top: 100px;
+
+            padding: 55px;
+
+            background:
+                radial-gradient(
+                    circle at top right,
+                    rgba(124, 58, 237, 0.1),
+                    transparent 35%
+                ),
+                white;
+
+            border: 1px solid #e4e6ed;
+
+            border-radius: 30px;
+
+            box-shadow:
+                0 12px 35px
+                rgba(30, 35, 48, 0.05);
         }
 
-        td {
-            background: white;
-            color: #4b5563;
+
+        .steps-section h2 {
+            color: #1c2130;
         }
 
-        /* FOOTER */
 
-        footer {
-            text-align: center;
-            padding: 35px 20px;
-            background: #ffffff;
-            border-top: 1px solid #e5e7eb;
+        .steps-section > p {
+
+            margin-top: 12px;
+
             color: #6b7280;
         }
 
+
+        .steps-flow {
+
+            display: flex;
+
+            flex-wrap: wrap;
+
+            align-items: center;
+
+            gap: 12px;
+
+            margin-top: 35px;
+        }
+
+
+        .step {
+
+            padding: 14px 18px;
+
+            background: white;
+
+            border: 1px solid #dfe2ea;
+
+            border-radius: 12px;
+
+            color: #444a58;
+
+            font-weight: 700;
+
+            transition: 0.3s;
+        }
+
+
+        .step:hover {
+
+            background: #7c3aed;
+
+            color: white;
+
+            border-color: #8b5cf6;
+
+            transform: translateY(-4px);
+        }
+
+
+        .arrow {
+
+            color: #7c3aed;
+
+            font-size: 1.2rem;
+        }
+
+
+        /* ========================================
+           FOOTER
+        ======================================== */
+
+        footer {
+
+            margin-top: 80px;
+
+            padding: 40px 8%;
+
+            border-top:
+                1px solid #e4e6ed;
+
+            color: #777d8c;
+
+            text-align: center;
+        }
+
+
         footer strong {
-            color: #2563eb;
+            color: #252a38;
         }
 
-        /* ANIMATION */
 
-        .topic {
-            animation: fadeUp 0.7s ease both;
+        /* ========================================
+           SCROLL REVEAL
+        ======================================== */
+
+        .reveal {
+
+            opacity: 0;
+
+            transform: translateY(35px);
+
+            transition:
+                opacity 0.8s ease,
+                transform 0.8s ease;
         }
 
-        @keyframes fadeUp {
-            from {
-                opacity: 0;
-                transform: translateY(25px);
+
+        .reveal.active {
+
+            opacity: 1;
+
+            transform: translateY(0);
+        }
+
+
+        ::selection {
+
+            background: #ddd6fe;
+
+            color: #3b1d75;
+        }
+
+
+        /* ========================================
+           RESPONSIVE
+        ======================================== */
+
+        @media (max-width: 1000px) {
+
+            .roadmap {
+                grid-template-columns:
+                    repeat(3, 1fr);
             }
 
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
         }
 
-        /* RESPONSIVE */
 
-        @media (max-width: 700px) {
+        @media (max-width: 768px) {
 
-            .header {
-                padding: 15px 5%;
+            nav {
+                padding: 16px 6%;
+            }
+
+            .nav-links {
+                display: none;
             }
 
             .hero {
-                padding: 50px 6% 40px;
+
+                min-height: auto;
+
+                padding: 90px 6%;
             }
 
             .hero h1 {
-                font-size: 30px;
+                letter-spacing: -2px;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
             }
 
             .container {
-                padding: 35px 15px;
+                padding: 75px 6%;
             }
 
-            .topic {
-                padding: 23px;
+            .roadmap {
+
+                grid-template-columns:
+                    repeat(2, 1fr);
             }
 
-            .topic h2 {
-                font-size: 24px;
+            .lesson {
+
+                margin-top: 70px;
+
+                padding: 25px;
+
+                border-radius: 22px;
+            }
+
+            .concept-block {
+                padding: 22px;
+            }
+
+            .steps-section {
+
+                padding: 30px;
+
+                border-radius: 22px;
+            }
+
+            .steps-flow {
+
+                flex-direction: column;
+
+                align-items: stretch;
+            }
+
+            .arrow {
+
+                text-align: center;
+
+                transform: rotate(90deg);
+            }
+
+        }
+
+
+        @media (max-width: 480px) {
+
+            .roadmap {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+
+            .lesson-header {
+                align-items: flex-start;
+            }
+
+            .lesson-number {
+
+                min-width: 52px;
+
+                height: 52px;
+            }
+
+            .video-heading {
+
+                align-items: flex-start;
+
+                flex-direction: column;
             }
 
         }
 
     </style>
+
 </head>
 
 
 <body>
 
 
-<!-- HEADER -->
+<!-- ================= NAVBAR ================= -->
 
-<header class="header">
+<nav>
 
-    <div class="logo">
-        BeyondBTech
-    </div>
-
-    <a href="../powerbi.html" class="back-btn">
-        ← Back to Power BI
+    <a href="../index.html" class="logo">
+        Beyond<span>BTech</span>
     </a>
 
-</header>
+
+    <div class="nav-links">
+
+        <a href="../index.html">Home</a>
+
+        <a href="../powerbi.html">Power BI</a>
+
+        <a href="../sql.html">SQL</a>
+
+        <a href="../interview.html">Interview Prep</a>
+
+    </div>
+
+</nav>
 
 
-<!-- HERO -->
+<!-- ================= HERO ================= -->
 
 <section class="hero">
 
-    <div class="day-badge">
-        POWER BI • DAY 7
+    <div class="hero-content reveal">
+
+
+        <div class="breadcrumb">
+
+            <a href="../index.html">Home</a>
+            /
+            <a href="../powerbi.html">Power BI</a>
+            /
+            Day 07
+
+        </div>
+
+
+        <div class="day-badge">
+
+            POWER BI · DAY 07
+
+        </div>
+
+
+        <h1>
+
+            Replace Values
+            <span>& Handle Errors.</span>
+
+        </h1>
+
+
+        <p>
+
+            Learn how to standardize inconsistent data and handle errors
+            in Power Query using Replace Values, Remove Errors,
+            Keep Errors and Replace Errors.
+
+        </p>
+
+
+        <div class="hero-buttons">
+
+            <a href="#roadmap" class="primary-btn">
+
+                Start Learning ↓
+
+            </a>
+
+
+            <a href="#summary" class="secondary-btn">
+
+                Day 7 Summary
+
+            </a>
+
+        </div>
+
+
+        <div class="stats">
+
+
+            <div class="stat-card">
+
+                <h3>4</h3>
+
+                <p>Power Query Concepts</p>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <h3>4</h3>
+
+                <p>Practical Videos</p>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <h3>1</h3>
+
+                <p>Error Handling Process</p>
+
+            </div>
+
+
+        </div>
+
     </div>
-
-    <h1>Replace Values & Error Handling</h1>
-
-    <p>
-        Learn how to standardize inconsistent data and handle errors
-        in Power Query using Replace Values, Remove Errors,
-        Keep Errors and Replace Errors.
-    </p>
 
 </section>
 
+
+<!-- ================= MAIN ================= -->
 
 <main class="container">
 
 
-<!-- REPLACE VALUES -->
+    <!-- ================= ROADMAP ================= -->
 
-<section class="topic">
-
-    <div class="topic-number">
-        TOPIC 01
-    </div>
-
-    <h2>Replace Values</h2>
-
-    <p>
-        Replace Values is used to change an existing value in a column
-        into another value. This is especially useful when the same
-        information is stored in different formats.
-    </p>
-
-    <div class="easy-explanation">
-
-        <h3>💬 Easy Explanation</h3>
-
-        <p>
-            Bro, Replace Values ane option manaku data lo unna oka
-            specific value ni inkoka value tho change cheyadaniki use
-            avtundhi. Mainly same information different formats lo
-            unnappudu data ni standardize cheyadaniki use chestam.
-        </p>
-
-    </div>
+    <section id="roadmap" class="reveal">
 
 
-    <div class="example">
+        <div class="section-tag">
 
-        <div class="example-title">
-            💡 Example
+            TODAY'S ROADMAP
+
         </div>
 
-        <div class="code-box">HYD  →  Hyderabad
+
+        <h2 class="section-title">
+
+            Standardize Data & Handle Errors
+
+        </h2>
+
+
+        <p class="section-description">
+
+            In real-world datasets, the same information may appear in
+            different formats and some records may contain errors.
+            Let's learn how to handle them correctly in Power Query.
+
+        </p>
+
+
+        <div class="roadmap">
+
+
+            <a href="#lesson1" class="roadmap-card">
+
+                <div class="roadmap-number">01</div>
+
+                <h3>Replace Values</h3>
+
+            </a>
+
+
+            <a href="#lesson2" class="roadmap-card">
+
+                <div class="roadmap-number">02</div>
+
+                <h3>Remove Errors</h3>
+
+            </a>
+
+
+            <a href="#lesson3" class="roadmap-card">
+
+                <div class="roadmap-number">03</div>
+
+                <h3>Keep Errors</h3>
+
+            </a>
+
+
+            <a href="#lesson4" class="roadmap-card">
+
+                <div class="roadmap-number">04</div>
+
+                <h3>Replace Errors</h3>
+
+            </a>
+
+
+            <a href="#summary" class="roadmap-card">
+
+                <div class="roadmap-number">05</div>
+
+                <h3>Day 7 Summary</h3>
+
+            </a>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= LESSON 1 ================= -->
+
+    <section id="lesson1" class="lesson reveal">
+
+
+        <div class="lesson-header">
+
+            <div class="lesson-number">01</div>
+
+
+            <div>
+
+                <h2>Replace Values</h2>
+
+                <p>
+
+                    Change a specific value into another value
+                    to keep your data consistent.
+
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="concept-block">
+
+
+            <div class="block-label">
+
+                CONCEPT
+
+            </div>
+
+
+            <h3>What does Replace Values mean?</h3>
+
+
+            <p>
+
+                Replace Values is used to change an existing value
+                in a column into another value. It is especially useful
+                when the same information is entered in different formats.
+
+            </p>
+
+
+            <p style="margin-top: 15px;">
+
+                Bro, Replace Values ane option manaku data lo unna
+                oka specific value ni inkoka value tho change cheyadaniki
+                use avtundhi. Mainly same information different formats lo
+                unnappudu data ni standardize cheyadaniki use chestam.
+
+            </p>
+
+
+            <div class="example-box">
+
+                <h4>💼 Example</h4>
+
+
+                <div class="example-data">HYD  →  Hyderabad
 WGL  →  Warangal
 
 Second Class  →  Second</div>
 
-    </div>
 
+                <p style="margin-top: 15px;">
 
-    <div class="important">
+                    Here the same information may be entered differently.
+                    Replace Values helps us convert it into one
+                    consistent format.
 
-        <strong>Important:</strong>
+                </p>
 
-        Replace Values only changes the specified value.
-        It does not remove the row or column.
+            </div>
 
-    </div>
-
-
-    <!-- VIDEO -->
-
-    <div class="video-section">
-
-        <div class="video-title">
-            🎥 Watch & Practice — Replace Values
         </div>
 
-        <video controls>
-            <source src="../videos/powerbi/day7-replace-values.mp4"
-                    type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
 
-    </div>
-
-</section>
+        <div class="concept-block">
 
 
-<!-- REMOVE ERRORS -->
+            <div class="block-label">
 
-<section class="topic">
+                HOW IT WORKS
 
-    <div class="topic-number">
-        TOPIC 02
-    </div>
-
-    <h2>Remove Errors</h2>
-
-    <p>
-        Remove Errors removes every row that contains an error
-        in the selected column.
-    </p>
-
-    <div class="easy-explanation">
-
-        <h3>💬 Easy Explanation</h3>
-
-        <p>
-            Bro, Remove Errors use chesthe kevalam error value matrame
-            remove avvadhu. Error unna complete row or record motham
-            data nunchi remove aipothundhi.
-        </p>
-
-    </div>
+            </div>
 
 
-    <div class="example">
+            <div class="flow">
 
-        <div class="example-title">
-            💡 Example
+                <div class="flow-step">
+
+                    Different Values
+
+                </div>
+
+                <div class="flow-arrow">→</div>
+
+                <div class="flow-step">
+
+                    Replace Values
+
+                </div>
+
+                <div class="flow-arrow">→</div>
+
+                <div class="flow-step">
+
+                    Standardized Data
+
+                </div>
+
+            </div>
+
         </div>
 
-        <div class="code-box">Before:
+
+        <!-- VIDEO -->
+
+        <div class="video-section">
+
+
+            <div class="video-heading">
+
+                <h3>🎥 Watch It In Action</h3>
+
+                <span>PRACTICAL DEMONSTRATION</span>
+
+            </div>
+
+
+            <div class="video-card">
+
+                <video controls>
+
+                    <source
+                        src="../assets/videos/powerbi/day7-replace-values.mp4"
+                        type="video/mp4"
+                    >
+
+                    Your browser does not support the video tag.
+
+                </video>
+
+            </div>
+
+        </div>
+
+
+        <div class="remember">
+
+            <h4>💡 Important</h4>
+
+            <p>
+
+                Replace Values only changes the specified value.
+                It does not remove the row or column.
+
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= LESSON 2 ================= -->
+
+    <section id="lesson2" class="lesson reveal">
+
+
+        <div class="lesson-header">
+
+            <div class="lesson-number">02</div>
+
+
+            <div>
+
+                <h2>Remove Errors</h2>
+
+                <p>
+
+                    Remove records that contain errors
+                    in the selected column.
+
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="concept-block">
+
+
+            <div class="block-label">
+
+                CONCEPT
+
+            </div>
+
+
+            <h3>What happens when we Remove Errors?</h3>
+
+
+            <p>
+
+                Remove Errors removes rows containing an error
+                in the selected column.
+
+            </p>
+
+
+            <p style="margin-top: 15px;">
+
+                Bro, Remove Errors use chesthe kevalam error value
+                matrame remove avvadhu. Error unna complete row or record
+                motham data nunchi remove aipothundhi.
+
+            </p>
+
+
+            <div class="example-box">
+
+                <h4>💼 Example</h4>
+
+
+                <div class="example-data">Before:
 
 Ram     | 50000 | HR
 Ravi    | Error | IT
@@ -483,74 +1646,161 @@ After Remove Errors:
 Ram     | 50000 | HR
 Kiran   | 60000 | Finance</div>
 
-    </div>
+            </div>
 
-
-    <div class="important">
-
-        <strong>Be Careful:</strong>
-
-        Removing errors can also remove important information
-        from the dataset because the complete row is deleted.
-
-    </div>
-
-
-    <!-- VIDEO -->
-
-    <div class="video-section">
-
-        <div class="video-title">
-            🎥 Watch & Practice — Remove Errors
         </div>
 
-        <video controls>
-            <source src="../videos/powerbi/day7-remove-errors.mp4"
-                    type="video/mp4">
-        </video>
 
-    </div>
-
-</section>
+        <div class="concept-block">
 
 
-<!-- KEEP ERRORS -->
+            <div class="block-label">
 
-<section class="topic">
+                HOW IT WORKS
 
-    <div class="topic-number">
-        TOPIC 03
-    </div>
-
-    <h2>Keep Errors</h2>
-
-    <p>
-        Keep Errors keeps only the rows containing errors and removes
-        the normal rows from the current query result. This makes it
-        easier to identify and investigate problematic records.
-    </p>
-
-    <div class="easy-explanation">
-
-        <h3>💬 Easy Explanation</h3>
-
-        <p>
-            Bro, Keep Errors use chesthe error unna rows matrame
-            mana data lo kanipistayi. Normal rows anni remove aipothayi.
-            Dheenivalla errors ekkada unnayo easy ga identify chesi
-            investigate cheyachu.
-        </p>
-
-    </div>
+            </div>
 
 
-    <div class="example">
+            <div class="flow">
 
-        <div class="example-title">
-            💡 Example
+                <div class="flow-step">
+
+                    Error Found
+
+                </div>
+
+                <div class="flow-arrow">→</div>
+
+                <div class="flow-step">
+
+                    Remove Errors
+
+                </div>
+
+                <div class="flow-arrow">→</div>
+
+                <div class="flow-step">
+
+                    Complete Row Removed
+
+                </div>
+
+            </div>
+
         </div>
 
-        <div class="code-box">Before:
+
+        <!-- VIDEO -->
+
+        <div class="video-section">
+
+
+            <div class="video-heading">
+
+                <h3>🎥 Watch It In Action</h3>
+
+                <span>PRACTICAL DEMONSTRATION</span>
+
+            </div>
+
+
+            <div class="video-card">
+
+                <video controls>
+
+                    <source
+                        src="../assets/videos/powerbi/day7-remove-errors.mp4"
+                        type="video/mp4"
+                    >
+
+                </video>
+
+            </div>
+
+        </div>
+
+
+        <div class="remember">
+
+            <h4>⚠️ Be Careful</h4>
+
+            <p>
+
+                An error may exist in only one column, but Remove Errors
+                can remove the complete row. Always check whether that
+                record contains important information.
+
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= LESSON 3 ================= -->
+
+    <section id="lesson3" class="lesson reveal">
+
+
+        <div class="lesson-header">
+
+            <div class="lesson-number">03</div>
+
+
+            <div>
+
+                <h2>Keep Errors</h2>
+
+                <p>
+
+                    Keep only the error records
+                    so you can investigate them.
+
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="concept-block">
+
+
+            <div class="block-label">
+
+                CONCEPT
+
+            </div>
+
+
+            <h3>Why do we use Keep Errors?</h3>
+
+
+            <p>
+
+                Keep Errors keeps only the rows containing errors
+                and removes normal rows from the current query result.
+                This makes it easier to identify problematic records.
+
+            </p>
+
+
+            <p style="margin-top: 15px;">
+
+                Bro, Keep Errors use chesthe error unna rows matrame
+                mana data lo kanipistayi. Normal rows anni remove aipothayi.
+                Dheenivalla errors ekkada unnayo easy ga identify chesi
+                investigate cheyachu.
+
+            </p>
+
+
+            <div class="example-box">
+
+                <h4>💼 Example</h4>
+
+
+                <div class="example-data">Before:
 
 Ram     | 50000
 Ravi    | Error
@@ -563,59 +1813,131 @@ After Keep Errors:
 Ravi    | Error
 Suresh  | Error</div>
 
-    </div>
+            </div>
 
-
-    <div class="important">
-
-        <strong>Real Job Tip:</strong>
-
-        When working with thousands of rows, Keep Errors helps you
-        quickly isolate only the problematic records before deciding
-        how to fix them.
-
-    </div>
-
-</section>
-
-
-<!-- REPLACE ERRORS -->
-
-<section class="topic">
-
-    <div class="topic-number">
-        TOPIC 04
-    </div>
-
-    <h2>Replace Errors</h2>
-
-    <p>
-        Replace Errors is used to replace an error with another
-        appropriate value while keeping the complete row in the dataset.
-    </p>
-
-    <div class="easy-explanation">
-
-        <h3>💬 Easy Explanation</h3>
-
-        <p>
-            Bro, Replace Errors ane option manaku data lo unna Error
-            values ni vere appropriate value tho replace cheyadaniki
-            use avtundhi. Error unna row matram data lo alane untundhi.
-        </p>
-
-    </div>
-
-
-    <div class="example">
-
-        <div class="example-title">
-            💡 Example
         </div>
 
-        <div class="code-box">Before:
 
-Sales
+        <div class="concept-block">
+
+
+            <div class="block-label">
+
+                HOW IT WORKS
+
+            </div>
+
+
+            <div class="flow">
+
+                <div class="flow-step">
+
+                    Large Dataset
+
+                </div>
+
+                <div class="flow-arrow">→</div>
+
+                <div class="flow-step">
+
+                    Keep Errors
+
+                </div>
+
+                <div class="flow-arrow">→</div>
+
+                <div class="flow-step">
+
+                    Only Error Rows
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="remember">
+
+            <h4>💡 Real Job Tip</h4>
+
+            <p>
+
+                Instead of immediately removing an error, use Keep Errors
+                to first identify which records are problematic and
+                understand why the error occurred.
+
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= LESSON 4 ================= -->
+
+    <section id="lesson4" class="lesson reveal">
+
+
+        <div class="lesson-header">
+
+            <div class="lesson-number">04</div>
+
+
+            <div>
+
+                <h2>Replace Errors</h2>
+
+                <p>
+
+                    Replace an error with an appropriate value
+                    while keeping the complete row.
+
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="concept-block">
+
+
+            <div class="block-label">
+
+                CONCEPT
+
+            </div>
+
+
+            <h3>What does Replace Errors do?</h3>
+
+
+            <p>
+
+                Replace Errors is used to replace an error
+                with another appropriate value while keeping
+                the complete record in the dataset.
+
+            </p>
+
+
+            <p style="margin-top: 15px;">
+
+                Bro, Replace Errors ane option manaku data lo unna
+                Error values ni vere appropriate value tho replace
+                cheyadaniki use avtundhi. Error unna row matram
+                data lo alane untundhi.
+
+            </p>
+
+
+            <div class="example-box">
+
+                <h4>💼 Example</h4>
+
+
+                <div class="example-data">Before:
 
 500
 Error
@@ -631,166 +1953,394 @@ After:
 0
 800</div>
 
-    </div>
+            </div>
 
-
-    <div class="important">
-
-        <strong>Important:</strong>
-
-        Do not always replace an error with 0.
-        The correct replacement depends on the column,
-        data type and business requirement.
-
-    </div>
-
-
-    <!-- VIDEO -->
-
-    <div class="video-section">
-
-        <div class="video-title">
-            🎥 Watch & Practice — Replace Errors
         </div>
 
-        <video controls>
-            <source src="../videos/powerbi/day7-replace-errors.mp4"
-                    type="video/mp4">
-        </video>
 
-    </div>
-
-</section>
+        <div class="concept-block">
 
 
-<!-- ERROR HANDLING THINKING -->
+            <div class="block-label">
 
-<section class="topic">
+                HOW IT WORKS
 
-    <div class="topic-number">
-        DATA ANALYST THINKING
-    </div>
-
-    <h2>What Should You Do When You Find an Error?</h2>
-
-    <p>
-        Finding an error does not mean that you should immediately
-        remove or replace it. First understand why the error occurred.
-    </p>
-
-    <div class="example">
-
-        <div class="code-box">ERROR
-   ↓
-Investigate Why
-   ↓
-Understand the Problem
-   ↓
-Choose the Correct Action
-
-Replace?
-Remove?
-Fix Source Data?</div>
-
-    </div>
+            </div>
 
 
-    <div class="easy-explanation">
+            <div class="flow">
 
-        <h3>💬 Easy Explanation</h3>
+                <div class="flow-step">
+
+                    Error Found
+
+                </div>
+
+                <div class="flow-arrow">→</div>
+
+                <div class="flow-step">
+
+                    Replace Errors
+
+                </div>
+
+                <div class="flow-arrow">→</div>
+
+                <div class="flow-step">
+
+                    Appropriate Value
+
+                </div>
+
+                <div class="flow-arrow">→</div>
+
+                <div class="flow-step">
+
+                    Row Remains
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- VIDEO -->
+
+        <div class="video-section">
+
+
+            <div class="video-heading">
+
+                <h3>🎥 Watch It In Action</h3>
+
+                <span>PRACTICAL DEMONSTRATION</span>
+
+            </div>
+
+
+            <div class="video-card">
+
+                <video controls>
+
+                    <source
+                        src="../assets/videos/powerbi/day7-replace-errors.mp4"
+                        type="video/mp4"
+                    >
+
+                </video>
+
+            </div>
+
+        </div>
+
+
+        <div class="remember">
+
+            <h4>💡 Important</h4>
+
+            <p>
+
+                Do not always replace an error with 0.
+                The correct replacement depends on the column,
+                data type and business requirement.
+
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= ERROR HANDLING PROCESS ================= -->
+
+    <section class="steps-section reveal">
+
+
+        <div class="section-tag">
+
+            DATA ANALYST THINKING
+
+        </div>
+
+
+        <h2>
+
+            What Should You Do When You Find an Error?
+
+        </h2>
+
 
         <p>
-            Bro, error vachindhi ani ventane remove or replace
-            cheyakudadhu. Mundhu aa error enduku vachindho investigate
-            cheyali. Tarvatha data importance and business requirement
-            batti correct action decide cheyali.
+
+            Don't immediately remove or replace an error.
+            First understand why the error occurred and then
+            choose the correct action.
+
         </p>
 
-    </div>
 
-</section>
-
-
-<!-- SUMMARY -->
-
-<section class="topic">
-
-    <div class="topic-number">
-        DAY 7 RECAP
-    </div>
-
-    <h2>Quick Summary</h2>
-
-    <div class="table-wrapper">
-
-        <table>
-
-            <tr>
-                <th>Option</th>
-                <th>What Happens?</th>
-                <th>Main Purpose</th>
-            </tr>
-
-            <tr>
-                <td>Replace Values</td>
-                <td>Changes one value into another</td>
-                <td>Standardize data</td>
-            </tr>
-
-            <tr>
-                <td>Remove Errors</td>
-                <td>Complete error row is removed</td>
-                <td>Remove invalid records</td>
-            </tr>
-
-            <tr>
-                <td>Keep Errors</td>
-                <td>Only error rows remain</td>
-                <td>Investigate errors</td>
-            </tr>
-
-            <tr>
-                <td>Replace Errors</td>
-                <td>Error is replaced with another value</td>
-                <td>Keep the record</td>
-            </tr>
-
-        </table>
-
-    </div>
+        <div class="steps-flow">
 
 
-    <!-- SUMMARY VIDEO -->
+            <div class="step">
 
-    <div class="video-section">
+                Error Found
 
-        <div class="video-title">
-            🎥 Day 7 Summary Video
+            </div>
+
+            <div class="arrow">→</div>
+
+
+            <div class="step">
+
+                Keep Errors
+
+            </div>
+
+            <div class="arrow">→</div>
+
+
+            <div class="step">
+
+                Investigate Why
+
+            </div>
+
+            <div class="arrow">→</div>
+
+
+            <div class="step">
+
+                Understand Problem
+
+            </div>
+
+            <div class="arrow">→</div>
+
+
+            <div class="step">
+
+                Replace / Remove / Fix
+
+            </div>
+
         </div>
 
-        <video controls>
-            <source src="../videos/powerbi/day7-summary-video.mp4"
-                    type="video/mp4">
-        </video>
 
-    </div>
+        <div class="remember">
 
-</section>
+            <h4>🧠 Remember</h4>
+
+            <p>
+
+                Bro, error vachindhi ani ventane remove or replace
+                cheyakudadhu. Mundhu aa error enduku vachindho
+                investigate cheyali. Tarvatha data importance and
+                business requirement batti correct action decide cheyali.
+
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= SUMMARY ================= -->
+
+    <section id="summary" class="lesson reveal">
+
+
+        <div class="lesson-header">
+
+            <div class="lesson-number">07</div>
+
+
+            <div>
+
+                <h2>Day 7 Summary</h2>
+
+                <p>
+
+                    Let's quickly compare everything
+                    we learned today.
+
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="concept-block">
+
+            <div class="block-label">
+
+                QUICK RECAP
+
+            </div>
+
+
+            <h3>Replace Values</h3>
+
+            <p>
+
+                Changes an existing normal value
+                into another value.
+
+            </p>
+
+
+            <h3 style="margin-top: 25px;">
+
+                Remove Errors
+
+            </h3>
+
+            <p>
+
+                Removes the complete row
+                containing an error.
+
+            </p>
+
+
+            <h3 style="margin-top: 25px;">
+
+                Keep Errors
+
+            </h3>
+
+            <p>
+
+                Keeps only the error rows
+                so we can investigate them.
+
+            </p>
+
+
+            <h3 style="margin-top: 25px;">
+
+                Replace Errors
+
+            </h3>
+
+            <p>
+
+                Replaces an error with another
+                appropriate value while keeping the row.
+
+            </p>
+
+        </div>
+
+
+        <!-- SUMMARY VIDEO -->
+
+        <div class="video-section">
+
+
+            <div class="video-heading">
+
+                <h3>🎥 Day 7 Summary Video</h3>
+
+                <span>COMPLETE RECAP</span>
+
+            </div>
+
+
+            <div class="video-card">
+
+                <video controls>
+
+                    <source
+                        src="../assets/videos/powerbi/day7-summary-video.mp4"
+                        type="video/mp4"
+                    >
+
+                </video>
+
+            </div>
+
+        </div>
+
+
+        <div class="remember">
+
+            <h4>🏆 Day 7 Completed</h4>
+
+            <p>
+
+                You have learned how to standardize inconsistent data
+                and how to investigate, remove and replace errors
+                correctly in Power Query.
+
+            </p>
+
+        </div>
+
+    </section>
 
 
 </main>
 
 
-<!-- FOOTER -->
+<!-- ================= FOOTER ================= -->
 
 <footer>
 
     <p>
-        Keep Learning • Keep Practicing • <strong>BeyondBTech</strong>
+
+        Keep Learning • Keep Practicing •
+        <strong>BeyondBTech</strong>
+
     </p>
 
 </footer>
 
 
+<!-- ================= SCROLL REVEAL SCRIPT ================= -->
+
+<script>
+
+    const reveals =
+        document.querySelectorAll('.reveal');
+
+
+    function revealOnScroll() {
+
+        reveals.forEach(function(element) {
+
+            const position =
+                element.getBoundingClientRect().top;
+
+
+            const screenPosition =
+                window.innerHeight - 100;
+
+
+            if (position < screenPosition) {
+
+                element.classList.add('active');
+
+            }
+
+        });
+
+    }
+
+
+    window.addEventListener(
+        'scroll',
+        revealOnScroll
+    );
+
+
+    revealOnScroll();
+
+</script>
+
+
 </body>
+
 </html>
