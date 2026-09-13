@@ -4,8 +4,6 @@
 
 <head>
 
-
-    
     <!-- GOOGLE ANALYTICS -->
 
     <script async
@@ -50,7 +48,7 @@
 
     <meta
         name="description"
-        content="SQL Practice Test Paper 01 - Hospital Management Business Scenario Questions"
+        content="SQL Practice Test Paper 01 - Hospital Management"
     >
 
 
@@ -100,8 +98,6 @@
 
             --accent: #635bff;
 
-            --accent-light: #f1efff;
-
             --dark: #171923;
 
         }
@@ -110,7 +106,6 @@
         body {
 
             font-family:
-
                 Inter,
                 system-ui,
                 -apple-system,
@@ -119,11 +114,9 @@
                 sans-serif;
 
             background:
-
                 var(--bg);
 
             color:
-
                 var(--text);
 
             line-height: 1.7;
@@ -153,15 +146,12 @@
             z-index: 1000;
 
             background:
-
                 rgba(255,255,255,.92);
 
             backdrop-filter:
-
                 blur(14px);
 
             border-bottom:
-
                 1px solid var(--line);
 
         }
@@ -198,7 +188,6 @@
         .logo span {
 
             color:
-
                 var(--accent);
 
         }
@@ -213,7 +202,6 @@
             gap: 8px;
 
             color:
-
                 #475467;
 
             font-size: 14px;
@@ -228,11 +216,9 @@
         .back-link:hover {
 
             color:
-
                 var(--accent);
 
             transform:
-
                 translateX(-3px);
 
         }
@@ -247,22 +233,8 @@
             width: min(900px, 92%);
 
             margin:
-
                 55px auto
                 35px;
-
-        }
-
-
-        .page-header-top {
-
-            display: flex;
-
-            justify-content: space-between;
-
-            align-items: center;
-
-            margin-bottom: 35px;
 
         }
 
@@ -279,7 +251,6 @@
             display: block;
 
             color:
-
                 var(--accent);
 
             font-size: 12px;
@@ -296,7 +267,6 @@
             margin-top: 10px;
 
             font-size:
-
                 clamp(
                     34px,
                     5vw,
@@ -315,7 +285,6 @@
             margin-top: 12px;
 
             color:
-
                 var(--muted);
 
             font-size: 16px;
@@ -345,19 +314,74 @@
             overflow: hidden;
 
             background:
-
                 var(--paper);
 
             border:
-
                 1px solid var(--line);
 
             border-radius: 8px;
 
             box-shadow:
-
                 0 20px 60px
                 rgba(16,24,40,.08);
+
+        }
+
+
+        /* =========================
+           LOGO WATERMARK
+        ========================= */
+
+        .paper-watermarks {
+
+            position: absolute;
+
+            inset: 0;
+
+            z-index: 1;
+
+            pointer-events: none;
+
+            overflow: hidden;
+
+        }
+
+
+        .bg-watermark {
+
+            position: absolute;
+
+            left: 50%;
+
+            transform:
+                translateX(-50%);
+
+            width: 260px;
+
+            opacity: 0.045;
+
+            user-select: none;
+
+        }
+
+
+        .watermark-one {
+
+            top: 18%;
+
+        }
+
+
+        .watermark-two {
+
+            top: 48%;
+
+        }
+
+
+        .watermark-three {
+
+            top: 78%;
 
         }
 
@@ -375,13 +399,11 @@
             text-align: center;
 
             padding:
-
                 65px
                 60px
                 45px;
 
             border-bottom:
-
                 1px solid var(--line);
 
         }
@@ -396,7 +418,6 @@
             letter-spacing: 3px;
 
             color:
-
                 var(--dark);
 
         }
@@ -405,7 +426,6 @@
         .brand span {
 
             color:
-
                 var(--accent);
 
         }
@@ -416,7 +436,6 @@
             margin-top: 28px;
 
             color:
-
                 var(--accent);
 
             font-size: 12px;
@@ -433,7 +452,6 @@
             margin-top: 10px;
 
             font-size:
-
                 clamp(
                     28px,
                     4vw,
@@ -450,7 +468,6 @@
             margin-top: 10px;
 
             color:
-
                 var(--muted);
 
         }
@@ -463,82 +480,13 @@
             height: 3px;
 
             margin:
-
                 25px auto
                 0;
 
             background:
-
                 var(--accent);
 
             border-radius: 10px;
-
-        }
-
-
-        /* =========================
-           WATERMARK
-        ========================= */
-
-        .watermark {
-
-            position: relative;
-
-            z-index: 1;
-
-            height: 170px;
-
-            display: flex;
-
-            flex-direction: column;
-
-            align-items: center;
-
-            justify-content: center;
-
-            overflow: hidden;
-
-            user-select: none;
-
-            pointer-events: none;
-
-        }
-
-
-        .watermark::before {
-
-            content: "B";
-
-            position: absolute;
-
-            font-size: 230px;
-
-            font-weight: 900;
-
-            line-height: 1;
-
-            color:
-
-                rgba(99,91,255,.035);
-
-        }
-
-
-        .watermark-text {
-
-            position: relative;
-
-            margin-top: 115px;
-
-            color:
-
-                rgba(23,25,35,.10);
-
-            font-size: 11px;
-
-            font-weight: 900;
-
-            letter-spacing: 4px;
 
         }
 
@@ -554,8 +502,7 @@
             z-index: 2;
 
             padding:
-
-                20px
+                25px
                 70px
                 65px;
 
@@ -565,12 +512,10 @@
         .question {
 
             padding:
-
-                35px
+                32px
                 0;
 
             border-bottom:
-
                 1px solid var(--line);
 
         }
@@ -585,13 +530,7 @@
 
         .question-number {
 
-            display: flex;
-
-            align-items: center;
-
-            gap: 12px;
-
-            margin-bottom: 18px;
+            margin-bottom: 14px;
 
         }
 
@@ -608,13 +547,11 @@
 
             justify-content: center;
 
-            flex-shrink: 0;
-
             background:
-
                 var(--dark);
 
-            color: white;
+            color:
+                white;
 
             border-radius: 50%;
 
@@ -625,98 +562,14 @@
         }
 
 
-        .question-number h3 {
-
-            font-size: 17px;
-
-        }
-
-
-        .scenario-label {
+        .question-text {
 
             color:
-
-                var(--accent);
-
-            font-size: 11px;
-
-            font-weight: 850;
-
-            letter-spacing: 1.4px;
-
-        }
-
-
-        .scenario {
-
-            margin-top: 10px;
-
-            color:
-
-                #475467;
-
-            font-size: 15px;
-
-        }
-
-
-        .task {
-
-            margin-top: 18px;
-
-            padding:
-
-                16px
-                18px;
-
-            background:
-
-                #fafafa;
-
-            border-left:
-
-                3px solid var(--accent);
-
-            border-radius:
-
-                0 8px 8px 0;
-
-            color:
-
                 #344054;
 
-            font-size: 15px;
+            font-size: 16px;
 
-        }
-
-
-        .task strong {
-
-            color:
-
-                var(--text);
-
-        }
-
-
-        /* =========================
-           MIDDLE WATERMARK
-        ========================= */
-
-        .middle-watermark {
-
-            margin:
-
-                15px
-                0;
-
-            border-top:
-
-                1px solid var(--line);
-
-            border-bottom:
-
-                1px solid var(--line);
+            line-height: 1.9;
 
         }
 
@@ -734,12 +587,10 @@
             text-align: center;
 
             padding:
-
                 45px
                 30px;
 
             border-top:
-
                 1px solid var(--line);
 
         }
@@ -759,7 +610,6 @@
             margin-top: 8px;
 
             color:
-
                 var(--muted);
 
             font-size: 13px;
@@ -791,15 +641,14 @@
             gap: 10px;
 
             padding:
-
                 14px
                 24px;
 
             background:
-
                 var(--dark);
 
-            color: white;
+            color:
+                white;
 
             border-radius: 12px;
 
@@ -808,7 +657,6 @@
             font-weight: 800;
 
             transition:
-
                 transform .25s,
                 box-shadow .25s;
 
@@ -818,11 +666,9 @@
         .download-btn:hover {
 
             transform:
-
                 translateY(-3px);
 
             box-shadow:
-
                 0 15px 30px
                 rgba(23,25,35,.18);
 
@@ -834,7 +680,6 @@
             margin-top: 12px;
 
             color:
-
                 var(--muted);
 
             font-size: 12px;
@@ -852,7 +697,6 @@
             .paper-header {
 
                 padding:
-
                     45px
                     25px
                     35px;
@@ -863,7 +707,6 @@
             .questions {
 
                 padding:
-
                     10px
                     25px
                     40px;
@@ -874,27 +717,15 @@
             .question {
 
                 padding:
-
                     30px
                     0;
 
             }
 
 
-            .scenario {
+            .question-text {
 
                 font-size: 14px;
-
-            }
-
-
-            .task {
-
-                font-size: 14px;
-
-                padding:
-
-                    14px;
 
             }
 
@@ -906,16 +737,9 @@
             }
 
 
-            .watermark {
+            .bg-watermark {
 
-                height: 130px;
-
-            }
-
-
-            .watermark::before {
-
-                font-size: 180px;
+                width: 180px;
 
             }
 
@@ -938,7 +762,6 @@
 
 
             nav,
-            .page-header-top,
             .download-area {
 
                 display: none;
@@ -949,7 +772,6 @@
             .page-header {
 
                 margin:
-
                     20px auto;
 
             }
@@ -973,71 +795,7 @@
 
         }
 
-/* =========================
-   BACKGROUND WATERMARKS
-========================= */
 
-.paper-watermarks {
-
-    position: absolute;
-
-    inset: 0;
-
-    z-index: 1;
-
-    pointer-events: none;
-
-    overflow: hidden;
-
-}
-
-
-.bg-watermark {
-
-    position: absolute;
-
-    left: 50%;
-
-    transform: translateX(-50%);
-
-    font-size: 300px;
-
-    font-weight: 900;
-
-    line-height: 1;
-
-    color: rgba(99, 91, 255, 0.035);
-
-    user-select: none;
-
-}
-
-
-/* TOP */
-
-.watermark-one {
-
-    top: 18%;
-
-}
-
-
-/* MIDDLE */
-
-.watermark-two {
-
-    top: 48%;
-
-}
-
-
-/* BOTTOM */
-
-.watermark-three {
-
-    top: 78%;
-
-}
     </style>
 
 </head>
@@ -1051,7 +809,6 @@
 ========================= -->
 
 <nav>
-
 
     <div class="nav-container">
 
@@ -1078,9 +835,7 @@
 
     </div>
 
-
 </nav>
-
 
 
 <!-- =========================
@@ -1088,7 +843,6 @@
 ========================= -->
 
 <div class="page-header">
-
 
     <div class="page-title">
 
@@ -1109,16 +863,14 @@
 
         <p>
 
-            Hospital Management • Business Scenario Questions
+            Hospital Management
 
         </p>
 
 
     </div>
 
-
 </div>
-
 
 
 <!-- =========================
@@ -1129,21 +881,37 @@
 
 
     <main class="paper">
+
+
+        <!-- LOGO WATERMARKS -->
+
         <div class="paper-watermarks">
 
-    <div class="bg-watermark watermark-one">
-        B
-    </div>
 
-    <div class="bg-watermark watermark-two">
-        B
-    </div>
+            <!-- ADD LOGO PATH AFTER UPLOADING TO GITHUB -->
 
-    <div class="bg-watermark watermark-three">
-        B
-    </div>
+            <img
+                src="../assets/logo.png"
+                class="bg-watermark watermark-one"
+                alt=""
+            >
 
-</div>
+
+            <img
+                src="../assets/logo.png"
+                class="bg-watermark watermark-two"
+                alt=""
+            >
+
+
+            <img
+                src="../assets/logo.png"
+                class="bg-watermark watermark-three"
+                alt=""
+            >
+
+
+        </div>
 
 
         <!-- PAPER HEADER -->
@@ -1174,7 +942,7 @@
 
             <p>
 
-                Business Scenario Questions
+                10 SQL Practice Questions
 
             </p>
 
@@ -1185,11 +953,7 @@
         </div>
 
 
-
-
-
-
-        <!-- QUESTIONS -->
+        <!-- ALL QUESTIONS -->
 
         <div class="questions">
 
@@ -1198,9 +962,7 @@
 
             <div class="question">
 
-
                 <div class="question-number">
-
 
                     <div class="number">
 
@@ -1208,58 +970,27 @@
 
                     </div>
 
-
-                    <h3>
-
-                        Revenue Analysis
-
-                    </h3>
-
-
                 </div>
 
 
-                <div class="scenario-label">
-
-                    BUSINESS SCENARIO
-
-                </div>
-
-
-                <p class="scenario">
+                <p class="question-text">
 
                     Hospital management wants to know the
-                    total revenue generated by each doctor,
-                    based on all bills tied to their appointments,
-                    but only for doctors who have generated more
-                    than ₹20,000 in total revenue.
+                    total revenue generated by each doctor
+                    based on all bills tied to their appointments.
+                    Display only doctors whose total revenue
+                    is more than ₹20,000.
 
                 </p>
 
-
-                <div class="task">
-
-                    <strong>Question:</strong>
-
-                    Calculate the total revenue generated by
-                    each doctor based on all bills tied to their
-                    appointments. Display only doctors whose
-                    total revenue is more than ₹20,000.
-
-                </div>
-
-
             </div>
-
 
 
             <!-- QUESTION 02 -->
 
             <div class="question">
 
-
                 <div class="question-number">
-
 
                     <div class="number">
 
@@ -1267,57 +998,26 @@
 
                     </div>
 
-
-                    <h3>
-
-                        Doctor Performance Ranking
-
-                    </h3>
-
-
                 </div>
 
 
-                <div class="scenario-label">
-
-                    BUSINESS SCENARIO
-
-                </div>
-
-
-                <p class="scenario">
+                <p class="question-text">
 
                     Management wants to rank doctors within
-                    each department by number of completed
-                    appointments, to identify the top performer
-                    per department.
+                    each department based on the number of
+                    completed appointments. Identify the
+                    top-performing doctors in each department.
 
                 </p>
 
-
-                <div class="task">
-
-                    <strong>Question:</strong>
-
-                    Rank doctors within each department based
-                    on the number of completed appointments.
-                    Identify the top-performing doctors in
-                    each department.
-
-                </div>
-
-
             </div>
-
 
 
             <!-- QUESTION 03 -->
 
             <div class="question">
 
-
                 <div class="question-number">
-
 
                     <div class="number">
 
@@ -1325,56 +1025,26 @@
 
                     </div>
 
-
-                    <h3>
-
-                        Monthly Appointment & Revenue Trends
-
-                    </h3>
-
-
                 </div>
 
 
-                <div class="scenario-label">
-
-                    BUSINESS SCENARIO
-
-                </div>
-
-
-                <p class="scenario">
-
-                    The finance team wants to review month-wise
-                    appointment volume and revenue trends,
-                    but only for the year 2025.
-
-                </p>
-
-
-                <div class="task">
-
-                    <strong>Question:</strong>
+                <p class="question-text">
 
                     Display month-wise appointment volume
                     and revenue for the year 2025.
                     Include only months having more than
                     30 appointments.
 
-                </div>
-
+                </p>
 
             </div>
-
 
 
             <!-- QUESTION 04 -->
 
             <div class="question">
 
-
                 <div class="question-number">
-
 
                     <div class="number">
 
@@ -1382,70 +1052,26 @@
 
                     </div>
 
-
-                    <h3>
-
-                        Appointment Cancellation Analysis
-
-                    </h3>
-
-
                 </div>
 
 
-                <div class="scenario-label">
-
-                    BUSINESS SCENARIO
-
-                </div>
-
-
-                <p class="scenario">
-
-                    Operations wants to identify departments
-                    with unusually high appointment cancellation
-                    rates so they can investigate scheduling issues.
-
-                </p>
-
-
-                <div class="task">
-
-                    <strong>Question:</strong>
+                <p class="question-text">
 
                     Calculate the appointment cancellation
                     percentage for each department.
                     Display only departments with a
                     cancellation rate above 15%.
 
-                </div>
-
+                </p>
 
             </div>
-
-
-        </div>
-
-
-
-        <!-- MIDDLE WATERMARK -->
-
-
-
-
-
-        <!-- QUESTIONS CONTINUE -->
-
-        <div class="questions">
 
 
             <!-- QUESTION 05 -->
 
             <div class="question">
 
-
                 <div class="question-number">
-
 
                     <div class="number">
 
@@ -1453,56 +1079,26 @@
 
                     </div>
 
-
-                    <h3>
-
-                        Loyal Patient Analysis
-
-                    </h3>
-
-
                 </div>
 
 
-                <div class="scenario-label">
+                <p class="question-text">
 
-                    BUSINESS SCENARIO
-
-                </div>
-
-
-                <p class="scenario">
-
-                    The hospital wants to identify loyal patients
-                    who have visited more than twice, to consider
-                    them for a follow-up or loyalty program.
+                    Identify patients who have visited the
+                    hospital more than twice.
+                    Display their total number of appointments
+                    and total amount spent.
 
                 </p>
 
-
-                <div class="task">
-
-                    <strong>Question:</strong>
-
-                    Identify patients who have visited the
-                    hospital more than twice. Display their
-                    total number of appointments and total
-                    amount spent.
-
-                </div>
-
-
             </div>
-
 
 
             <!-- QUESTION 06 -->
 
             <div class="question">
 
-
                 <div class="question-number">
-
 
                     <div class="number">
 
@@ -1510,55 +1106,24 @@
 
                     </div>
 
-
-                    <h3>
-
-                        Cumulative Revenue Trend
-
-                    </h3>
-
-
                 </div>
 
 
-                <div class="scenario-label">
-
-                    BUSINESS SCENARIO
-
-                </div>
-
-
-                <p class="scenario">
-
-                    Finance wants to track a running
-                    (cumulative) total of monthly revenue
-                    over time to visualize growth trends
-                    directly from a query.
-
-                </p>
-
-
-                <div class="task">
-
-                    <strong>Question:</strong>
+                <p class="question-text">
 
                     Calculate the cumulative monthly revenue
                     over time to show the revenue growth trend.
 
-                </div>
-
+                </p>
 
             </div>
-
 
 
             <!-- QUESTION 07 -->
 
             <div class="question">
 
-
                 <div class="question-number">
-
 
                     <div class="number">
 
@@ -1566,56 +1131,26 @@
 
                     </div>
 
-
-                    <h3>
-
-                        Bill Status Analysis
-
-                    </h3>
-
-
                 </div>
 
 
-                <div class="scenario-label">
-
-                    BUSINESS SCENARIO
-
-                </div>
-
-
-                <p class="scenario">
-
-                    The billing team wants a breakdown of
-                    paid, pending, and unpaid bills by department,
-                    to flag departments with a high unpaid amount.
-
-                </p>
-
-
-                <div class="task">
-
-                    <strong>Question:</strong>
+                <p class="question-text">
 
                     Display the total paid, pending, and unpaid
                     bill amounts for each department.
-                    Identify departments where the total
-                    unpaid amount exceeds ₹10,000.
+                    Identify departments where the total unpaid
+                    amount exceeds ₹10,000.
 
-                </div>
-
+                </p>
 
             </div>
-
 
 
             <!-- QUESTION 08 -->
 
             <div class="question">
 
-
                 <div class="question-number">
-
 
                     <div class="number">
 
@@ -1623,66 +1158,24 @@
 
                     </div>
 
-
-                    <h3>
-
-                        Treatment Cost Ranking
-
-                    </h3>
-
-
                 </div>
 
 
-                <div class="scenario-label">
-
-                    BUSINESS SCENARIO
-
-                </div>
-
-
-                <p class="scenario">
-
-                    The hospital wants to identify the top
-                    3 most expensive treatments performed
-                    within each department, for cost review
-                    and supplier negotiation.
-
-                </p>
-
-
-                <div class="task">
-
-                    <strong>Question:</strong>
+                <p class="question-text">
 
                     Identify the top 3 most expensive treatments
                     performed within each department.
 
-                </div>
-
+                </p>
 
             </div>
-
-
-        </div>
-
-
-
-
-
-
-        <!-- FINAL QUESTIONS -->
-
-        <div class="questions">
 
 
             <!-- QUESTION 09 -->
 
             <div class="question">
 
-
                 <div class="question-number">
-
 
                     <div class="number">
 
@@ -1690,54 +1183,24 @@
 
                     </div>
 
-
-                    <h3>
-
-                        Missing Billing Records
-
-                    </h3>
-
-
                 </div>
 
 
-                <div class="scenario-label">
-
-                    BUSINESS SCENARIO
-
-                </div>
-
-
-                <p class="scenario">
-
-                    The hospital wants to find appointments
-                    that have no corresponding bill recorded,
-                    indicating a billing gap that needs correction.
-
-                </p>
-
-
-                <div class="task">
-
-                    <strong>Question:</strong>
+                <p class="question-text">
 
                     Find all appointments for which no
                     corresponding bill has been recorded.
 
-                </div>
-
+                </p>
 
             </div>
-
 
 
             <!-- QUESTION 10 -->
 
             <div class="question">
 
-
                 <div class="question-number">
-
 
                     <div class="number">
 
@@ -1745,53 +1208,24 @@
 
                     </div>
 
-
-                    <h3>
-
-                        Doctor Revenue Stored Procedure
-
-                    </h3>
-
-
                 </div>
 
 
-                <div class="scenario-label">
-
-                    BUSINESS SCENARIO
-
-                </div>
-
-
-                <p class="scenario">
-
-                    Management wants a reusable T-SQL procedure
-                    that returns doctor-wise revenue for any
-                    given date range, without rewriting the
-                    query every time.
-
-                </p>
-
-
-                <div class="task">
-
-                    <strong>Question:</strong>
+                <p class="question-text">
 
                     Create a stored procedure named
-                    <strong>GETDOCTORREVEUE</strong> that accepts
-                    a start date and end date and returns
-                    doctor-wise revenue, including the doctor name,
-                    department name, and total revenue for
-                    appointments within the specified date range.
+                    GETDOCTORREVEUE that accepts a start date
+                    and end date and returns doctor-wise revenue,
+                    including doctor name, department name,
+                    and total revenue for appointments within
+                    the specified date range.
 
-                </div>
-
+                </p>
 
             </div>
 
 
         </div>
-
 
 
         <!-- FOOTER -->
@@ -1817,7 +1251,6 @@
 
 
     </main>
-
 
 
     <!-- DOWNLOAD -->
