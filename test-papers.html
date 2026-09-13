@@ -1,0 +1,2312 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <!-- Google Analytics -->
+
+    <script async
+        src="https://www.googletagmanager.com/gtag/js?id=G-B1JNHYSWEY">
+    </script>
+
+    <script>
+
+        window.dataLayer =
+            window.dataLayer || [];
+
+        function gtag() {
+
+            dataLayer.push(arguments);
+
+        }
+
+        gtag('js', new Date());
+
+        gtag(
+            'config',
+            'G-B1JNHYSWEY'
+        );
+
+    </script>
+
+
+    <meta charset="UTF-8">
+
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+
+    <meta
+        name="description"
+        content="Practice SQL and Power BI test papers on BeyondBTech."
+    >
+
+
+    <title>
+        Test Papers | BeyondBTech
+    </title>
+
+
+    <style>
+
+
+        /* =========================
+           RESET
+        ========================= */
+
+        * {
+
+            margin: 0;
+
+            padding: 0;
+
+            box-sizing: border-box;
+
+        }
+
+
+        html {
+
+            scroll-behavior: smooth;
+
+        }
+
+
+        :root {
+
+            --bg: #f7f8fc;
+
+            --card: #ffffff;
+
+            --text: #111827;
+
+            --muted: #667085;
+
+            --line: #e6e8ef;
+
+            --accent: #635bff;
+
+            --accent-light: #f1efff;
+
+            --dark: #171923;
+
+            --radius: 18px;
+
+        }
+
+
+        body {
+
+            font-family:
+                Inter,
+                system-ui,
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                sans-serif;
+
+            background: var(--bg);
+
+            color: var(--text);
+
+            line-height: 1.6;
+
+            overflow-x: hidden;
+
+        }
+
+
+        a {
+
+            text-decoration: none;
+
+            color: inherit;
+
+        }
+
+
+        .container {
+
+            width: min(1120px, 92%);
+
+            margin: auto;
+
+        }
+
+
+        /* =========================
+           NAVBAR
+        ========================= */
+
+        nav {
+
+            position: sticky;
+
+            top: 0;
+
+            z-index: 1000;
+
+            background:
+                rgba(255,255,255,.88);
+
+            backdrop-filter:
+                blur(14px);
+
+            border-bottom:
+                1px solid var(--line);
+
+        }
+
+
+        .nav-container {
+
+            height: 74px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+        }
+
+
+        .logo {
+
+            font-size: 23px;
+
+            font-weight: 850;
+
+            letter-spacing: -1px;
+
+        }
+
+
+        .logo span {
+
+            color: var(--accent);
+
+        }
+
+
+        .navlinks {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 28px;
+
+        }
+
+
+        .navlinks a {
+
+            font-size: 14px;
+
+            font-weight: 650;
+
+            color: #374151;
+
+            transition: .25s;
+
+        }
+
+
+        .navlinks a:hover {
+
+            color: var(--accent);
+
+        }
+
+
+        .menu {
+
+            display: none;
+
+            border: none;
+
+            background: none;
+
+            font-size: 26px;
+
+            cursor: pointer;
+
+        }
+
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .hero {
+
+            position: relative;
+
+            overflow: hidden;
+
+            padding:
+                105px
+                0
+                95px;
+
+            background:
+
+                radial-gradient(
+
+                    circle at 85% 20%,
+
+                    #dedaff 0%,
+
+                    transparent 28%
+
+                ),
+
+                radial-gradient(
+
+                    circle at 15% 90%,
+
+                    rgba(99,91,255,.10),
+
+                    transparent 25%
+
+                ),
+
+                linear-gradient(
+
+                    135deg,
+
+                    #ffffff 0%,
+
+                    #f1efff 100%
+
+                );
+
+        }
+
+
+        .hero::before {
+
+            content: "";
+
+            position: absolute;
+
+            width: 350px;
+
+            height: 350px;
+
+            right: -100px;
+
+            top: -120px;
+
+            border-radius: 50%;
+
+            background:
+
+                rgba(99,91,255,.08);
+
+            filter:
+
+                blur(50px);
+
+        }
+
+
+        .hero-content {
+
+            position: relative;
+
+            z-index: 2;
+
+            max-width: 780px;
+
+        }
+
+
+        .badge {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 8px;
+
+            padding:
+
+                8px
+                14px;
+
+            background:
+
+                rgba(255,255,255,.9);
+
+            border:
+
+                1px solid #ddd9ff;
+
+            border-radius: 100px;
+
+            color: var(--accent);
+
+            font-size: 13px;
+
+            font-weight: 750;
+
+            margin-bottom: 24px;
+
+        }
+
+
+        .hero h1 {
+
+            font-size:
+
+                clamp(
+                    48px,
+                    7vw,
+                    78px
+                );
+
+            line-height: 1.03;
+
+            letter-spacing: -3px;
+
+        }
+
+
+        .hero h1 span {
+
+            color: var(--accent);
+
+        }
+
+
+        .hero p {
+
+            max-width: 680px;
+
+            margin-top: 24px;
+
+            color: var(--muted);
+
+            font-size: 18px;
+
+        }
+
+
+        .hero-buttons {
+
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 12px;
+
+            margin-top: 32px;
+
+        }
+
+
+        .btn {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            padding:
+
+                13px
+                21px;
+
+            border-radius: 12px;
+
+            font-size: 14px;
+
+            font-weight: 750;
+
+            transition:
+
+                transform .25s ease,
+
+                box-shadow .25s ease;
+
+        }
+
+
+        .btn:hover {
+
+            transform:
+
+                translateY(-3px);
+
+        }
+
+
+        .primary {
+
+            background: var(--dark);
+
+            color: white;
+
+        }
+
+
+        .primary:hover {
+
+            box-shadow:
+
+                0 15px 30px
+
+                rgba(23,25,35,.18);
+
+        }
+
+
+        .secondary {
+
+            background: white;
+
+            border:
+
+                1px solid var(--line);
+
+            color: var(--text);
+
+        }
+
+
+        /* =========================
+           STATS
+        ========================= */
+
+        .stats {
+
+            display: grid;
+
+            grid-template-columns:
+
+                repeat(3, 1fr);
+
+            gap: 16px;
+
+            margin-top: 55px;
+
+            max-width: 750px;
+
+        }
+
+
+        .stat {
+
+            background:
+
+                rgba(255,255,255,.72);
+
+            backdrop-filter:
+
+                blur(10px);
+
+            border:
+
+                1px solid var(--line);
+
+            border-radius: 16px;
+
+            padding: 20px;
+
+            transition: .3s;
+
+        }
+
+
+        .stat:hover {
+
+            transform:
+
+                translateY(-5px);
+
+            border-color:
+
+                #d5d1ff;
+
+            box-shadow:
+
+                0 15px 35px
+
+                rgba(99,91,255,.10);
+
+        }
+
+
+        .stat h3 {
+
+            color: var(--accent);
+
+            font-size: 24px;
+
+        }
+
+
+        .stat p {
+
+            margin-top: 3px;
+
+            font-size: 13px;
+
+            color: var(--muted);
+
+        }
+
+
+        /* =========================
+           SECTIONS
+        ========================= */
+
+        section {
+
+            padding:
+
+                85px
+                0;
+
+        }
+
+
+        .section-head {
+
+            margin-bottom: 32px;
+
+        }
+
+
+        .section-tag {
+
+            color: var(--accent);
+
+            font-size: 12px;
+
+            font-weight: 800;
+
+            letter-spacing: 1.4px;
+
+        }
+
+
+        .section-head h2 {
+
+            margin-top: 8px;
+
+            font-size:
+
+                clamp(
+                    30px,
+                    4vw,
+                    42px
+                );
+
+            letter-spacing: -1.5px;
+
+        }
+
+
+        .section-head p {
+
+            margin-top: 8px;
+
+            color: var(--muted);
+
+            max-width: 650px;
+
+        }
+
+
+        /* =========================
+           CATEGORY GRID
+        ========================= */
+
+        .category-grid {
+
+            display: grid;
+
+            grid-template-columns:
+
+                repeat(2, 1fr);
+
+            gap: 22px;
+
+        }
+
+
+        .category-card {
+
+            position: relative;
+
+            overflow: hidden;
+
+            min-height: 330px;
+
+            background: white;
+
+            border:
+
+                1px solid var(--line);
+
+            border-radius: 24px;
+
+            padding: 32px;
+
+            transition:
+
+                transform .3s ease,
+
+                box-shadow .3s ease,
+
+                border-color .3s ease;
+
+        }
+
+
+        .category-card:hover {
+
+            transform:
+
+                translateY(-7px);
+
+            border-color:
+
+                #d5d1ff;
+
+            box-shadow:
+
+                0 25px 55px
+
+                rgba(17,24,39,.09);
+
+        }
+
+
+        .category-card.available::after {
+
+            content: "";
+
+            position: absolute;
+
+            width: 220px;
+
+            height: 220px;
+
+            right: -90px;
+
+            bottom: -100px;
+
+            border-radius: 50%;
+
+            background:
+
+                rgba(99,91,255,.08);
+
+        }
+
+
+        .category-icon {
+
+            width: 58px;
+
+            height: 58px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            border-radius: 16px;
+
+            background: var(--accent-light);
+
+            font-size: 28px;
+
+        }
+
+
+        .category-card h3 {
+
+            margin-top: 22px;
+
+            font-size: 28px;
+
+            letter-spacing: -1px;
+
+        }
+
+
+        .category-card p {
+
+            margin-top: 10px;
+
+            color: var(--muted);
+
+            max-width: 440px;
+
+        }
+
+
+        .available-status {
+
+            display: inline-block;
+
+            margin-top: 22px;
+
+            padding:
+
+                7px
+                11px;
+
+            border-radius: 8px;
+
+            background: #ecfdf3;
+
+            color: #067647;
+
+            font-size: 12px;
+
+            font-weight: 800;
+
+        }
+
+
+        /* =========================
+           COMING SOON
+        ========================= */
+
+        .coming-soon {
+
+            background:
+
+                linear-gradient(
+                    135deg,
+                    #171923,
+                    #27293a
+                );
+
+            color: white;
+
+        }
+
+
+        .coming-soon .category-icon {
+
+            background:
+
+                rgba(255,255,255,.10);
+
+        }
+
+
+        .coming-soon h3 {
+
+            color: white;
+
+        }
+
+
+        .coming-soon p {
+
+            color: #b9bfce;
+
+        }
+
+
+        .soon-badge {
+
+            display: inline-flex;
+
+            margin-top: 22px;
+
+            padding:
+
+                8px
+                13px;
+
+            border-radius: 100px;
+
+            background:
+
+                rgba(99,91,255,.20);
+
+            color: #d8d4ff;
+
+            font-size: 12px;
+
+            font-weight: 800;
+
+        }
+
+
+        /* =========================
+           TEST PAPERS
+        ========================= */
+
+        .papers-section {
+
+            padding-top: 20px;
+
+        }
+
+
+        .paper-list {
+
+            display: grid;
+
+            gap: 18px;
+
+        }
+
+
+        .paper-card {
+
+            position: relative;
+
+            overflow: hidden;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 25px;
+
+            padding: 28px;
+
+            background: white;
+
+            border:
+
+                1px solid var(--line);
+
+            border-radius: 20px;
+
+            transition:
+
+                transform .25s ease,
+
+                box-shadow .25s ease,
+
+                border-color .25s ease;
+
+        }
+
+
+        .paper-card:hover {
+
+            transform:
+
+                translateY(-4px);
+
+            border-color:
+
+                #d5d1ff;
+
+            box-shadow:
+
+                0 18px 40px
+
+                rgba(17,24,39,.07);
+
+        }
+
+
+        .paper-card::before {
+
+            content: "B";
+
+            position: absolute;
+
+            right: 25px;
+
+            top: -45px;
+
+            font-size: 190px;
+
+            font-weight: 900;
+
+            color:
+
+                rgba(99,91,255,.035);
+
+            pointer-events: none;
+
+        }
+
+
+        .paper-left {
+
+            position: relative;
+
+            z-index: 2;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 20px;
+
+        }
+
+
+        .paper-number {
+
+            width: 58px;
+
+            height: 58px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            border-radius: 16px;
+
+            background: #171923;
+
+            color: white;
+
+            font-size: 18px;
+
+            font-weight: 850;
+
+        }
+
+
+        .paper-info small {
+
+            color: var(--accent);
+
+            font-size: 11px;
+
+            font-weight: 800;
+
+            letter-spacing: 1px;
+
+        }
+
+
+        .paper-info h3 {
+
+            margin-top: 5px;
+
+            font-size: 21px;
+
+        }
+
+
+        .paper-info p {
+
+            margin-top: 5px;
+
+            color: var(--muted);
+
+            font-size: 13px;
+
+        }
+
+
+        .paper-actions {
+
+            position: relative;
+
+            z-index: 2;
+
+            display: flex;
+
+            gap: 10px;
+
+            flex-wrap: wrap;
+
+        }
+
+
+        .action-btn {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            padding:
+
+                11px
+                16px;
+
+            border-radius: 10px;
+
+            font-size: 13px;
+
+            font-weight: 750;
+
+            transition: .25s;
+
+        }
+
+
+        .view-btn {
+
+            background: var(--dark);
+
+            color: white;
+
+        }
+
+
+        .view-btn:hover {
+
+            transform:
+
+                translateY(-2px);
+
+            box-shadow:
+
+                0 10px 25px
+
+                rgba(23,25,35,.18);
+
+        }
+
+
+        .download-btn {
+
+            border:
+
+                1px solid var(--line);
+
+            background: white;
+
+            color: #374151;
+
+        }
+
+
+        .download-btn:hover {
+
+            border-color:
+
+                var(--accent);
+
+            color: var(--accent);
+
+        }
+
+
+        /* =========================
+           HOW IT WORKS
+        ========================= */
+
+        .how {
+
+            background:
+
+                linear-gradient(
+                    135deg,
+                    #ffffff,
+                    #f5f3ff
+                );
+
+            border-top:
+
+                1px solid var(--line);
+
+            border-bottom:
+
+                1px solid var(--line);
+
+        }
+
+
+        .steps {
+
+            display: grid;
+
+            grid-template-columns:
+
+                repeat(3, 1fr);
+
+            gap: 20px;
+
+            margin-top: 35px;
+
+        }
+
+
+        .step {
+
+            background: white;
+
+            border:
+
+                1px solid var(--line);
+
+            border-radius: 18px;
+
+            padding: 25px;
+
+            transition: .25s;
+
+        }
+
+
+        .step:hover {
+
+            transform:
+
+                translateY(-5px);
+
+            box-shadow:
+
+                0 15px 35px
+
+                rgba(17,24,39,.06);
+
+        }
+
+
+        .step-number {
+
+            width: 34px;
+
+            height: 34px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            border-radius: 10px;
+
+            background: var(--accent-light);
+
+            color: var(--accent);
+
+            font-size: 13px;
+
+            font-weight: 850;
+
+        }
+
+
+        .step h3 {
+
+            margin-top: 18px;
+
+            font-size: 18px;
+
+        }
+
+
+        .step p {
+
+            margin-top: 8px;
+
+            color: var(--muted);
+
+            font-size: 14px;
+
+        }
+
+
+        /* =========================
+           CTA
+        ========================= */
+
+        .cta {
+
+            margin-top: 10px;
+
+            padding:
+
+                65px
+                30px;
+
+            text-align: center;
+
+            background: var(--dark);
+
+            color: white;
+
+            border-radius: 28px;
+
+        }
+
+
+        .cta h2 {
+
+            font-size:
+
+                clamp(
+                    30px,
+                    4vw,
+                    45px
+                );
+
+            letter-spacing: -1.5px;
+
+        }
+
+
+        .cta p {
+
+            max-width: 620px;
+
+            margin:
+
+                14px
+                auto
+                25px;
+
+            color: #b9bfce;
+
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+
+            padding:
+
+                30px
+                0;
+
+            border-top:
+
+                1px solid var(--line);
+
+            color: var(--muted);
+
+            font-size: 13px;
+
+        }
+
+
+        .footer {
+
+            display: flex;
+
+            justify-content: space-between;
+
+        }
+
+
+        /* =========================
+           REVEAL
+        ========================= */
+
+        .reveal {
+
+            opacity: 0;
+
+            transform:
+
+                translateY(25px);
+
+            transition:
+
+                opacity .7s ease,
+                transform .7s ease;
+
+        }
+
+
+        .reveal.active {
+
+            opacity: 1;
+
+            transform:
+
+                translateY(0);
+
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media(max-width:800px) {
+
+
+            .category-grid {
+
+                grid-template-columns: 1fr;
+
+            }
+
+
+            .stats {
+
+                grid-template-columns: 1fr;
+
+            }
+
+
+            .steps {
+
+                grid-template-columns: 1fr;
+
+            }
+
+
+            .paper-card {
+
+                align-items: flex-start;
+
+                flex-direction: column;
+
+            }
+
+
+        }
+
+
+        @media(max-width:700px) {
+
+
+            .nav-container {
+
+                height: 68px;
+
+            }
+
+
+            .menu {
+
+                display: block;
+
+            }
+
+
+            .navlinks {
+
+                display: none;
+
+                position: absolute;
+
+                top: 68px;
+
+                left: 0;
+
+                width: 100%;
+
+                background: white;
+
+                border-bottom:
+
+                    1px solid var(--line);
+
+                padding: 20px;
+
+                flex-direction: column;
+
+                align-items: flex-start;
+
+                gap: 18px;
+
+            }
+
+
+            .navlinks.active {
+
+                display: flex;
+
+            }
+
+
+            .hero {
+
+                padding:
+
+                    70px
+                    0
+                    65px;
+
+            }
+
+
+            .hero h1 {
+
+                letter-spacing: -2px;
+
+            }
+
+
+            section {
+
+                padding:
+
+                    60px
+                    0;
+
+            }
+
+
+            .paper-left {
+
+                align-items: flex-start;
+
+            }
+
+
+            .paper-actions {
+
+                width: 100%;
+
+            }
+
+
+            .action-btn {
+
+                flex: 1;
+
+            }
+
+
+            .footer {
+
+                flex-direction: column;
+
+                gap: 8px;
+
+            }
+
+
+        }
+
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     NAVBAR
+========================= -->
+
+<nav>
+
+    <div class="container nav-container">
+
+
+        <a
+            href="index.html"
+            class="logo"
+        >
+
+            Beyond<span>BTech</span>
+
+        </a>
+
+
+        <div
+            class="navlinks"
+            id="navlinks"
+        >
+
+            <a href="index.html">
+
+                Home
+
+            </a>
+
+
+            <a href="sql.html">
+
+                SQL
+
+            </a>
+
+
+            <a href="powerbi.html">
+
+                Power BI
+
+            </a>
+
+
+            <a
+                href="test-papers.html"
+                style="color:#635bff"
+            >
+
+                Test Papers
+
+            </a>
+
+
+            <a href="interview.html">
+
+                Interview
+
+            </a>
+
+
+        </div>
+
+
+        <button
+            class="menu"
+            id="menu"
+        >
+
+            ☰
+
+        </button>
+
+
+    </div>
+
+</nav>
+
+
+
+<!-- =========================
+     HERO
+========================= -->
+
+<header class="hero">
+
+    <div class="container">
+
+
+        <div class="hero-content">
+
+
+            <div class="badge">
+
+                📝 PRACTICE • TEST • IMPROVE
+
+            </div>
+
+
+            <h1>
+
+                Practice.
+                <br>
+
+                <span>
+                    Perform Better.
+                </span>
+
+            </h1>
+
+
+            <p>
+
+                Practice with structured test papers and challenge
+                yourself with questions designed to improve your
+                understanding and problem-solving skills.
+
+            </p>
+
+
+            <div class="hero-buttons">
+
+
+                <a
+                    href="#sql-papers"
+                    class="btn primary"
+                >
+
+                    Explore SQL Papers ↓
+
+                </a>
+
+
+                <a
+                    href="#how"
+                    class="btn secondary"
+                >
+
+                    How It Works
+
+                </a>
+
+
+            </div>
+
+
+            <div class="stats">
+
+
+                <div class="stat">
+
+                    <h3>SQL</h3>
+
+                    <p>
+                        Practice Papers Available
+                    </p>
+
+                </div>
+
+
+                <div class="stat">
+
+                    <h3>View</h3>
+
+                    <p>
+                        Read Questions Online
+                    </p>
+
+                </div>
+
+
+                <div class="stat">
+
+                    <h3>Download</h3>
+
+                    <p>
+                        Save Papers For Practice
+                    </p>
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+</header>
+
+
+
+<!-- =========================
+     CATEGORIES
+========================= -->
+
+<section>
+
+    <div class="container">
+
+
+        <div class="section-head reveal">
+
+
+            <div class="section-tag">
+
+                PRACTICE CATEGORIES
+
+            </div>
+
+
+            <h2>
+
+                Choose Your Practice Area
+
+            </h2>
+
+
+            <p>
+
+                More practice categories will be added as our
+                learning journey continues.
+
+            </p>
+
+
+        </div>
+
+
+        <div class="category-grid">
+
+
+            <!-- SQL -->
+
+            <div
+                class="
+                    category-card
+                    available
+                    reveal
+                "
+            >
+
+
+                <div class="category-icon">
+
+                    🗃️
+
+                </div>
+
+
+                <h3>
+
+                    SQL Test Papers
+
+                </h3>
+
+
+                <p>
+
+                    Practice SQL concepts, queries and
+                    problem-solving with structured test papers.
+
+                </p>
+
+
+                <div class="available-status">
+
+                    ● AVAILABLE NOW
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- POWER BI -->
+
+            <div
+                class="
+                    category-card
+                    coming-soon
+                    reveal
+                "
+            >
+
+
+                <div class="category-icon">
+
+                    📊
+
+                </div>
+
+
+                <h3>
+
+                    Power BI Test Papers
+
+                </h3>
+
+
+                <p>
+
+                    Power BI practice papers will be added
+                    soon with concepts, practical questions
+                    and real-world scenarios.
+
+                </p>
+
+
+                <div class="soon-badge">
+
+                    🚀 COMING SOON
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     SQL PAPERS
+========================= -->
+
+<section
+    id="sql-papers"
+    class="papers-section"
+>
+
+
+    <div class="container">
+
+
+        <div class="section-head reveal">
+
+
+            <div class="section-tag">
+
+                SQL PRACTICE PAPERS
+
+            </div>
+
+
+            <h2>
+
+                Test Yourself
+
+            </h2>
+
+
+            <p>
+
+                View the complete questions online or download
+                the paper and practice it at your own pace.
+
+            </p>
+
+
+        </div>
+
+
+
+        <div class="paper-list">
+
+
+            <!-- PAPER 01 -->
+
+            <div
+                class="
+                    paper-card
+                    reveal
+                "
+            >
+
+
+                <div class="paper-left">
+
+
+                    <div class="paper-number">
+
+                        01
+
+                    </div>
+
+
+                    <div class="paper-info">
+
+
+                        <small>
+
+                            SQL PRACTICE TEST
+
+                        </small>
+
+
+                        <h3>
+
+                            SQL Test Paper 01
+
+                        </h3>
+
+
+                        <p>
+
+                            Structured SQL questions for
+                            concept understanding and practice.
+
+                        </p>
+
+
+                    </div>
+
+
+                </div>
+
+
+
+                <div class="paper-actions">
+
+
+                    <a
+                        href="test-papers/sql-test-01.html"
+                        class="
+                            action-btn
+                            view-btn
+                        "
+                    >
+
+                        👁 View Questions
+
+                    </a>
+
+
+                    <a
+                        href="assets/test-papers/sql-test-01.pdf"
+                        download
+                        class="
+                            action-btn
+                            download-btn
+                        "
+                    >
+
+                        ↓ Download
+
+                    </a>
+
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     HOW IT WORKS
+========================= -->
+
+<section
+    id="how"
+    class="how"
+>
+
+
+    <div class="container">
+
+
+        <div class="section-head reveal">
+
+
+            <div class="section-tag">
+
+                HOW TO USE
+
+            </div>
+
+
+            <h2>
+
+                Practice Your Way
+
+            </h2>
+
+
+            <p>
+
+                Use the test papers as a self-assessment
+                tool and identify the topics you need
+                to practice more.
+
+            </p>
+
+
+        </div>
+
+
+        <div class="steps">
+
+
+            <div class="step reveal">
+
+
+                <div class="step-number">
+
+                    01
+
+                </div>
+
+
+                <h3>
+
+                    Choose a Paper
+
+                </h3>
+
+
+                <p>
+
+                    Select a practice paper based on
+                    the topic you want to revise.
+
+                </p>
+
+
+            </div>
+
+
+            <div class="step reveal">
+
+
+                <div class="step-number">
+
+                    02
+
+                </div>
+
+
+                <h3>
+
+                    Try Yourself
+
+                </h3>
+
+
+                <p>
+
+                    Read the questions and try solving
+                    them before checking any solutions.
+
+                </p>
+
+
+            </div>
+
+
+            <div class="step reveal">
+
+
+                <div class="step-number">
+
+                    03
+
+                </div>
+
+
+                <h3>
+
+                    Improve
+
+                </h3>
+
+
+                <p>
+
+                    Identify weak areas and practice
+                    those concepts again.
+
+                </p>
+
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     CTA
+========================= -->
+
+<section>
+
+    <div class="container">
+
+
+        <div class="cta reveal">
+
+
+            <h2>
+
+                Practice is where
+                learning becomes skill.
+
+            </h2>
+
+
+            <p>
+
+                Don't just read concepts.
+                Test yourself, make mistakes,
+                understand them and improve.
+
+            </p>
+
+
+            <a
+                href="#sql-papers"
+                class="btn"
+                style="
+                    background:white;
+                    color:#171923;
+                "
+            >
+
+                Start Practicing →
+
+            </a>
+
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+
+    <div class="container footer">
+
+
+        <span>
+
+            © 2026 Beyond BTech
+
+        </span>
+
+
+        <span>
+
+            Learn • Practice • Improve
+
+        </span>
+
+
+    </div>
+
+
+</footer>
+
+
+
+<!-- =========================
+     JAVASCRIPT
+========================= -->
+
+<script>
+
+
+    /* MOBILE MENU */
+
+    const menu =
+        document.getElementById(
+            "menu"
+        );
+
+
+    const navlinks =
+        document.getElementById(
+            "navlinks"
+        );
+
+
+    menu.addEventListener(
+        "click",
+        () => {
+
+            navlinks.classList.toggle(
+                "active"
+            );
+
+        }
+    );
+
+
+
+    document
+        .querySelectorAll(
+            ".navlinks a"
+        )
+        .forEach(
+            link => {
+
+                link.addEventListener(
+                    "click",
+                    () => {
+
+                        navlinks.classList.remove(
+                            "active"
+                        );
+
+                    }
+                );
+
+            }
+        );
+
+
+
+    /* SCROLL REVEAL */
+
+    const reveals =
+        document.querySelectorAll(
+            ".reveal"
+        );
+
+
+    function revealOnScroll() {
+
+
+        reveals.forEach(
+            element => {
+
+
+                const top =
+                    element
+                    .getBoundingClientRect()
+                    .top;
+
+
+                const visible =
+                    window.innerHeight - 80;
+
+
+                if(top < visible){
+
+                    element
+                    .classList
+                    .add(
+                        "active"
+                    );
+
+                }
+
+
+            }
+        );
+
+
+    }
+
+
+    window.addEventListener(
+        "scroll",
+        revealOnScroll
+    );
+
+
+    revealOnScroll();
+
+
+</script>
+
+
+</body>
+
+</html>
