@@ -973,7 +973,71 @@
 
         }
 
+/* =========================
+   BACKGROUND WATERMARKS
+========================= */
 
+.paper-watermarks {
+
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 1;
+
+    pointer-events: none;
+
+    overflow: hidden;
+
+}
+
+
+.bg-watermark {
+
+    position: absolute;
+
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    font-size: 300px;
+
+    font-weight: 900;
+
+    line-height: 1;
+
+    color: rgba(99, 91, 255, 0.035);
+
+    user-select: none;
+
+}
+
+
+/* TOP */
+
+.watermark-one {
+
+    top: 18%;
+
+}
+
+
+/* MIDDLE */
+
+.watermark-two {
+
+    top: 48%;
+
+}
+
+
+/* BOTTOM */
+
+.watermark-three {
+
+    top: 78%;
+
+}
     </style>
 
 </head>
@@ -1065,6 +1129,21 @@
 
 
     <main class="paper">
+        <div class="paper-watermarks">
+
+    <div class="bg-watermark watermark-one">
+        B
+    </div>
+
+    <div class="bg-watermark watermark-two">
+        B
+    </div>
+
+    <div class="bg-watermark watermark-three">
+        B
+    </div>
+
+</div>
 
 
         <!-- PAPER HEADER -->
