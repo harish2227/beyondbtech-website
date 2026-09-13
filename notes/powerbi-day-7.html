@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Power BI Day 7 | Replace Values & Error Handling</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f6f8fc;
+            color: #1f2937;
+            line-height: 1.7;
+        }
+
+        /* HEADER */
+
+        .header {
+            background: #ffffff;
+            border-bottom: 1px solid #e5e7eb;
+            padding: 18px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: bold;
+            color: #2563eb;
+        }
+
+        .back-btn {
+            text-decoration: none;
+            color: #374151;
+            font-weight: 600;
+            padding: 9px 16px;
+            border-radius: 8px;
+            transition: 0.3s;
+        }
+
+        .back-btn:hover {
+            background: #eef2ff;
+            color: #2563eb;
+        }
+
+        /* HERO */
+
+        .hero {
+            padding: 70px 8% 55px;
+            text-align: center;
+            background: linear-gradient(135deg, #eff6ff, #ffffff);
+        }
+
+        .day-badge {
+            display: inline-block;
+            background: #dbeafe;
+            color: #2563eb;
+            padding: 7px 16px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 18px;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 15px;
+            color: #111827;
+        }
+
+        .hero p {
+            max-width: 750px;
+            margin: auto;
+            color: #6b7280;
+            font-size: 17px;
+        }
+
+        /* MAIN */
+
+        .container {
+            max-width: 1000px;
+            margin: auto;
+            padding: 60px 25px;
+        }
+
+        /* TOPIC CARD */
+
+        .topic {
+            background: #ffffff;
+            border-radius: 18px;
+            padding: 35px;
+            margin-bottom: 35px;
+            border: 1px solid #e5e7eb;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.04);
+            transition: 0.35s ease;
+        }
+
+        .topic:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+        }
+
+        .topic-number {
+            color: #2563eb;
+            font-weight: bold;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+
+        .topic h2 {
+            font-size: 28px;
+            margin-bottom: 18px;
+            color: #111827;
+        }
+
+        .topic h3 {
+            margin-top: 25px;
+            margin-bottom: 10px;
+            font-size: 18px;
+            color: #1f2937;
+        }
+
+        .topic p {
+            color: #4b5563;
+            margin-bottom: 12px;
+        }
+
+        /* TELUGU EXPLANATION */
+
+        .easy-explanation {
+            margin-top: 22px;
+            padding: 20px;
+            background: #f0f7ff;
+            border-left: 4px solid #2563eb;
+            border-radius: 10px;
+        }
+
+        .easy-explanation h3 {
+            margin-top: 0;
+            color: #2563eb;
+        }
+
+        /* EXAMPLE */
+
+        .example {
+            margin-top: 25px;
+            background: #f9fafb;
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 22px;
+        }
+
+        .example-title {
+            font-weight: bold;
+            color: #111827;
+            margin-bottom: 15px;
+        }
+
+        .code-box {
+            background: #111827;
+            color: #e5e7eb;
+            padding: 18px;
+            border-radius: 10px;
+            font-family: monospace;
+            white-space: pre-line;
+            overflow-x: auto;
+        }
+
+        /* IMPORTANT */
+
+        .important {
+            margin-top: 25px;
+            padding: 20px;
+            background: #fff7ed;
+            border-left: 4px solid #f97316;
+            border-radius: 10px;
+        }
+
+        .important strong {
+            color: #c2410c;
+        }
+
+        /* VIDEO */
+
+        .video-section {
+            margin-top: 30px;
+        }
+
+        .video-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #111827;
+        }
+
+        video {
+            width: 100%;
+            border-radius: 14px;
+            border: 1px solid #e5e7eb;
+            background: #000;
+        }
+
+        /* SUMMARY TABLE */
+
+        .table-wrapper {
+            overflow-x: auto;
+            margin-top: 25px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 650px;
+        }
+
+        th {
+            background: #2563eb;
+            color: white;
+            text-align: left;
+        }
+
+        th, td {
+            padding: 15px;
+            border: 1px solid #e5e7eb;
+        }
+
+        td {
+            background: white;
+            color: #4b5563;
+        }
+
+        /* FOOTER */
+
+        footer {
+            text-align: center;
+            padding: 35px 20px;
+            background: #ffffff;
+            border-top: 1px solid #e5e7eb;
+            color: #6b7280;
+        }
+
+        footer strong {
+            color: #2563eb;
+        }
+
+        /* ANIMATION */
+
+        .topic {
+            animation: fadeUp 0.7s ease both;
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(25px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* RESPONSIVE */
+
+        @media (max-width: 700px) {
+
+            .header {
+                padding: 15px 5%;
+            }
+
+            .hero {
+                padding: 50px 6% 40px;
+            }
+
+            .hero h1 {
+                font-size: 30px;
+            }
+
+            .container {
+                padding: 35px 15px;
+            }
+
+            .topic {
+                padding: 23px;
+            }
+
+            .topic h2 {
+                font-size: 24px;
+            }
+
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+<!-- HEADER -->
+
+<header class="header">
+
+    <div class="logo">
+        BeyondBTech
+    </div>
+
+    <a href="../powerbi.html" class="back-btn">
+        ← Back to Power BI
+    </a>
+
+</header>
+
+
+<!-- HERO -->
+
+<section class="hero">
+
+    <div class="day-badge">
+        POWER BI • DAY 7
+    </div>
+
+    <h1>Replace Values & Error Handling</h1>
+
+    <p>
+        Learn how to standardize inconsistent data and handle errors
+        in Power Query using Replace Values, Remove Errors,
+        Keep Errors and Replace Errors.
+    </p>
+
+</section>
+
+
+<main class="container">
+
+
+<!-- REPLACE VALUES -->
+
+<section class="topic">
+
+    <div class="topic-number">
+        TOPIC 01
+    </div>
+
+    <h2>Replace Values</h2>
+
+    <p>
+        Replace Values is used to change an existing value in a column
+        into another value. This is especially useful when the same
+        information is stored in different formats.
+    </p>
+
+    <div class="easy-explanation">
+
+        <h3>💬 Easy Explanation</h3>
+
+        <p>
+            Bro, Replace Values ane option manaku data lo unna oka
+            specific value ni inkoka value tho change cheyadaniki use
+            avtundhi. Mainly same information different formats lo
+            unnappudu data ni standardize cheyadaniki use chestam.
+        </p>
+
+    </div>
+
+
+    <div class="example">
+
+        <div class="example-title">
+            💡 Example
+        </div>
+
+        <div class="code-box">HYD  →  Hyderabad
+WGL  →  Warangal
+
+Second Class  →  Second</div>
+
+    </div>
+
+
+    <div class="important">
+
+        <strong>Important:</strong>
+
+        Replace Values only changes the specified value.
+        It does not remove the row or column.
+
+    </div>
+
+
+    <!-- VIDEO -->
+
+    <div class="video-section">
+
+        <div class="video-title">
+            🎥 Watch & Practice — Replace Values
+        </div>
+
+        <video controls>
+            <source src="../videos/powerbi/day7-replace-values.mp4"
+                    type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+
+    </div>
+
+</section>
+
+
+<!-- REMOVE ERRORS -->
+
+<section class="topic">
+
+    <div class="topic-number">
+        TOPIC 02
+    </div>
+
+    <h2>Remove Errors</h2>
+
+    <p>
+        Remove Errors removes every row that contains an error
+        in the selected column.
+    </p>
+
+    <div class="easy-explanation">
+
+        <h3>💬 Easy Explanation</h3>
+
+        <p>
+            Bro, Remove Errors use chesthe kevalam error value matrame
+            remove avvadhu. Error unna complete row or record motham
+            data nunchi remove aipothundhi.
+        </p>
+
+    </div>
+
+
+    <div class="example">
+
+        <div class="example-title">
+            💡 Example
+        </div>
+
+        <div class="code-box">Before:
+
+Ram     | 50000 | HR
+Ravi    | Error | IT
+Kiran   | 60000 | Finance
+
+
+After Remove Errors:
+
+Ram     | 50000 | HR
+Kiran   | 60000 | Finance</div>
+
+    </div>
+
+
+    <div class="important">
+
+        <strong>Be Careful:</strong>
+
+        Removing errors can also remove important information
+        from the dataset because the complete row is deleted.
+
+    </div>
+
+
+    <!-- VIDEO -->
+
+    <div class="video-section">
+
+        <div class="video-title">
+            🎥 Watch & Practice — Remove Errors
+        </div>
+
+        <video controls>
+            <source src="../videos/powerbi/day7-remove-errors.mp4"
+                    type="video/mp4">
+        </video>
+
+    </div>
+
+</section>
+
+
+<!-- KEEP ERRORS -->
+
+<section class="topic">
+
+    <div class="topic-number">
+        TOPIC 03
+    </div>
+
+    <h2>Keep Errors</h2>
+
+    <p>
+        Keep Errors keeps only the rows containing errors and removes
+        the normal rows from the current query result. This makes it
+        easier to identify and investigate problematic records.
+    </p>
+
+    <div class="easy-explanation">
+
+        <h3>💬 Easy Explanation</h3>
+
+        <p>
+            Bro, Keep Errors use chesthe error unna rows matrame
+            mana data lo kanipistayi. Normal rows anni remove aipothayi.
+            Dheenivalla errors ekkada unnayo easy ga identify chesi
+            investigate cheyachu.
+        </p>
+
+    </div>
+
+
+    <div class="example">
+
+        <div class="example-title">
+            💡 Example
+        </div>
+
+        <div class="code-box">Before:
+
+Ram     | 50000
+Ravi    | Error
+Kiran   | 60000
+Suresh  | Error
+
+
+After Keep Errors:
+
+Ravi    | Error
+Suresh  | Error</div>
+
+    </div>
+
+
+    <div class="important">
+
+        <strong>Real Job Tip:</strong>
+
+        When working with thousands of rows, Keep Errors helps you
+        quickly isolate only the problematic records before deciding
+        how to fix them.
+
+    </div>
+
+</section>
+
+
+<!-- REPLACE ERRORS -->
+
+<section class="topic">
+
+    <div class="topic-number">
+        TOPIC 04
+    </div>
+
+    <h2>Replace Errors</h2>
+
+    <p>
+        Replace Errors is used to replace an error with another
+        appropriate value while keeping the complete row in the dataset.
+    </p>
+
+    <div class="easy-explanation">
+
+        <h3>💬 Easy Explanation</h3>
+
+        <p>
+            Bro, Replace Errors ane option manaku data lo unna Error
+            values ni vere appropriate value tho replace cheyadaniki
+            use avtundhi. Error unna row matram data lo alane untundhi.
+        </p>
+
+    </div>
+
+
+    <div class="example">
+
+        <div class="example-title">
+            💡 Example
+        </div>
+
+        <div class="code-box">Before:
+
+Sales
+
+500
+Error
+800
+
+
+Replace Error with 0
+
+
+After:
+
+500
+0
+800</div>
+
+    </div>
+
+
+    <div class="important">
+
+        <strong>Important:</strong>
+
+        Do not always replace an error with 0.
+        The correct replacement depends on the column,
+        data type and business requirement.
+
+    </div>
+
+
+    <!-- VIDEO -->
+
+    <div class="video-section">
+
+        <div class="video-title">
+            🎥 Watch & Practice — Replace Errors
+        </div>
+
+        <video controls>
+            <source src="../videos/powerbi/day7-replace-errors.mp4"
+                    type="video/mp4">
+        </video>
+
+    </div>
+
+</section>
+
+
+<!-- ERROR HANDLING THINKING -->
+
+<section class="topic">
+
+    <div class="topic-number">
+        DATA ANALYST THINKING
+    </div>
+
+    <h2>What Should You Do When You Find an Error?</h2>
+
+    <p>
+        Finding an error does not mean that you should immediately
+        remove or replace it. First understand why the error occurred.
+    </p>
+
+    <div class="example">
+
+        <div class="code-box">ERROR
+   ↓
+Investigate Why
+   ↓
+Understand the Problem
+   ↓
+Choose the Correct Action
+
+Replace?
+Remove?
+Fix Source Data?</div>
+
+    </div>
+
+
+    <div class="easy-explanation">
+
+        <h3>💬 Easy Explanation</h3>
+
+        <p>
+            Bro, error vachindhi ani ventane remove or replace
+            cheyakudadhu. Mundhu aa error enduku vachindho investigate
+            cheyali. Tarvatha data importance and business requirement
+            batti correct action decide cheyali.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- SUMMARY -->
+
+<section class="topic">
+
+    <div class="topic-number">
+        DAY 7 RECAP
+    </div>
+
+    <h2>Quick Summary</h2>
+
+    <div class="table-wrapper">
+
+        <table>
+
+            <tr>
+                <th>Option</th>
+                <th>What Happens?</th>
+                <th>Main Purpose</th>
+            </tr>
+
+            <tr>
+                <td>Replace Values</td>
+                <td>Changes one value into another</td>
+                <td>Standardize data</td>
+            </tr>
+
+            <tr>
+                <td>Remove Errors</td>
+                <td>Complete error row is removed</td>
+                <td>Remove invalid records</td>
+            </tr>
+
+            <tr>
+                <td>Keep Errors</td>
+                <td>Only error rows remain</td>
+                <td>Investigate errors</td>
+            </tr>
+
+            <tr>
+                <td>Replace Errors</td>
+                <td>Error is replaced with another value</td>
+                <td>Keep the record</td>
+            </tr>
+
+        </table>
+
+    </div>
+
+
+    <!-- SUMMARY VIDEO -->
+
+    <div class="video-section">
+
+        <div class="video-title">
+            🎥 Day 7 Summary Video
+        </div>
+
+        <video controls>
+            <source src="../videos/powerbi/day7-summary-video.mp4"
+                    type="video/mp4">
+        </video>
+
+    </div>
+
+</section>
+
+
+</main>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    <p>
+        Keep Learning • Keep Practicing • <strong>BeyondBTech</strong>
+    </p>
+
+</footer>
+
+
+</body>
+</html>
