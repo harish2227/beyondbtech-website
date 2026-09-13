@@ -1,0 +1,1821 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <!-- GOOGLE ANALYTICS -->
+
+    <script async
+        src="https://www.googletagmanager.com/gtag/js?id=G-B1JNHYSWEY">
+    </script>
+
+    <script>
+
+        window.dataLayer =
+            window.dataLayer || [];
+
+
+        function gtag() {
+
+            dataLayer.push(arguments);
+
+        }
+
+
+        gtag(
+            'js',
+            new Date()
+        );
+
+
+        gtag(
+            'config',
+            'G-B1JNHYSWEY'
+        );
+
+    </script>
+
+
+    <meta charset="UTF-8">
+
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+
+    <meta
+        name="description"
+        content="SQL Practice Test Paper 01 - Hospital Management Business Scenario Questions"
+    >
+
+
+    <title>
+
+        SQL Test Paper 01 | BeyondBTech
+
+    </title>
+
+
+    <style>
+
+
+        /* =========================
+           RESET
+        ========================= */
+
+        * {
+
+            margin: 0;
+
+            padding: 0;
+
+            box-sizing: border-box;
+
+        }
+
+
+        html {
+
+            scroll-behavior: smooth;
+
+        }
+
+
+        :root {
+
+            --bg: #f6f7fb;
+
+            --paper: #ffffff;
+
+            --text: #172033;
+
+            --muted: #667085;
+
+            --line: #e4e7ec;
+
+            --accent: #635bff;
+
+            --accent-light: #f1efff;
+
+            --dark: #171923;
+
+        }
+
+
+        body {
+
+            font-family:
+
+                Inter,
+                system-ui,
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                sans-serif;
+
+            background:
+
+                var(--bg);
+
+            color:
+
+                var(--text);
+
+            line-height: 1.7;
+
+        }
+
+
+        a {
+
+            text-decoration: none;
+
+            color: inherit;
+
+        }
+
+
+        /* =========================
+           NAVBAR
+        ========================= */
+
+        nav {
+
+            position: sticky;
+
+            top: 0;
+
+            z-index: 1000;
+
+            background:
+
+                rgba(255,255,255,.92);
+
+            backdrop-filter:
+
+                blur(14px);
+
+            border-bottom:
+
+                1px solid var(--line);
+
+        }
+
+
+        .nav-container {
+
+            width: min(1180px, 92%);
+
+            height: 72px;
+
+            margin: auto;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+        }
+
+
+        .logo {
+
+            font-size: 23px;
+
+            font-weight: 850;
+
+            letter-spacing: -1px;
+
+        }
+
+
+        .logo span {
+
+            color:
+
+                var(--accent);
+
+        }
+
+
+        .back-link {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 8px;
+
+            color:
+
+                #475467;
+
+            font-size: 14px;
+
+            font-weight: 700;
+
+            transition: .25s;
+
+        }
+
+
+        .back-link:hover {
+
+            color:
+
+                var(--accent);
+
+            transform:
+
+                translateX(-3px);
+
+        }
+
+
+        /* =========================
+           PAGE HEADER
+        ========================= */
+
+        .page-header {
+
+            width: min(900px, 92%);
+
+            margin:
+
+                55px auto
+                35px;
+
+        }
+
+
+        .page-header-top {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            margin-bottom: 35px;
+
+        }
+
+
+        .page-title {
+
+            text-align: center;
+
+        }
+
+
+        .page-title small {
+
+            display: block;
+
+            color:
+
+                var(--accent);
+
+            font-size: 12px;
+
+            font-weight: 850;
+
+            letter-spacing: 2px;
+
+        }
+
+
+        .page-title h1 {
+
+            margin-top: 10px;
+
+            font-size:
+
+                clamp(
+                    34px,
+                    5vw,
+                    54px
+                );
+
+            line-height: 1.1;
+
+            letter-spacing: -2px;
+
+        }
+
+
+        .page-title p {
+
+            margin-top: 12px;
+
+            color:
+
+                var(--muted);
+
+            font-size: 16px;
+
+        }
+
+
+        /* =========================
+           QUESTION PAPER
+        ========================= */
+
+        .paper-wrapper {
+
+            width: min(900px, 92%);
+
+            margin: auto;
+
+            padding-bottom: 70px;
+
+        }
+
+
+        .paper {
+
+            position: relative;
+
+            overflow: hidden;
+
+            background:
+
+                var(--paper);
+
+            border:
+
+                1px solid var(--line);
+
+            border-radius: 8px;
+
+            box-shadow:
+
+                0 20px 60px
+                rgba(16,24,40,.08);
+
+        }
+
+
+        /* =========================
+           PAPER HEADER
+        ========================= */
+
+        .paper-header {
+
+            position: relative;
+
+            z-index: 2;
+
+            text-align: center;
+
+            padding:
+
+                65px
+                60px
+                45px;
+
+            border-bottom:
+
+                1px solid var(--line);
+
+        }
+
+
+        .brand {
+
+            font-size: 14px;
+
+            font-weight: 900;
+
+            letter-spacing: 3px;
+
+            color:
+
+                var(--dark);
+
+        }
+
+
+        .brand span {
+
+            color:
+
+                var(--accent);
+
+        }
+
+
+        .test-type {
+
+            margin-top: 28px;
+
+            color:
+
+                var(--accent);
+
+            font-size: 12px;
+
+            font-weight: 850;
+
+            letter-spacing: 2px;
+
+        }
+
+
+        .paper-header h2 {
+
+            margin-top: 10px;
+
+            font-size:
+
+                clamp(
+                    28px,
+                    4vw,
+                    42px
+                );
+
+            letter-spacing: -1.5px;
+
+        }
+
+
+        .paper-header p {
+
+            margin-top: 10px;
+
+            color:
+
+                var(--muted);
+
+        }
+
+
+        .paper-line {
+
+            width: 80px;
+
+            height: 3px;
+
+            margin:
+
+                25px auto
+                0;
+
+            background:
+
+                var(--accent);
+
+            border-radius: 10px;
+
+        }
+
+
+        /* =========================
+           WATERMARK
+        ========================= */
+
+        .watermark {
+
+            position: relative;
+
+            z-index: 1;
+
+            height: 170px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            align-items: center;
+
+            justify-content: center;
+
+            overflow: hidden;
+
+            user-select: none;
+
+            pointer-events: none;
+
+        }
+
+
+        .watermark::before {
+
+            content: "B";
+
+            position: absolute;
+
+            font-size: 230px;
+
+            font-weight: 900;
+
+            line-height: 1;
+
+            color:
+
+                rgba(99,91,255,.035);
+
+        }
+
+
+        .watermark-text {
+
+            position: relative;
+
+            margin-top: 115px;
+
+            color:
+
+                rgba(23,25,35,.10);
+
+            font-size: 11px;
+
+            font-weight: 900;
+
+            letter-spacing: 4px;
+
+        }
+
+
+        /* =========================
+           QUESTIONS
+        ========================= */
+
+        .questions {
+
+            position: relative;
+
+            z-index: 2;
+
+            padding:
+
+                20px
+                70px
+                65px;
+
+        }
+
+
+        .question {
+
+            padding:
+
+                35px
+                0;
+
+            border-bottom:
+
+                1px solid var(--line);
+
+        }
+
+
+        .question:last-child {
+
+            border-bottom: none;
+
+        }
+
+
+        .question-number {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 12px;
+
+            margin-bottom: 18px;
+
+        }
+
+
+        .number {
+
+            width: 38px;
+
+            height: 38px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            flex-shrink: 0;
+
+            background:
+
+                var(--dark);
+
+            color: white;
+
+            border-radius: 50%;
+
+            font-size: 13px;
+
+            font-weight: 850;
+
+        }
+
+
+        .question-number h3 {
+
+            font-size: 17px;
+
+        }
+
+
+        .scenario-label {
+
+            color:
+
+                var(--accent);
+
+            font-size: 11px;
+
+            font-weight: 850;
+
+            letter-spacing: 1.4px;
+
+        }
+
+
+        .scenario {
+
+            margin-top: 10px;
+
+            color:
+
+                #475467;
+
+            font-size: 15px;
+
+        }
+
+
+        .task {
+
+            margin-top: 18px;
+
+            padding:
+
+                16px
+                18px;
+
+            background:
+
+                #fafafa;
+
+            border-left:
+
+                3px solid var(--accent);
+
+            border-radius:
+
+                0 8px 8px 0;
+
+            color:
+
+                #344054;
+
+            font-size: 15px;
+
+        }
+
+
+        .task strong {
+
+            color:
+
+                var(--text);
+
+        }
+
+
+        /* =========================
+           MIDDLE WATERMARK
+        ========================= */
+
+        .middle-watermark {
+
+            margin:
+
+                15px
+                0;
+
+            border-top:
+
+                1px solid var(--line);
+
+            border-bottom:
+
+                1px solid var(--line);
+
+        }
+
+
+        /* =========================
+           PAPER FOOTER
+        ========================= */
+
+        .paper-footer {
+
+            position: relative;
+
+            z-index: 2;
+
+            text-align: center;
+
+            padding:
+
+                45px
+                30px;
+
+            border-top:
+
+                1px solid var(--line);
+
+        }
+
+
+        .paper-footer h3 {
+
+            font-size: 14px;
+
+            letter-spacing: 2px;
+
+        }
+
+
+        .paper-footer p {
+
+            margin-top: 8px;
+
+            color:
+
+                var(--muted);
+
+            font-size: 13px;
+
+        }
+
+
+        /* =========================
+           DOWNLOAD
+        ========================= */
+
+        .download-area {
+
+            text-align: center;
+
+            margin-top: 35px;
+
+        }
+
+
+        .download-btn {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            gap: 10px;
+
+            padding:
+
+                14px
+                24px;
+
+            background:
+
+                var(--dark);
+
+            color: white;
+
+            border-radius: 12px;
+
+            font-size: 14px;
+
+            font-weight: 800;
+
+            transition:
+
+                transform .25s,
+                box-shadow .25s;
+
+        }
+
+
+        .download-btn:hover {
+
+            transform:
+
+                translateY(-3px);
+
+            box-shadow:
+
+                0 15px 30px
+                rgba(23,25,35,.18);
+
+        }
+
+
+        .download-note {
+
+            margin-top: 12px;
+
+            color:
+
+                var(--muted);
+
+            font-size: 12px;
+
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media(max-width:700px) {
+
+
+            .paper-header {
+
+                padding:
+
+                    45px
+                    25px
+                    35px;
+
+            }
+
+
+            .questions {
+
+                padding:
+
+                    10px
+                    25px
+                    40px;
+
+            }
+
+
+            .question {
+
+                padding:
+
+                    30px
+                    0;
+
+            }
+
+
+            .scenario {
+
+                font-size: 14px;
+
+            }
+
+
+            .task {
+
+                font-size: 14px;
+
+                padding:
+
+                    14px;
+
+            }
+
+
+            .page-header {
+
+                margin-top: 35px;
+
+            }
+
+
+            .watermark {
+
+                height: 130px;
+
+            }
+
+
+            .watermark::before {
+
+                font-size: 180px;
+
+            }
+
+
+        }
+
+
+        /* =========================
+           PRINT
+        ========================= */
+
+        @media print {
+
+
+            body {
+
+                background: white;
+
+            }
+
+
+            nav,
+            .page-header-top,
+            .download-area {
+
+                display: none;
+
+            }
+
+
+            .page-header {
+
+                margin:
+
+                    20px auto;
+
+            }
+
+
+            .paper-wrapper {
+
+                width: 100%;
+
+            }
+
+
+            .paper {
+
+                border: none;
+
+                box-shadow: none;
+
+            }
+
+
+        }
+
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     NAVBAR
+========================= -->
+
+<nav>
+
+
+    <div class="nav-container">
+
+
+        <a
+            href="../index.html"
+            class="logo"
+        >
+
+            Beyond<span>BTech</span>
+
+        </a>
+
+
+        <a
+            href="../test-papers.html"
+            class="back-link"
+        >
+
+            ← Back to Test Papers
+
+        </a>
+
+
+    </div>
+
+
+</nav>
+
+
+
+<!-- =========================
+     PAGE HEADER
+========================= -->
+
+<div class="page-header">
+
+
+    <div class="page-title">
+
+
+        <small>
+
+            BEYONDBTECH PRACTICE SERIES
+
+        </small>
+
+
+        <h1>
+
+            SQL Test Paper 01
+
+        </h1>
+
+
+        <p>
+
+            Hospital Management • Business Scenario Questions
+
+        </p>
+
+
+    </div>
+
+
+</div>
+
+
+
+<!-- =========================
+     QUESTION PAPER
+========================= -->
+
+<div class="paper-wrapper">
+
+
+    <main class="paper">
+
+
+        <!-- PAPER HEADER -->
+
+        <div class="paper-header">
+
+
+            <div class="brand">
+
+                BEYOND<span>BTECH</span>07 EDU
+
+            </div>
+
+
+            <div class="test-type">
+
+                SQL PRACTICE TEST
+
+            </div>
+
+
+            <h2>
+
+                Hospital Management
+
+            </h2>
+
+
+            <p>
+
+                Business Scenario Questions
+
+            </p>
+
+
+            <div class="paper-line"></div>
+
+
+        </div>
+
+
+
+        <!-- TOP WATERMARK -->
+
+        <div class="watermark">
+
+
+            <div class="watermark-text">
+
+                BEYONDBTECH07 EDU
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- QUESTIONS -->
+
+        <div class="questions">
+
+
+            <!-- QUESTION 01 -->
+
+            <div class="question">
+
+
+                <div class="question-number">
+
+
+                    <div class="number">
+
+                        01
+
+                    </div>
+
+
+                    <h3>
+
+                        Revenue Analysis
+
+                    </h3>
+
+
+                </div>
+
+
+                <div class="scenario-label">
+
+                    BUSINESS SCENARIO
+
+                </div>
+
+
+                <p class="scenario">
+
+                    Hospital management wants to know the
+                    total revenue generated by each doctor,
+                    based on all bills tied to their appointments,
+                    but only for doctors who have generated more
+                    than ₹20,000 in total revenue.
+
+                </p>
+
+
+                <div class="task">
+
+                    <strong>Question:</strong>
+
+                    Calculate the total revenue generated by
+                    each doctor based on all bills tied to their
+                    appointments. Display only doctors whose
+                    total revenue is more than ₹20,000.
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- QUESTION 02 -->
+
+            <div class="question">
+
+
+                <div class="question-number">
+
+
+                    <div class="number">
+
+                        02
+
+                    </div>
+
+
+                    <h3>
+
+                        Doctor Performance Ranking
+
+                    </h3>
+
+
+                </div>
+
+
+                <div class="scenario-label">
+
+                    BUSINESS SCENARIO
+
+                </div>
+
+
+                <p class="scenario">
+
+                    Management wants to rank doctors within
+                    each department by number of completed
+                    appointments, to identify the top performer
+                    per department.
+
+                </p>
+
+
+                <div class="task">
+
+                    <strong>Question:</strong>
+
+                    Rank doctors within each department based
+                    on the number of completed appointments.
+                    Identify the top-performing doctors in
+                    each department.
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- QUESTION 03 -->
+
+            <div class="question">
+
+
+                <div class="question-number">
+
+
+                    <div class="number">
+
+                        03
+
+                    </div>
+
+
+                    <h3>
+
+                        Monthly Appointment & Revenue Trends
+
+                    </h3>
+
+
+                </div>
+
+
+                <div class="scenario-label">
+
+                    BUSINESS SCENARIO
+
+                </div>
+
+
+                <p class="scenario">
+
+                    The finance team wants to review month-wise
+                    appointment volume and revenue trends,
+                    but only for the year 2025.
+
+                </p>
+
+
+                <div class="task">
+
+                    <strong>Question:</strong>
+
+                    Display month-wise appointment volume
+                    and revenue for the year 2025.
+                    Include only months having more than
+                    30 appointments.
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- QUESTION 04 -->
+
+            <div class="question">
+
+
+                <div class="question-number">
+
+
+                    <div class="number">
+
+                        04
+
+                    </div>
+
+
+                    <h3>
+
+                        Appointment Cancellation Analysis
+
+                    </h3>
+
+
+                </div>
+
+
+                <div class="scenario-label">
+
+                    BUSINESS SCENARIO
+
+                </div>
+
+
+                <p class="scenario">
+
+                    Operations wants to identify departments
+                    with unusually high appointment cancellation
+                    rates so they can investigate scheduling issues.
+
+                </p>
+
+
+                <div class="task">
+
+                    <strong>Question:</strong>
+
+                    Calculate the appointment cancellation
+                    percentage for each department.
+                    Display only departments with a
+                    cancellation rate above 15%.
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- MIDDLE WATERMARK -->
+
+        <div class="middle-watermark">
+
+
+            <div class="watermark">
+
+
+                <div class="watermark-text">
+
+                    BEYONDBTECH07 EDU
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- QUESTIONS CONTINUE -->
+
+        <div class="questions">
+
+
+            <!-- QUESTION 05 -->
+
+            <div class="question">
+
+
+                <div class="question-number">
+
+
+                    <div class="number">
+
+                        05
+
+                    </div>
+
+
+                    <h3>
+
+                        Loyal Patient Analysis
+
+                    </h3>
+
+
+                </div>
+
+
+                <div class="scenario-label">
+
+                    BUSINESS SCENARIO
+
+                </div>
+
+
+                <p class="scenario">
+
+                    The hospital wants to identify loyal patients
+                    who have visited more than twice, to consider
+                    them for a follow-up or loyalty program.
+
+                </p>
+
+
+                <div class="task">
+
+                    <strong>Question:</strong>
+
+                    Identify patients who have visited the
+                    hospital more than twice. Display their
+                    total number of appointments and total
+                    amount spent.
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- QUESTION 06 -->
+
+            <div class="question">
+
+
+                <div class="question-number">
+
+
+                    <div class="number">
+
+                        06
+
+                    </div>
+
+
+                    <h3>
+
+                        Cumulative Revenue Trend
+
+                    </h3>
+
+
+                </div>
+
+
+                <div class="scenario-label">
+
+                    BUSINESS SCENARIO
+
+                </div>
+
+
+                <p class="scenario">
+
+                    Finance wants to track a running
+                    (cumulative) total of monthly revenue
+                    over time to visualize growth trends
+                    directly from a query.
+
+                </p>
+
+
+                <div class="task">
+
+                    <strong>Question:</strong>
+
+                    Calculate the cumulative monthly revenue
+                    over time to show the revenue growth trend.
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- QUESTION 07 -->
+
+            <div class="question">
+
+
+                <div class="question-number">
+
+
+                    <div class="number">
+
+                        07
+
+                    </div>
+
+
+                    <h3>
+
+                        Bill Status Analysis
+
+                    </h3>
+
+
+                </div>
+
+
+                <div class="scenario-label">
+
+                    BUSINESS SCENARIO
+
+                </div>
+
+
+                <p class="scenario">
+
+                    The billing team wants a breakdown of
+                    paid, pending, and unpaid bills by department,
+                    to flag departments with a high unpaid amount.
+
+                </p>
+
+
+                <div class="task">
+
+                    <strong>Question:</strong>
+
+                    Display the total paid, pending, and unpaid
+                    bill amounts for each department.
+                    Identify departments where the total
+                    unpaid amount exceeds ₹10,000.
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- QUESTION 08 -->
+
+            <div class="question">
+
+
+                <div class="question-number">
+
+
+                    <div class="number">
+
+                        08
+
+                    </div>
+
+
+                    <h3>
+
+                        Treatment Cost Ranking
+
+                    </h3>
+
+
+                </div>
+
+
+                <div class="scenario-label">
+
+                    BUSINESS SCENARIO
+
+                </div>
+
+
+                <p class="scenario">
+
+                    The hospital wants to identify the top
+                    3 most expensive treatments performed
+                    within each department, for cost review
+                    and supplier negotiation.
+
+                </p>
+
+
+                <div class="task">
+
+                    <strong>Question:</strong>
+
+                    Identify the top 3 most expensive treatments
+                    performed within each department.
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- SECOND WATERMARK -->
+
+        <div class="middle-watermark">
+
+
+            <div class="watermark">
+
+
+                <div class="watermark-text">
+
+                    BEYONDBTECH07 EDU
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- FINAL QUESTIONS -->
+
+        <div class="questions">
+
+
+            <!-- QUESTION 09 -->
+
+            <div class="question">
+
+
+                <div class="question-number">
+
+
+                    <div class="number">
+
+                        09
+
+                    </div>
+
+
+                    <h3>
+
+                        Missing Billing Records
+
+                    </h3>
+
+
+                </div>
+
+
+                <div class="scenario-label">
+
+                    BUSINESS SCENARIO
+
+                </div>
+
+
+                <p class="scenario">
+
+                    The hospital wants to find appointments
+                    that have no corresponding bill recorded,
+                    indicating a billing gap that needs correction.
+
+                </p>
+
+
+                <div class="task">
+
+                    <strong>Question:</strong>
+
+                    Find all appointments for which no
+                    corresponding bill has been recorded.
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- QUESTION 10 -->
+
+            <div class="question">
+
+
+                <div class="question-number">
+
+
+                    <div class="number">
+
+                        10
+
+                    </div>
+
+
+                    <h3>
+
+                        Doctor Revenue Stored Procedure
+
+                    </h3>
+
+
+                </div>
+
+
+                <div class="scenario-label">
+
+                    BUSINESS SCENARIO
+
+                </div>
+
+
+                <p class="scenario">
+
+                    Management wants a reusable T-SQL procedure
+                    that returns doctor-wise revenue for any
+                    given date range, without rewriting the
+                    query every time.
+
+                </p>
+
+
+                <div class="task">
+
+                    <strong>Question:</strong>
+
+                    Create a stored procedure named
+                    <strong>GETDOCTORREVEUE</strong> that accepts
+                    a start date and end date and returns
+                    doctor-wise revenue, including the doctor name,
+                    department name, and total revenue for
+                    appointments within the specified date range.
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- FOOTER -->
+
+        <div class="paper-footer">
+
+
+            <h3>
+
+                BEYONDBTECH07 EDU
+
+            </h3>
+
+
+            <p>
+
+                Learn • Practice • Improve
+
+            </p>
+
+
+        </div>
+
+
+    </main>
+
+
+
+    <!-- DOWNLOAD -->
+
+    <div class="download-area">
+
+
+        <a
+            href="../assets/test-papers/sql-test-01.pdf"
+            download
+            class="download-btn"
+        >
+
+            ↓ Download Test Paper
+
+        </a>
+
+
+        <p class="download-note">
+
+            Download the paper and practice offline.
+
+        </p>
+
+
+    </div>
+
+
+</div>
+
+
+</body>
+
+</html>
