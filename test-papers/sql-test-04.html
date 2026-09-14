@@ -1,0 +1,1204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <!-- GOOGLE ANALYTICS -->
+    <script async
+        src="https://www.googletagmanager.com/gtag/js?id=G-B1JNHYSWEY">
+    </script>
+
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+        gtag('config', 'G-B1JNHYSWEY');
+    </script>
+
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="SQL Test Paper 04 - BeyondBTech07 Edu"
+    >
+
+    <title>
+        SQL Test Paper 04 | BeyondBTech07 Edu
+    </title>
+
+
+    <style>
+
+        /* =========================
+           RESET
+        ========================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+
+        :root {
+
+            --bg: #f6f7fb;
+            --paper: #ffffff;
+            --text: #172033;
+            --muted: #667085;
+            --line: #e4e7ec;
+            --accent: #635bff;
+            --dark: #171923;
+
+        }
+
+
+        body {
+
+            font-family:
+                Inter,
+                system-ui,
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                sans-serif;
+
+            background: var(--bg);
+
+            color: var(--text);
+
+            line-height: 1.6;
+
+        }
+
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+
+        /* =========================
+           NAVBAR
+        ========================= */
+
+        nav {
+
+            position: sticky;
+
+            top: 0;
+
+            z-index: 1000;
+
+            background:
+                rgba(255,255,255,.92);
+
+            backdrop-filter:
+                blur(14px);
+
+            border-bottom:
+                1px solid var(--line);
+
+        }
+
+
+        .nav-container {
+
+            width: min(1180px, 92%);
+
+            height: 64px;
+
+            margin: auto;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+        }
+
+
+        .logo {
+
+            font-size: 21px;
+
+            font-weight: 850;
+
+            letter-spacing: -1px;
+
+        }
+
+
+        .logo span {
+            color: var(--accent);
+        }
+
+
+        .back-link {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 8px;
+
+            color: #475467;
+
+            font-size: 14px;
+
+            font-weight: 700;
+
+            transition: .25s;
+
+        }
+
+
+        .back-link:hover {
+
+            color: var(--accent);
+
+            transform:
+                translateX(-3px);
+
+        }
+
+
+        /* =========================
+           PAGE HEADER
+        ========================= */
+
+        .page-header {
+
+            width: min(900px, 92%);
+
+            margin:
+                30px auto
+                20px;
+
+        }
+
+
+        .page-title {
+            text-align: center;
+        }
+
+
+        .page-title small {
+
+            display: block;
+
+            color: var(--accent);
+
+            font-size: 10px;
+
+            font-weight: 850;
+
+            letter-spacing: 1.8px;
+
+        }
+
+
+        .page-title h1 {
+
+            margin-top: 5px;
+
+            font-size:
+                clamp(
+                    28px,
+                    4vw,
+                    40px
+                );
+
+            line-height: 1.2;
+
+            letter-spacing: -1.5px;
+
+        }
+
+
+        /* =========================
+           PAPER WRAPPER
+        ========================= */
+
+        .paper-wrapper {
+
+            width: min(900px, 92%);
+
+            margin: auto;
+
+            padding-bottom: 50px;
+
+        }
+
+
+        .paper {
+
+            position: relative;
+
+            overflow: hidden;
+
+            background: var(--paper);
+
+            border:
+                1px solid var(--line);
+
+            border-radius: 8px;
+
+            box-shadow:
+                0 20px 60px
+                rgba(16,24,40,.08);
+
+        }
+
+
+        /* =========================
+           LOGO WATERMARK
+        ========================= */
+
+        .paper-watermarks {
+
+            position: absolute;
+
+            inset: 0;
+
+            z-index: 1;
+
+            pointer-events: none;
+
+            overflow: hidden;
+
+        }
+
+
+        .bg-watermark {
+
+            position: absolute;
+
+            left: 50%;
+
+            transform:
+                translateX(-50%);
+
+            width: 240px;
+
+            opacity: 0.12;
+
+            user-select: none;
+
+        }
+
+
+        .watermark-one {
+            top: 10%;
+        }
+
+
+        .watermark-two {
+            top: 35%;
+        }
+
+
+        .watermark-three {
+            top: 60%;
+        }
+
+
+        .watermark-four {
+            top: 82%;
+        }
+
+
+        /* =========================
+           PAPER HEADER
+        ========================= */
+
+        .paper-header {
+
+            position: relative;
+
+            z-index: 2;
+
+            text-align: center;
+
+            padding:
+                25px
+                30px
+                20px;
+
+            border-bottom:
+                1px solid var(--line);
+
+        }
+
+
+        .brand {
+
+            font-size: 13px;
+
+            font-weight: 900;
+
+            letter-spacing: 2.5px;
+
+            color: var(--dark);
+
+        }
+
+
+        .brand span {
+            color: var(--accent);
+        }
+
+
+        .paper-header p {
+
+            margin-top: 6px;
+
+            color: var(--muted);
+
+            font-size: 12px;
+
+            font-weight: 700;
+
+            letter-spacing: 1px;
+
+        }
+
+
+        .paper-line {
+
+            width: 55px;
+
+            height: 3px;
+
+            margin:
+                14px auto
+                0;
+
+            background: var(--accent);
+
+            border-radius: 10px;
+
+        }
+
+
+        /* =========================
+           QUESTIONS
+        ========================= */
+
+        .questions {
+
+            position: relative;
+
+            z-index: 2;
+
+            padding:
+                8px
+                55px
+                35px;
+
+        }
+
+
+        .question {
+
+            display: flex;
+
+            gap: 14px;
+
+            padding:
+                22px
+                0;
+
+            border-bottom:
+                1px solid var(--line);
+
+        }
+
+
+        .question:last-child {
+            border-bottom: none;
+        }
+
+
+        /* =========================
+           QUESTION NUMBER
+        ========================= */
+
+        .number {
+
+            width: 34px;
+
+            height: 34px;
+
+            min-width: 34px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            background: var(--dark);
+
+            color: white;
+
+            border-radius: 50%;
+
+            font-size: 11px;
+
+            font-weight: 850;
+
+        }
+
+
+        /* =========================
+           QUESTION CONTENT
+        ========================= */
+
+        .question-content {
+
+            flex: 1;
+
+            padding-top: 4px;
+
+        }
+
+
+        .question-content p {
+
+            color: #344054;
+
+            font-size: 14px;
+
+            line-height: 1.7;
+
+        }
+
+
+        .question-content ul {
+
+            margin:
+                10px
+                0
+                0
+                20px;
+
+            color: #344054;
+
+            font-size: 14px;
+
+            line-height: 1.8;
+
+        }
+
+
+        /* =========================
+           PAPER FOOTER
+        ========================= */
+
+        .paper-footer {
+
+            position: relative;
+
+            z-index: 2;
+
+            text-align: center;
+
+            padding:
+                25px
+                30px;
+
+            border-top:
+                1px solid var(--line);
+
+        }
+
+
+        .paper-footer h3 {
+
+            font-size: 12px;
+
+            letter-spacing: 1.5px;
+
+        }
+
+
+        .paper-footer p {
+
+            margin-top: 3px;
+
+            color: var(--muted);
+
+            font-size: 11px;
+
+        }
+
+
+        /* =========================
+           DOWNLOAD
+        ========================= */
+
+        .download-area {
+
+            text-align: center;
+
+            margin-top: 25px;
+
+        }
+
+
+        .download-btn {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            gap: 10px;
+
+            padding:
+                13px
+                22px;
+
+            background: var(--dark);
+
+            color: white;
+
+            border-radius: 10px;
+
+            font-size: 14px;
+
+            font-weight: 800;
+
+            transition:
+                transform .25s,
+                box-shadow .25s;
+
+        }
+
+
+        .download-btn:hover {
+
+            transform:
+                translateY(-3px);
+
+            box-shadow:
+                0 15px 30px
+                rgba(23,25,35,.18);
+
+        }
+
+
+        .download-note {
+
+            margin-top: 8px;
+
+            color: var(--muted);
+
+            font-size: 11px;
+
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media(max-width:700px) {
+
+            .nav-container {
+                height: 58px;
+            }
+
+
+            .page-header {
+
+                margin:
+                    22px auto
+                    15px;
+
+            }
+
+
+            .paper-header {
+
+                padding:
+                    22px
+                    20px
+                    18px;
+
+            }
+
+
+            .questions {
+
+                padding:
+                    5px
+                    20px
+                    25px;
+
+            }
+
+
+            .question {
+
+                gap: 10px;
+
+                padding:
+                    18px
+                    0;
+
+            }
+
+
+            .number {
+
+                width: 30px;
+
+                height: 30px;
+
+                min-width: 30px;
+
+                font-size: 10px;
+
+            }
+
+
+            .question-content p,
+            .question-content ul {
+
+                font-size: 13px;
+
+                line-height: 1.65;
+
+            }
+
+
+            .bg-watermark {
+
+                width: 180px;
+
+                opacity: 0.10;
+
+            }
+
+        }
+
+
+        /* =========================
+           PRINT
+        ========================= */
+
+        @media print {
+
+            body {
+                background: white;
+            }
+
+
+            nav,
+            .page-header,
+            .download-area {
+                display: none;
+            }
+
+
+            .paper-wrapper {
+                width: 100%;
+            }
+
+
+            .paper {
+
+                border: none;
+
+                box-shadow: none;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================
+         NAVBAR
+    ========================= -->
+
+    <nav>
+
+        <div class="nav-container">
+
+            <a
+                href="../index.html"
+                class="logo"
+            >
+                Beyond<span>BTech</span>
+            </a>
+
+
+            <a
+                href="../test-papers.html"
+                class="back-link"
+            >
+                ← Back to Test Papers
+            </a>
+
+        </div>
+
+    </nav>
+
+
+    <!-- =========================
+         PAGE HEADER
+    ========================= -->
+
+    <div class="page-header">
+
+        <div class="page-title">
+
+            <small>
+                BEYONDBTECH PRACTICE SERIES
+            </small>
+
+            <h1>
+                SQL Test Paper 04
+            </h1>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         QUESTION PAPER
+    ========================= -->
+
+    <div class="paper-wrapper">
+
+        <main class="paper">
+
+
+            <!-- LOGO WATERMARKS -->
+
+            <div class="paper-watermarks">
+
+                <img
+                    src="../assets/logo.png"
+                    class="bg-watermark watermark-one"
+                    alt=""
+                >
+
+                <img
+                    src="../assets/logo.png"
+                    class="bg-watermark watermark-two"
+                    alt=""
+                >
+
+                <img
+                    src="../assets/logo.png"
+                    class="bg-watermark watermark-three"
+                    alt=""
+                >
+
+                <img
+                    src="../assets/logo.png"
+                    class="bg-watermark watermark-four"
+                    alt=""
+                >
+
+            </div>
+
+
+            <!-- PAPER HEADER -->
+
+            <div class="paper-header">
+
+                <div class="brand">
+                    BEYOND<span>BTECH</span>07 EDU
+                </div>
+
+
+                <p>
+                    10 PRACTICE QUESTIONS
+                </p>
+
+
+                <div class="paper-line"></div>
+
+            </div>
+
+
+            <!-- QUESTIONS -->
+
+            <div class="questions">
+
+
+                <!-- QUESTION 01 -->
+
+                <div class="question">
+
+                    <div class="number">
+                        01
+                    </div>
+
+
+                    <div class="question-content">
+
+                        <p>
+                            The HR team wants to provide a 10%
+                            salary increment to all employees
+                            working in the IT department.
+                            Write a SQL query to update their
+                            salaries.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- QUESTION 02 -->
+
+                <div class="question">
+
+                    <div class="number">
+                        02
+                    </div>
+
+
+                    <div class="question-content">
+
+                        <p>
+                            Identify employees who have more than
+                            5 years of experience and whose
+                            performance rating is either 4 or 5.
+                            Display their employee details.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- QUESTION 03 -->
+
+                <div class="question">
+
+                    <div class="number">
+                        03
+                    </div>
+
+
+                    <div class="question-content">
+
+                        <p>
+                            Management wants to identify departments
+                            where the average performance rating
+                            is greater than 3.5. Display the
+                            department and its average performance
+                            rating.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- QUESTION 04 -->
+
+                <div class="question">
+
+                    <div class="number">
+                        04
+                    </div>
+
+
+                    <div class="question-content">
+
+                        <p>
+                            Management wants to analyze salary
+                            expenditure for each Department and
+                            Location combination. Display only
+                            those combinations where the total
+                            salary exceeds 140,000.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- QUESTION 05 -->
+
+                <div class="question">
+
+                    <div class="number">
+                        05
+                    </div>
+
+
+                    <div class="question-content">
+
+                        <p>
+                            The HR manager wants to identify
+                            departments that have more than
+                            2 employees. Display the department
+                            name and employee count.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- QUESTION 06 -->
+
+                <div class="question">
+
+                    <div class="number">
+                        06
+                    </div>
+
+
+                    <div class="question-content">
+
+                        <p>
+                            Management wants to identify locations
+                            where at least 3 employees are working
+                            and the total salary expenditure is
+                            greater than 180,000. Display the
+                            location, employee count, and total
+                            salary.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- QUESTION 07 -->
+
+                <div class="question">
+
+                    <div class="number">
+                        07
+                    </div>
+
+
+                    <div class="question-content">
+
+                        <p>
+                            Management wants to identify the
+                            department with the highest total
+                            salary expenditure. Display the
+                            department and total salary
+                            expenditure.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- QUESTION 08 -->
+
+                <div class="question">
+
+                    <div class="number">
+                        08
+                    </div>
+
+
+                    <div class="question-content">
+
+                        <p>
+                            The HR manager wants to identify the
+                            department with the lowest average
+                            salary. Display the department and
+                            average salary.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- QUESTION 09 -->
+
+                <div class="question">
+
+                    <div class="number">
+                        09
+                    </div>
+
+
+                    <div class="question-content">
+
+                        <p>
+                            The company wants to provide a salary
+                            increment based on employee performance:
+                        </p>
+
+
+                        <ul>
+
+                            <li>
+                                Performance Rating 5 →
+                                15% increment
+                            </li>
+
+                            <li>
+                                Performance Rating 4 →
+                                10% increment
+                            </li>
+
+                            <li>
+                                Performance Rating 3 →
+                                5% increment
+                            </li>
+
+                            <li>
+                                Performance Rating 2 →
+                                No increment
+                            </li>
+
+                        </ul>
+
+
+                        <p style="margin-top:10px;">
+
+                            Write an UPDATE query to implement
+                            this business requirement.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- QUESTION 10 -->
+
+                <div class="question">
+
+                    <div class="number">
+                        10
+                    </div>
+
+
+                    <div class="question-content">
+
+                        <p>
+                            The company wants to provide a 10%
+                            salary increment only to employees
+                            who satisfy all of the following
+                            conditions:
+                        </p>
+
+
+                        <ul>
+
+                            <li>
+                                Experience is 5 years or more
+                            </li>
+
+                            <li>
+                                Salary is less than 75,000
+                            </li>
+
+                            <li>
+                                Performance Rating is 3 or above
+                            </li>
+
+                            <li>
+                                Location is Hyderabad
+                            </li>
+
+                        </ul>
+
+
+                        <p style="margin-top:10px;">
+
+                            Write an UPDATE query to implement
+                            this requirement.Write an UPDATE query
+                            to implement this requirement.Write
+                            an UPDATE query to implement this
+                            requirement.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+            <!-- PAPER FOOTER -->
+
+            <div class="paper-footer">
+
+                <h3>
+                    BEYONDBTECH07 EDU
+                </h3>
+
+                <p>
+                    Learn • Practice • Improve
+                </p>
+
+            </div>
+
+
+        </main>
+
+
+        <!-- DOWNLOAD -->
+
+        <div class="download-area">
+
+            <a
+                href="../assets/test-papers/sql-test-04.pdf"
+                download
+                class="download-btn"
+            >
+                ↓ Download Test Paper
+            </a>
+
+
+            <p class="download-note">
+                Download the paper and practice offline.
+            </p>
+
+        </div>
+
+
+    </div>
+
+
+</body>
+
+</html>
