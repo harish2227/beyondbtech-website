@@ -1,0 +1,1976 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-B1JNHYSWEY"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+        gtag('config', 'G-B1JNHYSWEY');
+    </script>
+
+    <title>Power BI Day 8 | BeyondBTech</title>
+
+    <style>
+
+
+        /* ========================================
+           GLOBAL
+        ======================================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f7f8fc;
+            color: #1e2330;
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+
+        /* ========================================
+           NAVBAR
+        ======================================== */
+
+        nav {
+
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            padding: 18px 8%;
+
+            background: rgba(255, 255, 255, 0.82);
+
+            backdrop-filter: blur(18px);
+
+            border-bottom: 1px solid rgba(30, 35, 48, 0.08);
+        }
+
+
+        .logo {
+
+            font-size: 1.4rem;
+            font-weight: 800;
+
+            letter-spacing: -0.5px;
+
+            color: #1e2330;
+        }
+
+
+        .logo span {
+            color: #7c3aed;
+        }
+
+
+        .nav-links {
+
+            display: flex;
+
+            gap: 28px;
+        }
+
+
+        .nav-links a {
+
+            color: #666b78;
+
+            font-size: 0.95rem;
+            font-weight: 600;
+
+            transition: 0.3s ease;
+        }
+
+
+        .nav-links a:hover {
+            color: #7c3aed;
+        }
+
+
+        /* ========================================
+           HERO
+        ======================================== */
+
+        .hero {
+
+            position: relative;
+
+            overflow: hidden;
+
+            min-height: 620px;
+
+            display: flex;
+
+            align-items: center;
+
+            padding: 100px 8%;
+        }
+
+
+        .hero::before {
+
+            content: "";
+
+            position: absolute;
+
+            width: 600px;
+            height: 600px;
+
+            top: -250px;
+            right: -150px;
+
+            background: rgba(124, 58, 237, 0.12);
+
+            filter: blur(120px);
+
+            border-radius: 50%;
+        }
+
+
+        .hero::after {
+
+            content: "";
+
+            position: absolute;
+
+            width: 450px;
+            height: 450px;
+
+            bottom: -250px;
+            left: -150px;
+
+            background: rgba(79, 70, 229, 0.08);
+
+            filter: blur(110px);
+
+            border-radius: 50%;
+        }
+
+
+        .hero-content {
+
+            position: relative;
+
+            z-index: 2;
+
+            max-width: 1050px;
+
+            width: 100%;
+        }
+
+
+        .breadcrumb {
+
+            color: #777d8c;
+
+            font-size: 0.9rem;
+
+            margin-bottom: 25px;
+        }
+
+
+        .breadcrumb a {
+
+            transition: 0.3s;
+        }
+
+
+        .breadcrumb a:hover {
+            color: #7c3aed;
+        }
+
+
+        .day-badge {
+
+            display: inline-block;
+
+            padding: 8px 16px;
+
+            border: 1px solid rgba(124, 58, 237, 0.4);
+
+            background: rgba(124, 58, 237, 0.08);
+
+            border-radius: 50px;
+
+            color: #7c3aed;
+
+            font-size: 0.78rem;
+
+            font-weight: 800;
+
+            letter-spacing: 1.5px;
+
+            margin-bottom: 24px;
+        }
+
+
+        .hero h1 {
+
+            max-width: 900px;
+
+            font-size: clamp(3rem, 7vw, 6rem);
+
+            line-height: 1.05;
+
+            letter-spacing: -3px;
+
+            color: #1c2130;
+        }
+
+
+        .hero h1 span {
+            color: #7c3aed;
+        }
+
+
+        .hero p {
+
+            max-width: 700px;
+
+            margin-top: 25px;
+
+            color: #626978;
+
+            font-size: 1.1rem;
+        }
+
+
+        .hero-buttons {
+
+            display: flex;
+
+            gap: 15px;
+
+            flex-wrap: wrap;
+
+            margin-top: 35px;
+        }
+
+
+        .primary-btn,
+        .secondary-btn {
+
+            display: inline-flex;
+
+            align-items: center;
+            justify-content: center;
+
+            padding: 14px 24px;
+
+            border-radius: 12px;
+
+            font-weight: 700;
+
+            transition: all 0.35s ease;
+        }
+
+
+        .primary-btn {
+
+            background: #7c3aed;
+
+            color: white;
+
+            box-shadow:
+                0 12px 35px
+                rgba(124, 58, 237, 0.28);
+        }
+
+
+        .primary-btn:hover {
+
+            transform: translateY(-4px);
+
+            background: #6d28d9;
+
+            box-shadow:
+                0 18px 45px
+                rgba(124, 58, 237, 0.4);
+        }
+
+
+        .secondary-btn {
+
+            background: white;
+
+            color: #4b5563;
+
+            border: 1px solid #dfe1e8;
+        }
+
+
+        .secondary-btn:hover {
+
+            transform: translateY(-4px);
+
+            color: #7c3aed;
+
+            border-color: #8b5cf6;
+        }
+
+
+        /* ========================================
+           HERO STATS
+        ======================================== */
+
+        .stats {
+
+            display: grid;
+
+            grid-template-columns: repeat(3, 1fr);
+
+            gap: 18px;
+
+            max-width: 800px;
+
+            margin-top: 60px;
+        }
+
+
+        .stat-card {
+
+            padding: 22px;
+
+            background:
+                rgba(255, 255, 255, 0.8);
+
+            border: 1px solid #e5e7ee;
+
+            border-radius: 18px;
+
+            box-shadow:
+                0 10px 30px
+                rgba(30, 35, 48, 0.04);
+
+            transition: all 0.35s ease;
+        }
+
+
+        .stat-card:hover {
+
+            transform: translateY(-6px);
+
+            background: white;
+
+            border-color:
+                rgba(124, 58, 237, 0.45);
+        }
+
+
+        .stat-card h3 {
+
+            color: #7c3aed;
+
+            font-size: 1.8rem;
+        }
+
+
+        .stat-card p {
+
+            margin-top: 3px;
+
+            color: #737988;
+
+            font-size: 0.9rem;
+        }
+
+
+        /* ========================================
+           MAIN
+        ======================================== */
+
+        .container {
+
+            max-width: 1150px;
+
+            margin: auto;
+
+            padding: 100px 8%;
+        }
+
+
+        /* ========================================
+           SECTION HEADER
+        ======================================== */
+
+        .section-tag {
+
+            color: #7c3aed;
+
+            font-size: 0.8rem;
+
+            font-weight: 800;
+
+            letter-spacing: 1.5px;
+        }
+
+
+        .section-title {
+
+            margin-top: 12px;
+
+            font-size:
+                clamp(2rem, 4vw, 3.2rem);
+
+            letter-spacing: -1px;
+
+            color: #1c2130;
+        }
+
+
+        .section-description {
+
+            max-width: 700px;
+
+            margin-top: 16px;
+
+            color: #69707f;
+        }
+
+
+        /* ========================================
+           ROADMAP
+        ======================================== */
+
+        .roadmap {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(5, 1fr);
+
+            gap: 15px;
+
+            margin-top: 45px;
+        }
+
+
+        .roadmap-card {
+
+            padding: 22px 18px;
+
+            background: white;
+
+            border: 1px solid #e5e7ee;
+
+            border-radius: 18px;
+
+            box-shadow:
+                0 8px 25px
+                rgba(30, 35, 48, 0.04);
+
+            transition: all 0.35s ease;
+        }
+
+
+        .roadmap-card:hover {
+
+            transform: translateY(-8px);
+
+            background: #faf8ff;
+
+            border-color: #8b5cf6;
+
+            box-shadow:
+                0 18px 45px
+                rgba(124, 58, 237, 0.12);
+        }
+
+
+        .roadmap-number {
+
+            color: #7c3aed;
+
+            font-size: 0.78rem;
+
+            font-weight: 800;
+
+            letter-spacing: 1px;
+        }
+
+
+        .roadmap-card h3 {
+
+            margin-top: 12px;
+
+            font-size: 1rem;
+
+            line-height: 1.4;
+
+            color: #252a38;
+        }
+
+
+        /* ========================================
+           LESSON
+        ======================================== */
+
+        .lesson {
+
+            position: relative;
+
+            margin-top: 110px;
+
+            padding: 45px;
+
+            background: white;
+
+            border: 1px solid #e4e6ed;
+
+            border-radius: 28px;
+
+            box-shadow:
+                0 12px 35px
+                rgba(30, 35, 48, 0.05);
+
+            transition: all 0.4s ease;
+        }
+
+
+        .lesson:hover {
+
+            border-color:
+                rgba(124, 58, 237, 0.35);
+
+            box-shadow:
+                0 25px 70px
+                rgba(30, 35, 48, 0.08);
+        }
+
+
+        .lesson-header {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 20px;
+
+            margin-bottom: 40px;
+        }
+
+
+        .lesson-number {
+
+            min-width: 62px;
+            height: 62px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 18px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #7c3aed,
+                    #4f46e5
+                );
+
+            color: white;
+
+            font-weight: 800;
+
+            box-shadow:
+                0 10px 30px
+                rgba(124, 58, 237, 0.25);
+        }
+
+
+        .lesson-header h2 {
+
+            font-size:
+                clamp(1.7rem, 3vw, 2.4rem);
+
+            letter-spacing: -1px;
+
+            color: #1c2130;
+        }
+
+
+        .lesson-header p {
+
+            margin-top: 5px;
+
+            color: #737988;
+        }
+
+
+        /* ========================================
+           CONCEPT BLOCK
+        ======================================== */
+
+        .concept-block {
+
+            padding: 28px;
+
+            margin-bottom: 22px;
+
+            background: #fafbfe;
+
+            border: 1px solid #e6e8ef;
+
+            border-radius: 20px;
+
+            transition: all 0.35s ease;
+        }
+
+
+        .concept-block:hover {
+
+            background: white;
+
+            border-color:
+                rgba(124, 58, 237, 0.3);
+        }
+
+
+        .block-label {
+
+            display: inline-block;
+
+            margin-bottom: 12px;
+
+            color: #7c3aed;
+
+            font-size: 0.78rem;
+
+            font-weight: 800;
+
+            letter-spacing: 1.2px;
+        }
+
+
+        .concept-block h3 {
+
+            margin-bottom: 12px;
+
+            font-size: 1.3rem;
+
+            color: #252a38;
+        }
+
+
+        .concept-block p {
+
+            color: #626978;
+        }
+
+
+        /* ========================================
+           EXAMPLE
+        ======================================== */
+
+        .example-box {
+
+            margin-top: 20px;
+
+            padding: 22px;
+
+            border-left:
+                3px solid #7c3aed;
+
+            background: #f7f3ff;
+
+            border-radius:
+                0 15px 15px 0;
+        }
+
+
+        .example-box h4 {
+
+            color: #6d28d9;
+
+            margin-bottom: 12px;
+        }
+
+
+        .example-data {
+
+            margin-top: 15px;
+
+            padding: 18px;
+
+            overflow-x: auto;
+
+            background: white;
+
+            border: 1px solid #e2e4eb;
+
+            border-radius: 12px;
+
+            color: #343946;
+
+            font-family:
+                Consolas, monospace;
+
+            line-height: 1.8;
+
+            white-space: pre-line;
+        }
+
+
+        /* ========================================
+           FLOW
+        ======================================== */
+
+        .flow {
+
+            display: flex;
+
+            flex-wrap: wrap;
+
+            align-items: center;
+
+            justify-content: center;
+
+            gap: 14px;
+
+            margin-top: 20px;
+        }
+
+
+        .flow-step {
+
+            padding: 13px 18px;
+
+            background: white;
+
+            border: 1px solid #dfe2ea;
+
+            border-radius: 12px;
+
+            color: #444a58;
+
+            font-weight: 600;
+
+            transition: 0.3s;
+        }
+
+
+        .flow-step:hover {
+
+            background: #f3efff;
+
+            border-color: #8b5cf6;
+
+            transform: translateY(-4px);
+        }
+
+
+        .flow-arrow {
+
+            color: #7c3aed;
+
+            font-size: 1.4rem;
+        }
+
+
+        /* ========================================
+           VIDEO
+        ======================================== */
+
+        .video-section {
+
+            margin-top: 30px;
+
+            padding: 24px;
+
+            background: #faf8ff;
+
+            border:
+                1px solid
+                rgba(124, 58, 237, 0.2);
+
+            border-radius: 22px;
+        }
+
+
+        .video-heading {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            gap: 15px;
+
+            margin-bottom: 18px;
+        }
+
+
+        .video-heading h3 {
+
+            font-size: 1.15rem;
+
+            color: #252a38;
+        }
+
+
+        .video-heading span {
+
+            color: #7c3aed;
+
+            font-size: 0.75rem;
+
+            font-weight: 800;
+
+            letter-spacing: 1px;
+        }
+
+
+        .video-card {
+
+            padding: 10px;
+
+            background: white;
+
+            border-radius: 16px;
+
+            border: 1px solid #e3e5ec;
+
+            transition: all 0.4s ease;
+        }
+
+
+        .video-card:hover {
+
+            transform: translateY(-5px);
+
+            box-shadow:
+                0 20px 45px
+                rgba(30, 35, 48, 0.12);
+        }
+
+
+        video {
+
+            width: 100%;
+
+            display: block;
+
+            border-radius: 10px;
+        }
+
+
+        /* ========================================
+           IMPORTANT
+        ======================================== */
+
+        .remember {
+
+            margin-top: 25px;
+
+            padding: 22px 25px;
+
+            background: #fffaf0;
+
+            border:
+                1px solid
+                rgba(245, 158, 11, 0.25);
+
+            border-left:
+                4px solid #f59e0b;
+
+            border-radius: 16px;
+        }
+
+
+        .remember h4 {
+
+            color: #b45309;
+
+            margin-bottom: 8px;
+        }
+
+
+        .remember p {
+
+            color: #6b6870;
+        }
+
+
+        /* ========================================
+           SUMMARY SECTION
+        ======================================== */
+
+        .steps-section {
+
+            margin-top: 100px;
+
+            padding: 55px;
+
+            background:
+                radial-gradient(
+                    circle at top right,
+                    rgba(124, 58, 237, 0.1),
+                    transparent 35%
+                ),
+                white;
+
+            border: 1px solid #e4e6ed;
+
+            border-radius: 30px;
+
+            box-shadow:
+                0 12px 35px
+                rgba(30, 35, 48, 0.05);
+        }
+
+
+        .steps-section h2 {
+            color: #1c2130;
+        }
+
+
+        .steps-section > p {
+
+            margin-top: 12px;
+
+            color: #6b7280;
+        }
+
+
+        .steps-flow {
+
+            display: flex;
+
+            flex-wrap: wrap;
+
+            align-items: center;
+
+            gap: 12px;
+
+            margin-top: 35px;
+        }
+
+
+        .step {
+
+            padding: 14px 18px;
+
+            background: white;
+
+            border: 1px solid #dfe2ea;
+
+            border-radius: 12px;
+
+            color: #444a58;
+
+            font-weight: 700;
+
+            transition: 0.3s;
+        }
+
+
+        .step:hover {
+
+            background: #7c3aed;
+
+            color: white;
+
+            border-color: #8b5cf6;
+
+            transform: translateY(-4px);
+        }
+
+
+        .arrow {
+
+            color: #7c3aed;
+
+            font-size: 1.2rem;
+        }
+
+
+        /* ========================================
+           FOOTER
+        ======================================== */
+
+        footer {
+
+            margin-top: 80px;
+
+            padding: 40px 8%;
+
+            border-top:
+                1px solid #e4e6ed;
+
+            color: #777d8c;
+
+            text-align: center;
+        }
+
+
+        footer strong {
+            color: #252a38;
+        }
+
+
+        /* ========================================
+           SCROLL REVEAL
+        ======================================== */
+
+        .reveal {
+
+            opacity: 0;
+
+            transform: translateY(35px);
+
+            transition:
+                opacity 0.8s ease,
+                transform 0.8s ease;
+        }
+
+
+        .reveal.active {
+
+            opacity: 1;
+
+            transform: translateY(0);
+        }
+
+
+        ::selection {
+
+            background: #ddd6fe;
+
+            color: #3b1d75;
+        }
+
+
+        /* ========================================
+           RESPONSIVE
+        ======================================== */
+
+        @media (max-width: 1000px) {
+
+            .roadmap {
+                grid-template-columns:
+                    repeat(3, 1fr);
+            }
+
+        }
+
+
+        @media (max-width: 768px) {
+
+            nav {
+                padding: 16px 6%;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero {
+
+                min-height: auto;
+
+                padding: 90px 6%;
+            }
+
+            .hero h1 {
+                letter-spacing: -2px;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+            }
+
+            .container {
+                padding: 75px 6%;
+            }
+
+            .roadmap {
+
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+            .lesson {
+
+                margin-top: 70px;
+
+                padding: 25px;
+
+                border-radius: 22px;
+            }
+
+            .concept-block {
+                padding: 22px;
+            }
+
+            .steps-section {
+
+                padding: 30px;
+
+                border-radius: 22px;
+            }
+
+            .steps-flow {
+
+                flex-direction: column;
+
+                align-items: stretch;
+            }
+
+            .arrow {
+
+                text-align: center;
+
+                transform: rotate(90deg);
+            }
+
+        }
+
+
+        @media (max-width: 480px) {
+
+            .roadmap {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+
+            .lesson-header {
+                align-items: flex-start;
+            }
+
+            .lesson-number {
+
+                min-width: 52px;
+
+                height: 52px;
+            }
+
+            .video-heading {
+
+                align-items: flex-start;
+
+                flex-direction: column;
+            }
+
+        }
+
+    
+    </style>
+</head>
+
+<body>
+
+<nav>
+    <a href="../index.html" class="logo">Beyond<span>BTech</span></a>
+    <div class="nav-links">
+        <a href="../index.html">Home</a>
+        <a href="../powerbi.html">Power BI</a>
+        <a href="../sql.html">SQL</a>
+        <a href="../interview.html">Interview Prep</a>
+    </div>
+</nav>
+
+<section class="hero">
+    <div class="hero-content reveal">
+
+        <div class="breadcrumb">
+            <a href="../index.html">Home</a> /
+            <a href="../powerbi.html">Power BI</a> /
+            Day 08
+        </div>
+
+        <div class="day-badge">POWER BI · DAY 08</div>
+
+        <h1>
+            Add Column
+            <span>in Power Query.</span>
+        </h1>
+
+        <p>
+            Learn how to create new columns in Power Query using Custom Column,
+            Conditional Column, Column From Examples, Index Column, Duplicate Column,
+            Text / Number / Date transformations and a simple introduction to Custom Functions.
+        </p>
+
+        <div class="hero-buttons">
+            <a href="#roadmap" class="primary-btn">Start Learning ↓</a>
+            <a href="#summary" class="secondary-btn">Day 8 Summary</a>
+        </div>
+
+        <div class="stats">
+            <div class="stat-card">
+                <h3>7</h3>
+                <p>Add Column Concepts</p>
+            </div>
+            <div class="stat-card">
+                <h3>3</h3>
+                <p>Practical Areas</p>
+            </div>
+            <div class="stat-card">
+                <h3>1</h3>
+                <p>Beginner-Friendly Workflow</p>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<main class="container">
+
+<section id="roadmap" class="reveal">
+    <div class="section-tag">TODAY'S ROADMAP</div>
+    <h2 class="section-title">Create New Columns in Power Query</h2>
+    <p class="section-description">
+        Today we learn different ways to create useful new columns from existing data.
+        The goal is not just knowing where to click, but understanding why and when to use each option.
+    </p>
+
+    <div class="roadmap">
+        <a href="#lesson1" class="roadmap-card"><div class="roadmap-number">01</div><h3>Custom Column</h3></a>
+        <a href="#lesson2" class="roadmap-card"><div class="roadmap-number">02</div><h3>Conditional Column</h3></a>
+        <a href="#lesson3" class="roadmap-card"><div class="roadmap-number">03</div><h3>Column From Examples</h3></a>
+        <a href="#lesson4" class="roadmap-card"><div class="roadmap-number">04</div><h3>Index Column</h3></a>
+        <a href="#lesson5" class="roadmap-card"><div class="roadmap-number">05</div><h3>Duplicate Column</h3></a>
+        <a href="#lesson6" class="roadmap-card"><div class="roadmap-number">06</div><h3>Text / Number / Date</h3></a>
+        <a href="#lesson7" class="roadmap-card"><div class="roadmap-number">07</div><h3>Custom Function</h3></a>
+        <a href="#summary" class="roadmap-card"><div class="roadmap-number">08</div><h3>Day 8 Summary</h3></a>
+    </div>
+</section>
+
+<!-- LESSON 1 -->
+<section id="lesson1" class="lesson reveal">
+    <div class="lesson-header">
+        <div class="lesson-number">01</div>
+        <div>
+            <h2>Custom Column</h2>
+            <p>Create a new column using your own formula or rule.</p>
+        </div>
+    </div>
+
+    <div class="concept-block">
+        <div class="block-label">CONCEPT</div>
+        <h3>What does Custom Column mean?</h3>
+        <p>
+            Custom Column is used when we want to create a new column by writing our own
+            formula or rule using existing columns.
+        </p>
+        <p style="margin-top:15px;">
+            <strong>Bro, Custom Column ante maname oka formula or rule create chesi,
+            already unna columns ni use cheskoni kotha column create cheyyadam.</strong>
+        </p>
+
+        <div class="example-box">
+            <h4>💼 Simple Example</h4>
+            <div class="example-data">Sales | Quantity
+2000  | 4
+600   | 3
+900   | 5</div>
+
+            <p style="margin-top:15px;">
+                Business requirement: each order ki sales per quantity calculate cheyyali.
+            </p>
+
+            <div class="example-data">New Column: Sales Per Quantity
+
+Formula:
+[Sales] / [Quantity]
+
+2000 / 4 = 500
+600 / 3  = 200
+900 / 5  = 180</div>
+        </div>
+    </div>
+
+    <div class="concept-block">
+        <div class="block-label">HOW IT WORKS</div>
+        <div class="flow">
+            <div class="flow-step">Existing Columns</div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-step">Write Formula</div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-step">New Column</div>
+        </div>
+    </div>
+
+    <div class="concept-block">
+        <div class="block-label">MORE THAN NUMBERS</div>
+        <p>
+            Custom Column is not only for mathematical calculations. Text and date
+            functions can also be used.
+        </p>
+        <div class="example-box">
+            <h4>Examples</h4>
+            <div class="example-data">[First Name] &amp; " " &amp; [Last Name]
+
+Text.Upper([Product Name])
+
+Date.Year([Order Date])
+
+if [Sales] &gt;= 1000 then "High" else "Low"</div>
+        </div>
+    </div>
+
+    <div class="video-section">
+        <div class="video-heading">
+            <h3>🎥 Watch It In Action</h3>
+            <span>PRACTICAL DEMONSTRATION</span>
+        </div>
+        <div class="video-card">
+            <video controls>
+                <source src="../assets/videos/powerbi/day8-custom-column.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    </div>
+
+    <div class="remember">
+        <h4>💡 Remember</h4>
+        <p>
+            Custom Column = manam define chesina formula or rule tho new column create cheyyadam.
+            Column names ni Power Query formula lo usually [ ] lo reference chestam.
+        </p>
+    </div>
+</section>
+
+<!-- LESSON 2 -->
+<section id="lesson2" class="lesson reveal">
+    <div class="lesson-header">
+        <div class="lesson-number">02</div>
+        <div>
+            <h2>Conditional Column</h2>
+            <p>Create a new column based on conditions.</p>
+        </div>
+    </div>
+
+    <div class="concept-block">
+        <div class="block-label">CONCEPT</div>
+        <h3>What does Conditional Column mean?</h3>
+        <p>
+            Conditional Column checks values in an existing column and creates a new result
+            based on conditions. It is similar to IF / ELSE IF / ELSE thinking.
+        </p>
+        <p style="margin-top:15px;">
+            <strong>Bro, oka column lo unna value ni check chesi,
+            “idi ila unte ee result ivvu, adi ala unte vere result ivvu”
+            ani conditions set chesi new column create chestam.</strong>
+        </p>
+
+        <div class="example-box">
+            <h4>💼 Sales Example</h4>
+            <div class="example-data">Sales &gt;= 1000  → High
+Sales &gt;= 500   → Medium
+Otherwise      → Low</div>
+
+            <div class="example-data">1500 → High
+800  → Medium
+300  → Low
+1200 → High</div>
+        </div>
+    </div>
+
+    <div class="concept-block">
+        <div class="block-label">IMPORTANT — ORDER MATTERS</div>
+        <p>
+            Power Query checks multiple conditions from top to bottom. The first matching
+            condition gives the result.
+        </p>
+        <div class="example-box">
+            <h4>⚠️ Why?</h4>
+            <div class="example-data">Correct order:
+Sales &gt;= 1000 → High
+Sales &gt;= 500  → Medium
+Otherwise → Low
+
+If &gt;= 500 is placed first,
+1200 would match it and become Medium.</div>
+        </div>
+    </div>
+
+    <div class="concept-block">
+        <div class="block-label">CUSTOM COLUMN vs CONDITIONAL COLUMN</div>
+        <div class="flow">
+            <div class="flow-step">Custom Column<br><small>Write formula / rule</small></div>
+            <div class="flow-arrow">↔</div>
+            <div class="flow-step">Conditional Column<br><small>Define conditions</small></div>
+        </div>
+    </div>
+
+    <div class="video-section">
+        <div class="video-heading">
+            <h3>🎥 Watch It In Action</h3>
+            <span>PRACTICAL DEMONSTRATION</span>
+        </div>
+        <div class="video-card">
+            <video controls>
+                <source src="../assets/videos/powerbi/day8-conditional-column.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    </div>
+
+    <div class="remember">
+        <h4>💡 Remember</h4>
+        <p>
+            Conditions business requirement batti define cheyyali. Thresholds universal rules kaavu.
+            Multiple conditions unte higher/specific condition ni appropriate order lo place cheyyali.
+        </p>
+    </div>
+</section>
+
+<!-- LESSON 3 -->
+<section id="lesson3" class="lesson reveal">
+    <div class="lesson-header">
+        <div class="lesson-number">03</div>
+        <div>
+            <h2>Column From Examples</h2>
+            <p>Give examples and let Power Query infer a pattern.</p>
+        </div>
+    </div>
+
+    <div class="concept-block">
+        <div class="block-label">CONCEPT</div>
+        <h3>How does Column From Examples work?</h3>
+        <p>
+            We provide a few expected outputs for existing values. Power Query tries to
+            identify the pattern and suggests results for the remaining rows.
+        </p>
+        <p style="margin-top:15px;">
+            <strong>Bro, exact formula rayakunda, “input ila unte output ila kavali”
+            ani konni examples istam. Power Query aa examples lo pattern ni identify
+            cheyyadaniki try chesi remaining rows ki result suggest chestundi.</strong>
+        </p>
+
+        <div class="example-box">
+            <h4>💼 Easy Example</h4>
+            <div class="example-data">Name    → First Character
+
+Harish  → H
+Ravi    → R
+Kiran   → K</div>
+
+            <p style="margin-top:15px;">
+                Here the pattern is simple: each output is the first character of the Name.
+            </p>
+        </div>
+    </div>
+
+    <div class="concept-block">
+        <div class="block-label">HOW IT WORKS</div>
+        <div class="flow">
+            <div class="flow-step">Select Column</div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-step">Column From Examples</div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-step">Give Examples</div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-step">Check Suggested Results</div>
+        </div>
+    </div>
+
+    <div class="remember">
+        <h4>⚠️ Important</h4>
+        <p>
+            Column From Examples is pattern inference, not magic. Always verify the suggested
+            results, especially when the pattern can be interpreted in more than one way.
+            If the rule is already exact and clear, an explicit transformation or formula may be better.
+        </p>
+    </div>
+
+    <div class="video-section">
+        <div class="video-heading">
+            <h3>🎥 Watch It In Action</h3>
+            <span>PRACTICAL DEMONSTRATION</span>
+        </div>
+        <div class="video-card">
+            <video controls>
+                <source src="../assets/videos/powerbi/day8-column-from-examples.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    </div>
+</section>
+
+<!-- LESSON 4 -->
+<section id="lesson4" class="lesson reveal">
+    <div class="lesson-header">
+        <div class="lesson-number">04</div>
+        <div>
+            <h2>Index Column</h2>
+            <p>Add sequential numbers to rows.</p>
+        </div>
+    </div>
+
+    <div class="concept-block">
+        <div class="block-label">CONCEPT</div>
+        <h3>What is an Index Column?</h3>
+        <p>
+            An Index Column gives rows sequential numbers and creates a new column.
+        </p>
+        <p style="margin-top:15px;">
+            <strong>Bro, mana table lo unna prathi row ki sequence number ivvali
+            anukunte Index Column use chestam.</strong>
+        </p>
+
+        <div class="example-box">
+            <h4>💼 Example</h4>
+            <div class="example-data">Index | Customer | Sales
+1     | Ravi     | 500
+2     | Kiran    | 800
+3     | Suresh   | 300
+4     | Harish   | 1000</div>
+        </div>
+    </div>
+
+    <div class="concept-block">
+        <div class="block-label">THREE COMMON OPTIONS</div>
+        <div class="example-box">
+            <h4>From 0</h4>
+            <div class="example-data">0, 1, 2, 3, ...</div>
+        </div>
+        <div class="example-box">
+            <h4>From 1</h4>
+            <div class="example-data">1, 2, 3, 4, ...</div>
+        </div>
+        <div class="example-box">
+            <h4>Custom</h4>
+            <div class="example-data">Example:
+Start = 100
+Increment = 10
+
+100, 110, 120, 130, ...</div>
+        </div>
+    </div>
+
+    <div class="concept-block">
+        <div class="block-label">WHY USE IT?</div>
+        <p>
+            Index can help with row identification, tracking sequence during transformations,
+            and acting as a helper column for later logic.
+        </p>
+        <p style="margin-top:15px;">
+            Index number is usually a helper/sequence value. It should not automatically be
+            confused with a real business ID such as Customer ID or Order ID.
+        </p>
+    </div>
+
+    <div class="video-section">
+        <div class="video-heading">
+            <h3>🎥 Watch It In Action</h3>
+            <span>PRACTICAL DEMONSTRATION</span>
+        </div>
+        <div class="video-card">
+            <video controls>
+                <source src="../assets/videos/powerbi/day8-index-column.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    </div>
+</section>
+
+<!-- LESSON 5 -->
+<section id="lesson5" class="lesson reveal">
+    <div class="lesson-header">
+        <div class="lesson-number">05</div>
+        <div>
+            <h2>Duplicate Column</h2>
+            <p>Copy an existing column before transforming the copy.</p>
+        </div>
+    </div>
+
+    <div class="concept-block">
+        <div class="block-label">CONCEPT</div>
+        <h3>Why do we duplicate a column?</h3>
+        <p>
+            Duplicate Column creates an exact copy of an existing column. The main idea is
+            to preserve the original while we transform the copy.
+        </p>
+        <p style="margin-top:15px;">
+            <strong>Bro, original column ni safe ga unchukoni, dani oka copy create cheskoni,
+            aa copy meeda transformations cheyyadaniki Duplicate Column use chestam.</strong>
+        </p>
+
+        <div class="example-box">
+            <h4>💼 Example — 10% Increase</h4>
+            <div class="example-data">Original Sales
+
+1000
+500
+800
+
+After Duplicate:
+
+Sales | Sales - Copy
+1000  | 1000
+500   | 500
+800   | 800</div>
+
+            <p style="margin-top:15px;">
+                Now transform the copy: <strong>Multiply by 1.10</strong>
+            </p>
+
+            <div class="example-data">Sales | Sales - Copy
+1000  | 1100
+500   | 550
+800   | 880</div>
+        </div>
+    </div>
+
+    <div class="concept-block">
+        <div class="block-label">TRANSFORMATION MEANING</div>
+        <p>
+            Transformation ante existing data ni required format or result ki change cheyyadam.
+        </p>
+        <div class="flow">
+            <div class="flow-step">Original</div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-step">Duplicate</div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-step">Transform Copy</div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-step">Keep Original + New Version</div>
+        </div>
+    </div>
+
+    <div class="remember">
+        <h4>💡 Remember</h4>
+        <p>
+            Duplicate Column itself does not transform the value. First it creates a copy;
+            then you can apply transformations to that copy.
+        </p>
+    </div>
+
+    <div class="video-section">
+        <div class="video-heading">
+            <h3>🎥 Watch It In Action</h3>
+            <span>PRACTICAL DEMONSTRATION</span>
+        </div>
+        <div class="video-card">
+            <video controls>
+                <source src="../assets/videos/powerbi/day8-duplicate-column.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    </div>
+</section>
+
+<!-- LESSON 6 -->
+<section id="lesson6" class="lesson reveal">
+    <div class="lesson-header">
+        <div class="lesson-number">06</div>
+        <div>
+            <h2>Text / Number / Date</h2>
+            <p>Transform different data types according to the requirement.</p>
+        </div>
+    </div>
+
+    <div class="concept-block">
+        <div class="block-label">TEXT</div>
+        <h3>Text transformations</h3>
+        <p>
+            Text columns nunchi required portions extract cheyyadaniki or values ni split/format
+            cheyyadaniki text transformations use chestam.
+        </p>
+
+        <div class="example-box">
+            <h4>Example: CA-2019-121188-120</h4>
+            <div class="example-data">First Characters (3) → CA-
+Last Characters (3)  → 120
+Before first "-"     → CA
+After first "-"      → 2019-121188-120
+Between delimiters    → 2019 / 121188</div>
+        </div>
+
+        <div class="example-box">
+            <h4>Full Name → First Name + Last Name</h4>
+            <div class="example-data">Harish Gundekari
+        ↓ Split Column → By Delimiter → Space
+Harish | Gundekari</div>
+        </div>
+    </div>
+
+    <div class="concept-block">
+        <div class="block-label">NUMBER</div>
+        <h3>Number transformations</h3>
+        <p>
+            Number values meeda calculations or adjustments apply cheyyachu.
+        </p>
+        <div class="example-box">
+            <h4>Example</h4>
+            <div class="example-data">Sales = 1000
+
+Multiply by 1.10
+
+1000 → 1100</div>
+        </div>
+    </div>
+
+    <div class="concept-block">
+        <div class="block-label">DATE</div>
+        <h3>Extract useful information from dates</h3>
+        <p>
+            Date column nunchi Year, Quarter, Month Name and Month Number lanti information
+            create cheyyachu.
+        </p>
+
+        <div class="example-box">
+            <h4>Example: Order Date = 15-08-2026</h4>
+            <div class="example-data">Date → Year → 2026
+Date → Quarter → 3
+Date → Month → Name of Month → August
+Date → Month → Month → 8</div>
+        </div>
+
+        <div class="example-box">
+            <h4>Quarter Number → Q1 / Q2 / Q3 / Q4</h4>
+            <div class="example-data">1 → Q1
+2 → Q2
+3 → Q3
+4 → Q4
+
+Custom Column example:
+if [Quarter] = 1 then "Q1"
+else if [Quarter] = 2 then "Q2"
+else if [Quarter] = 3 then "Q3"
+else "Q4"</div>
+        </div>
+    </div>
+
+    <div class="concept-block">
+        <div class="block-label">WHY DATA TYPE MATTERS</div>
+        <p>
+            First data type understand cheyyali, then appropriate transformation select cheyyali.
+        </p>
+        <div class="flow">
+            <div class="flow-step">Text → Text Operations</div>
+            <div class="flow-step">Number → Numerical Operations</div>
+            <div class="flow-step">Date → Date Operations</div>
+        </div>
+    </div>
+
+    <div class="remember">
+        <h4>💡 Remember</h4>
+        <p>
+            Requirement → Required information → Correct transformation.
+            Month Name is useful for display, while Month Number can help with chronological sorting.
+        </p>
+    </div>
+
+    <div class="video-section">
+        <div class="video-heading">
+            <h3>🎥 Watch It In Action</h3>
+            <span>TEXT / NUMBER / DATE</span>
+        </div>
+        <div class="video-card">
+            <video controls>
+                <source src="../assets/videos/powerbi/day8-text-number-date.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    </div>
+</section>
+
+<!-- LESSON 7 -->
+<section id="lesson7" class="lesson reveal">
+    <div class="lesson-header">
+        <div class="lesson-number">07</div>
+        <div>
+            <h2>Invoke Custom Function</h2>
+            <p>A simple introduction to reusable logic.</p>
+        </div>
+    </div>
+
+    <div class="concept-block">
+        <div class="block-label">CONCEPT</div>
+        <h3>What is a Custom Function?</h3>
+        <p>
+            A Custom Function lets us create reusable logic once and use that same logic
+            on different data when needed.
+        </p>
+        <p style="margin-top:15px;">
+            <strong>Bro, manam oka logic ni function laga create cheskunte,
+            same logic ni malli malli manually rayakunda different data meeda reuse cheyyachu.</strong>
+        </p>
+
+        <div class="example-box">
+            <h4>💼 Simple idea</h4>
+            <div class="example-data">Create reusable logic:
+Sales + 10%
+
+Then apply it:
+
+1000 → 1100
+500  → 550
+800  → 880</div>
+        </div>
+    </div>
+
+    <div class="concept-block">
+        <div class="block-label">WHAT DOES "INVOKE" MEAN?</div>
+        <p>
+            Invoke ante simple ga <strong>call/use cheyyadam</strong>.
+            Function already create chesina tarvatha, aa function ni required data meeda apply cheyyadam
+            is invoking the custom function.
+        </p>
+
+        <div class="flow">
+            <div class="flow-step">Create Function</div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-step">Reusable Logic</div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-step">Invoke / Use</div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-step">Apply to Data</div>
+        </div>
+    </div>
+
+    <div class="remember">
+        <h4>💡 For Now</h4>
+        <p>
+            Day 8 lo concept matrame understand cheskundam. Detailed function creation and
+            practical invocation ni later separate lesson lo practice cheddam.
+        </p>
+    </div>
+</section>
+
+<!-- SUMMARY -->
+<section id="summary" class="lesson reveal">
+    <div class="lesson-header">
+        <div class="lesson-number">08</div>
+        <div>
+            <h2>Day 8 Summary</h2>
+            <p>Let's quickly connect everything we learned today.</p>
+        </div>
+    </div>
+
+    <div class="concept-block">
+        <div class="block-label">QUICK RECAP</div>
+
+        <h3>Custom Column</h3>
+        <p>Manam define chesina formula or rule tho new column create chestam.</p>
+
+        <h3 style="margin-top:25px;">Conditional Column</h3>
+        <p>Conditions based on new result/category column create chestam.</p>
+
+        <h3 style="margin-top:25px;">Column From Examples</h3>
+        <p>Examples provide chesi, Power Query pattern ni infer cheyyadaniki try chestundi.</p>
+
+        <h3 style="margin-top:25px;">Index Column</h3>
+        <p>Rows ki sequential numbers assign chestundi.</p>
+
+        <h3 style="margin-top:25px;">Duplicate Column</h3>
+        <p>Original ni preserve cheskoni copy create chesi, copy meeda transformation apply cheyyachu.</p>
+
+        <h3 style="margin-top:25px;">Text / Number / Date</h3>
+        <p>Data type and business requirement batti required information extract or transform chestam.</p>
+
+        <h3 style="margin-top:25px;">Invoke Custom Function</h3>
+        <p>Reusable logic/function ni required data meeda apply cheyyadaniki use chestam.</p>
+    </div>
+
+    <div class="steps-section reveal">
+        <div class="section-tag">DATA ANALYST THINKING</div>
+        <h2>Before Creating a New Column</h2>
+        <p>
+            Option ni just use cheyyakunda, first requirement ni understand cheyyali.
+        </p>
+
+        <div class="steps-flow">
+            <div class="step">Business Requirement</div>
+            <div class="arrow">→</div>
+            <div class="step">Understand Existing Data</div>
+            <div class="arrow">→</div>
+            <div class="step">Choose Correct Option</div>
+            <div class="arrow">→</div>
+            <div class="step">Create / Transform</div>
+            <div class="arrow">→</div>
+            <div class="step">Verify Result</div>
+        </div>
+
+        <div class="remember">
+            <h4>🧠 Remember</h4>
+            <p>
+                Bro, Add Column lo options chala unnayi. Important enti ante option names
+                memorize cheyyadam kaadu — <strong>business requirement ki correct transformation
+                ni choose cheyyadam</strong>.
+            </p>
+        </div>
+    </div>
+
+    <div class="video-section">
+        <div class="video-heading">
+            <h3>🎥 Day 8 Summary Video</h3>
+            <span>COMPLETE RECAP</span>
+        </div>
+        <div class="video-card">
+            <video controls>
+                <source src="../assets/videos/powerbi/day8-summary-video.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    </div>
+
+    <div class="remember">
+        <h4>🏆 Day 8 Completed</h4>
+        <p>
+            You learned different ways to create useful columns in Power Query and,
+            more importantly, how to choose an option based on the requirement.
+        </p>
+    </div>
+</section>
+
+</main>
+
+<footer>
+    <p>Keep Learning • Keep Practicing • <strong>BeyondBTech</strong></p>
+</footer>
+
+<script>
+    const reveals = document.querySelectorAll('.reveal');
+
+    function revealOnScroll() {
+        reveals.forEach(function(element) {
+            const position = element.getBoundingClientRect().top;
+            const screenPosition = window.innerHeight - 100;
+
+            if (position < screenPosition) {
+                element.classList.add('active');
+            }
+        });
+    }
+
+    window.addEventListener('scroll', revealOnScroll);
+    revealOnScroll();
+</script>
+
+</body>
+
+</html>
